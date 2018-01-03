@@ -1,0 +1,221 @@
+{
+  "name": "hearthstoned",
+  "version": "0.1.0",
+  "description": "Hearthstone based resume",
+  "engines": {
+    "npm": ">=3"
+  },
+  "scripts": {
+    "preinstall": "node tools/nodeVersionCheck.js",
+    "start-message": "babel-node tools/startMessage.js",
+    "prestart": "npm-run-all --parallel start-message",
+    "start": "npm-run-all --parallel open:src lint:watch",
+    "open:src": "babel-node tools/srcServer.js",
+    "open:dist": "babel-node tools/distServer.js",
+    "lint": "esw webpack.config.* src tools --color",
+    "lint:watch": "npm run lint -- --watch",
+    "clean-dist": "npm run remove-dist && mkdir dist",
+    "remove-dist": "rimraf ./dist",
+    "prebuild": "npm run clean-dist && npm run lint",
+    "build": "babel-node tools/build.js && npm run open:dist",
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "test": "npm run mocha:unit & npm run test:open",
+    "test:int": "npm run mocha:integration & npm run test:int:open",
+    "test:open": "browser-sync start --server --port 3002 --ss ./test/runner -f ./test/runner/* --index ./test/runner/runner.html",
+    "test:int:open": "browser-sync start --server --port 3012 --ss ./test/integration/runner -f ./test/integration/runner/* --index ./test/integration/runner/runner.html",
+    "mocha:unit": "mocha --watch --compilers js:babel-core/register --reporter mochawesome --reporter-options reportDir=test/runner,reportFilename=runner,quiet=true,reportPageTitle='MyProject: Unit Test',reportTitle='MyProject: Unit Test' --require test/setup.js $(find . -name '*.test.js' -not -path './test/integration/*' -not -path './node_modules/*')",
+    "mocha:integration": "mocha --watch --compilers js:babel-core/register --reporter mochawesome --reporter-options reportDir=test/integration/runner,reportFilename=runner,quiet=true,reportPageTitle='MyProject: Integration Test',reportTitle='MyProject: Integration Test' --require test/setup.js test/integration/**/*.test.js"
+  },
+  "author": "J.C.",
+  "license": "MIT",
+  "dependencies": {
+    "object-assign": "4.1.0",
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
+    "react-redux": "5.0.5",
+    "react-router": "3.0.5",
+    "react-router-redux": "4.0.8",
+    "redux": "3.6.0",
+    "redux-thunk": "2.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "7.1.2",
+    "babel-cli": "6.24.1",
+    "babel-core": "6.25.0",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "7.1.1",
+    "babel-plugin-transform-react-constant-elements": "6.23.0",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.6",
+    "babel-polyfill": "6.23.0",
+    "babel-preset-env": "1.6.0",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-react-hmre": "1.1.1",
+    "babel-preset-stage-1": "6.24.1",
+    "browser-sync": "2.18.12",
+    "chai": "4.1.2",
+    "chalk": "2.0.1",
+    "connect-history-api-fallback": "1.3.0",
+    "coveralls": "2.13.1",
+    "css-loader": "0.28.4",
+    "enzyme": "2.9.1",
+    "eslint": "4.2.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-react": "7.1.0",
+    "eslint-watch": "3.1.2",
+    "extract-text-webpack-plugin": "3.0.0-rc.2",
+    "file-loader": "0.11.2",
+    "html-webpack-plugin": "2.29.0",
+    "identity-obj-proxy": "3.0.0",
+    "jsdom": "9.12.0",
+    "json-loader": "0.5.4",
+    "mocha": "4.0.0",
+    "mochawesome": "2.3.1",
+    "nock": "9.0.22",
+    "node-sass": "4.5.3",
+    "object-assign": "4.1.0",
+    "opn-cli": "3.1.0",
+    "postcss-loader": "1.2.1",
+    "prompt": "1.0.0",
+    "prop-types": "15.5.10",
+    "react-hot-loader": "3.0.0-beta.6",
+    "react-test-renderer": "16.0.0",
+    "redux-immutable-state-invariant": "2.0.0",
+    "redux-mock-store": "1.3.0",
+    "replace": "0.3.0",
+    "rimraf": "2.6.1",
+    "sass-loader": "6.0.6",
+    "sinon": "4.0.1",
+    "style-loader": "0.18.2",
+    "url-loader": "0.5.9",
+    "webpack": "3.1.0",
+    "webpack-bundle-analyzer": "2.8.2",
+    "webpack-dev-middleware": "1.11.0",
+    "webpack-hot-middleware": "2.18.2",
+    "webpack-md5-hash": "0.0.5"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "stage-1"
+    ],
+    "env": {
+      "development": {
+        "presets": [
+          "env",
+          "react-hmre"
+        ]
+      },
+      "production": {
+        "presets": [
+          [
+            "env",
+            {
+              "es2015": {
+                "modules": false
+              }
+            }
+          ]
+        ],
+        "plugins": [
+          "transform-react-constant-elements",
+          "transform-react-remove-prop-types"
+        ]
+      },
+      "test": {
+        "presets": [
+          "env"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "plugins": [
+      "react"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+      }
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "quotes": 0,
+      "no-console": 1,
+      "no-debugger": 1,
+      "no-var": 1,
+      "semi": [
+        1,
+        "always"
+      ],
+      "no-trailing-spaces": 0,
+      "eol-last": 0,
+      "no-underscore-dangle": 0,
+      "no-alert": 0,
+      "no-lone-blocks": 0,
+      "jsx-quotes": 1,
+      "react/display-name": [
+        1,
+        {
+          "ignoreTranspilerName": false
+        }
+      ],
+      "react/forbid-prop-types": [
+        1,
+        {
+          "forbid": [
+            "any"
+          ]
+        }
+      ],
+      "react/jsx-boolean-value": 0,
+      "react/jsx-closing-bracket-location": 0,
+      "react/jsx-curly-spacing": 1,
+      "react/jsx-indent-props": 0,
+      "react/jsx-key": 1,
+      "react/jsx-max-props-per-line": 0,
+      "react/jsx-no-bind": 0,
+      "react/jsx-no-duplicate-props": 1,
+      "react/jsx-no-literals": 0,
+      "react/jsx-no-undef": 1,
+      "react/jsx-pascal-case": 1,
+      "react/jsx-sort-prop-types": 0,
+      "react/jsx-sort-props": 0,
+      "react/jsx-uses-react": 1,
+      "react/jsx-uses-vars": 1,
+      "react/jsx-wrap-multilines": 1,
+      "react/no-danger": 1,
+      "react/no-did-mount-set-state": 1,
+      "react/no-did-update-set-state": 1,
+      "react/no-direct-mutation-state": 1,
+      "react/no-multi-comp": 1,
+      "react/no-set-state": 0,
+      "react/no-unknown-property": 1,
+      "react/prefer-es6-class": 1,
+      "react/prop-types": 1,
+      "react/react-in-jsx-scope": 1,
+      "import/extensions": 1,
+      "react/self-closing-comp": 1,
+      "react/sort-comp": 1
+    },
+    "globals": {}
+  }
+}
