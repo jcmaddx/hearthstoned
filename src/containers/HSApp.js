@@ -22,7 +22,12 @@ class HSApp extends React.Component {
 	}
 
 	componentWillMount() {
-		
+		window.addEventListener("mousedown", (e) => {
+			document.getElementById('hearthstoned').classList.add('downed');
+		})
+		window.addEventListener("mouseup", (e) => {
+			document.getElementById('hearthstoned').classList.remove('downed');
+		})
 	}
 
 	/**

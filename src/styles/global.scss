@@ -2,5 +2,13 @@ body, html,
 #hearthstoned, 
 .hs-full {
 	width: 100vw;
-	height: 100vh
+	height: 100vh;
+	//cursor: url(/images/grabhand.png) 15 19, auto;
+}
+
+#hearthstoned {
+	cursor: url(/images/hand.png) 3 10, auto;
+	&.downed {
+		cursor: url(/images/downhand.png) 4 8, auto!important;
+	}
 }
