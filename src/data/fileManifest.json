@@ -1,0 +1,11 @@
+{
+	"manifest": [
+		"/images/bg-loading.jpg",
+		"/images/blizz-logo.jpg",
+		"/images/loading-glow.png",
+		"/images/main-logo.png",
+		{"id":"better-hand", "src": "/sounds/better-hand.mp3"},
+		{"id":"main-title", "src": "/sounds/main-title.mp3"},
+		{"id":"chatter", "src": "/sounds/background-chatter.mp3"}
+	]
+}
