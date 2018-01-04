@@ -2,19 +2,17 @@
 
 // import the npm modules we need
 import React from 'react';
-import reqwest from 'reqwest';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import Loading from '../components/Loading'
+import '../styles/loading.scss';
 
 /**
-* HSApp component
+* Loading component
 *
-* @class HSApp
+* @class Loading
 * @constructor
 */
-class HSApp extends React.Component {
+class Loading extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -33,8 +31,9 @@ class HSApp extends React.Component {
 		*/
 	render() {
 		return(
-			<div className="hsapp">
-				<Loading />
+			<div className="hs-full hs-load">
+				<img className="hs-logo" src="/images/main-logo.png" />
+				<img className="blizz-logo" src="/images/blizz-logo.jpg" />
 			</div>
 		);
 	}
@@ -46,8 +45,8 @@ class HSApp extends React.Component {
 * @property propTypes
 * @type {Object}
 */
-HSApp.propTypes = {
+Loading.propTypes = {
 	
 };
 
-export default HSApp;
+export default Loading;
