@@ -1,0 +1,102 @@
+.hs-box {
+	background: url(/images/table-top.jpg) no-repeat center center;
+	background-size: cover;
+	position: relative;
+	opacity: 1;
+	z-index: 10;
+	.thebox {
+		height: 80vh;
+		width: calc((911 / 675) * 80vh);
+		position: absolute;
+		top: 30px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.lid {
+		width: 50%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		background-position: center center;
+		z-index: 10;
+		&.lid-left{
+			left: 0;
+			background-image: url(/images/box-left.png);
+		}
+		&.lid-right {
+			right: 0;
+			background-image: url(/images/box-right.png);
+		}
+	}
+	.hub {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		border-radius: 50%;
+		overflow: hidden;
+		width: calc(80vh * .51);
+		height: calc(80vh * .51);
+		z-index: 15;
+		> div {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+		.front {
+			background: url(/images/hub-base.png) no-repeat center center;
+			background-size: 100% 100%;
+			display: none;
+		}
+		.back {
+			&:before, &:after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateX(-50%) translateY(-50%);
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+			&:before {
+				width: 84%;
+				height: 84%;
+				background-image: url(/images/hub-stone.png);
+				z-index: 10;
+			}
+			&:after {
+				width: 100%;
+				height: 100%;
+				z-index: 5;
+				background-image: url(/images/ring.png);
+				animation: spinnin 5s linear infinite;
+			}
+		}
+	}
+	.tray {
+		position: absolute;
+		z-index: 5;
+		bottom: 0;
+		left: 50%;
+		width: 80%;
+		height: calc((131 / 538) * 80%);
+		background: url(/images/box-tray.png) no-repeat top center;
+		background-size: 100% 100%;
+		transform: translateX(-50%);
+		margin-bottom: calc((131 / 538) * 50% * -1);
+	}
+	&.hidden {
+		opacity: 0;
+	}
+} 
+
+@keyframes spinnin {
+	0% { transform: translateY(-50%) translateX(-50%) rotate(0deg) }
+	100% { transform: translateY(-50%) translateX(-50%) rotate(360deg) }
+}

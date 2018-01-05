@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import {randomInt} from '../utils/helpers';
 
 import Loading from '../components/Loading';
+import Box from '../components/Box';
 
 /**
 * HSApp component
@@ -20,7 +21,9 @@ class HSApp extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			stage: 0
+		};
 	}
 
 	componentWillMount() {
@@ -30,19 +33,31 @@ class HSApp extends React.Component {
 		window.addEventListener("mouseup", (e) => {
 			document.getElementById('hearthstoned').classList.remove('downed');
 		})
+		this._loadAssets();
+	}
+
+	_loadAssets() {
 		var queue = new createjs.LoadQueue();
 		var randomGreet = "/sounds/greeting"+randomInt(0, 15)+".mp3";
 		createjs.Sound.alternateExtensions = ["mp3"];
 		queue.installPlugin(createjs.Sound);
-		queue.on("complete", handleComplete, this);
+		queue.on("complete", this._loadingComplete, this);
 		queue.loadFile({id:"greeting", src:randomGreet});
 		queue.loadManifest("/data/fileManifest.json");
-		function handleComplete() {
-		  createjs.Sound.play("main-title", {loop: -1});
-		  createjs.Sound.play("chatter", {loop: -1});
-		  createjs.Sound.play("greeting");
-		}
+	};
+
+	_loadingComplete() {
+		this.setState({
+			stage: 1
+		});
+		this._introSounds();
 	}
+
+	_introSounds() {
+		createjs.Sound.play("main-title", {loop: -1});
+	  createjs.Sound.play("chatter", {loop: -1});
+	  createjs.Sound.play("greeting");
+	};
 
 	/**
 		*  Renders the component
@@ -53,7 +68,12 @@ class HSApp extends React.Component {
 	render() {
 		return(
 			<div className="hsapp">
-				<Loading />
+				<Loading stage={this.state.stage}/>
+				{
+					(this.state.stage !== 0) ?
+						<Box stage={this.state.stage}/>
+					: null
+				}
 			</div>
 		);
 	}

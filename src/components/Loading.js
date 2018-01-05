@@ -30,8 +30,13 @@ class Loading extends React.Component {
 		* @return Comonent
 		*/
 	render() {
+		let loadClasses = classnames({
+			"hs-full": true,
+			"hs-load": true,
+			"hidden": this.props.stage !== 0
+		});
 		return(
-			<div className="hs-full hs-load">
+			<div className={loadClasses}>
 				<img className="hs-logo" src="/images/main-logo.png" />
 				<img className="blizz-logo" src="/images/blizz-logo.jpg" />
 			</div>

@@ -2,6 +2,8 @@
 	background: url(/images/bg-loading.jpg) no-repeat center center;
 	background-size: cover;
 	position: relative;
+	opacity: 1;
+	z-index: 50;
 	.hs-logo {
 		position: absolute;
 		top: 50%;
@@ -27,6 +29,14 @@
 		background-size: cover; 
 		animation: bg-glow 3s infinite;
 	}
+	&.hidden {
+		animation: begone 2s forwards;
+	}
+}
+
+@keyframes begone {
+	0% { z-index: 50; opacity: 1; }
+	100% { z-index: -10; opacity: 0; }
 }
 
 @keyframes logo-fadein {

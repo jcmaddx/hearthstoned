@@ -1,6 +1,9 @@
 body, html,
 #hearthstoned, 
 .hs-full {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100vw;
 	height: 100vh;
 	//cursor: url(/images/grabhand.png) 15 19, auto;
