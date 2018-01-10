@@ -4,13 +4,16 @@
 	position: relative;
 	opacity: 1;
 	z-index: 10;
+	overflow: hidden;
+	perspective: 1000;
 	.thebox {
 		height: 80vh;
 		width: calc((911 / 675) * 80vh);
 		position: absolute;
 		top: 30px;
 		left: 50%;
-		transform: translateX(-50%);
+		animation: boxin 3s linear forwards;
+		//transform: translateZ(20px) translateX(-60%) translateY(-30px) skew(5deg, -5deg) rotateZ(-5deg) rotateX(20deg);
 	}
 	.lid {
 		width: 50%;
@@ -75,17 +78,18 @@
 				height: 100%;
 				z-index: 5;
 				background-image: url(/images/ring.png);
-				animation: spinnin 5s linear infinite;
+				animation: spinnin 10s linear infinite;
 			}
 		}
 	}
 	.tray {
 		position: absolute;
 		z-index: 5;
-		bottom: 0;
+		bottom: calc(80vh * .194);
+		//bottom: 0;
 		left: 50%;
-		width: 80%;
-		height: calc((131 / 538) * 80%);
+		width: calc((80vh * .194) * 4.1);
+		height: calc(80vh * .194);
 		background: url(/images/box-tray.png) no-repeat top center;
 		background-size: 100% 100%;
 		transform: translateX(-50%);
@@ -94,9 +98,39 @@
 	&.hidden {
 		opacity: 0;
 	}
+
+	.buttons {
+		width: calc((80vh * .204) * 2 + 10px);
+		height: calc(80vh * .204);
+		position: absolute;
+		bottom: calc(80vh * .195 * -1);
+		transform: translateX(-33%);
+		.shop-button, .quest-button {
+			height: 100%;
+			width: calc(50% - 5px);
+			display: inline-block;
+			vertical-align: top;
+			background-repeat: no-repeat;
+			background-size: auto 100%;
+			background-position: center center;
+		}
+		.shop-button {
+			margin-right: 5px;
+			background-image: url(/images/store-closed-button.png);
+		}
+		.quest-button {
+			margin-left: 5px;
+			background-image: url(/images/quest-button.png);
+		}
+	}
 } 
 
 @keyframes spinnin {
 	0% { transform: translateY(-50%) translateX(-50%) rotate(0deg) }
 	100% { transform: translateY(-50%) translateX(-50%) rotate(360deg) }
+}
+
+@keyframes boxin {
+	0% {transform: translateZ(20px) translateX(-74%) translateY(-180px) skew(10deg, -10deg) rotateZ(-10deg) rotateX(15deg)}
+	100% {transform: translateZ(0) translateX(-50%) translateY(0px) skew(0deg, 0deg) rotateZ(0deg) rotateX(0deg)}
 }

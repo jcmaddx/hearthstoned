@@ -6,7 +6,7 @@ body, html,
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	//cursor: url(/images/grabhand.png) 15 19, auto;
+	background-color: #391b10;
 }
 
 #hearthstoned {
@@ -14,4 +14,8 @@ body, html,
 	&.downed {
 		cursor: url(/images/downhand.png) 4 8, auto!important;
 	}
+}
+
+.blurred {
+	filter: blur(5px);
 }

@@ -8,8 +8,9 @@ import classnames from 'classnames';
 
 import {randomInt} from '../utils/helpers';
 
-import Loading from '../components/Loading';
-import Box from '../components/Box';
+import Loading from './Loading';
+import Box from './Box';
+import IntroQuests from './IntroQuests';
 
 /**
 * HSApp component
@@ -51,6 +52,15 @@ class HSApp extends React.Component {
 			stage: 1
 		});
 		this._introSounds();
+		this._introQuests();
+	}
+
+	_introQuests() {
+		window.setTimeout(() => {
+			this.refs.introQuests.refs.introModal._openModal("introQuestDialog");
+			document.querySelector('.hs-box').classList.add('blurred');
+			createjs.Sound.play("new-quests");
+		}, 4000);
 	}
 
 	_introSounds() {
@@ -71,7 +81,10 @@ class HSApp extends React.Component {
 				<Loading stage={this.state.stage}/>
 				{
 					(this.state.stage !== 0) ?
-						<Box stage={this.state.stage}/>
+						<div>
+							<Box stage={this.state.stage}/>
+							<IntroQuests ref="introQuests" />
+						</div>
 					: null
 				}
 			</div>

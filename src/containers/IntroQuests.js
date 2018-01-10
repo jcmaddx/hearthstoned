@@ -4,23 +4,21 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import '../styles/box.scss';
+import Modal from '../components/Modal';
+
+import '../styles/quests.scss';
 
 /**
-* Box component
+* IntroQuests component
 *
-* @class Box
+* @class IntroQuests
 * @constructor
 */
-class Box extends React.Component {
+class IntroQuests extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {};
-	}
-
-	componentWillMount() {
-		
 	}
 
 	/**
@@ -36,17 +34,16 @@ class Box extends React.Component {
 			"hidden": this.props.stage !== 1
 		});
 		return(
-			<div className={boxClasses}>
-				<div className="thebox">
-					<div className="lid lid-left"></div>
-					<div className="lid lid-right"></div>
-					<div className="hub">
-						<div className="front"></div>
-						<div className="back"></div>
+			<Modal ref="introModal" refId="introQuestDialog">
+				<div className="quest-greet">
+					<div className="today-banner">
+						<h2>Today's Quests</h2>
+						<div className="quest-boxes">
+							Three Boxes here!
+						</div>
 					</div>
-					<div className="tray"></div>
 				</div>
-			</div>
+			</Modal>
 		);
 	}
 }
@@ -57,8 +54,8 @@ class Box extends React.Component {
 * @property propTypes
 * @type {Object}
 */
-Box.propTypes = {
+IntroQuests.propTypes = {
 	
 };
 
-export default Box;
+export default IntroQuests;
