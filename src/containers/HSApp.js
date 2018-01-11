@@ -58,8 +58,6 @@ class HSApp extends React.Component {
 	_introQuests() {
 		window.setTimeout(() => {
 			this.refs.introQuests.refs.introModal._openModal("introQuestDialog");
-			document.querySelector('.hs-box').classList.add('blurred');
-			createjs.Sound.play("new-quests");
 		}, 4000);
 	}
 
@@ -68,6 +66,15 @@ class HSApp extends React.Component {
 	  createjs.Sound.play("chatter", {loop: -1});
 	  createjs.Sound.play("greeting");
 	};
+
+	_trayDropFlip(){
+		let tray = document.getElementById("tray");
+		let hub = document.getElementById("hub");
+		tray.classList.add('dropped');
+		createjs.Sound.play("tray-out");
+		hub.classList.add('active');
+		createjs.Sound.play("hub-flip");
+	}
 
 	/**
 		*  Renders the component
@@ -83,7 +90,7 @@ class HSApp extends React.Component {
 					(this.state.stage !== 0) ?
 						<div>
 							<Box stage={this.state.stage}/>
-							<IntroQuests ref="introQuests" />
+							<IntroQuests ref="introQuests" closeCallback={this._trayDropFlip} />
 						</div>
 					: null
 				}

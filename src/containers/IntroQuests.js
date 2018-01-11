@@ -28,20 +28,18 @@ class IntroQuests extends React.Component {
 		* @return Comonent
 		*/
 	render() {
-		let boxClasses = classnames({
-			"hs-full": true,
-			"hs-box": true,
-			"hidden": this.props.stage !== 1
-		});
 		return(
-			<Modal ref="introModal" refId="introQuestDialog">
+			<Modal ref="introModal" refId="introQuestDialog" anim="topDown" openSound="existing-quests" closeSound="new-quests-close" closeCallback={this.props.closeCallback}>
 				<div className="quest-greet">
 					<div className="today-banner">
 						<h2>Today's Quests</h2>
-						<div className="quest-boxes">
-							Three Boxes here!
-						</div>
 					</div>
+					<div className="quest-boxes">
+						<div className="quest-box"></div>
+						<div className="quest-box"></div>
+						<div className="quest-box"></div>
+					</div>
+					<p>Something about the Quests. Something Funny?</p>
 				</div>
 			</Modal>
 		);

@@ -1,0 +1,28 @@
+.quest-greet {
+	text-align: center;
+	.today-banner {
+		display: block;
+		background: url(/images/title-banner.png) no-repeat center center;
+		background-size: 100% auto;
+		height: calc(80vh * .148);
+		width: calc(80vh * .148 * 5);
+		line-height: calc(80vh * .1);
+		margin: 0 auto 40px;
+	}
+	> p {
+		margin: 50px 0;
+		color: white;
+	}
+}
+
+.quest-boxes {
+	width: calc((80vh * .413 * .86 * 3) + 30px);
+	.quest-box {
+		display: inline-block;
+		margin: 0 5px;
+		height: calc(80vh * .413);
+		width: calc(80vh * .413 * .86);
+		background: url(/images/quest-tile-front.png) no-repeat center center;
+		background-size: 100% 100%;
+	}
+}

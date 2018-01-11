@@ -36,11 +36,11 @@ class TheBox extends React.Component {
 			<div className="thebox">
 				<div className="lid lid-left"></div>
 				<div className="lid lid-right"></div>
-				<div className="hub">
+				<div id="hub" className="hub">
 					<div className="front"></div>
 					<div className="back"></div>
 				</div>
-				<div className="tray"></div>
+				<div id="tray" className="tray"></div>
 				<BoxButtons />
 			</div>
 		);
