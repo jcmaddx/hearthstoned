@@ -33,15 +33,31 @@ class TheBox extends React.Component {
 		*/
 	render() {
 		return(
-			<div className="thebox">
-				<div className="lid lid-left"></div>
-				<div className="lid lid-right"></div>
-				<div id="hub" className="hub">
-					<div className="front"></div>
-					<div className="back"></div>
+			<div>
+				<div className="thebox">
+					<div className="lid lid-left"></div>
+					<div className="lid lid-right"></div>
+					<div id="hub" className="hub">
+						<div className="front">
+							<div className="btn-hub hub1">
+								<img src="/images/btn-hub1.png" />
+							</div>
+							<div className="btn-hub hub2">
+								<img src="/images/btn-hub2.png" />
+							</div>
+							<div className="btn-hub hub3">
+								<img src="/images/btn-hub3.png" />
+							</div>
+							<div className="btn-hub hub3 disabled">
+								<img src="/images/btn-hub4.png" />
+							</div>
+						</div>
+						<div className="back"></div>
+					</div>
+					<div id="tray" className="tray"></div>
+					<BoxButtons />
 				</div>
-				<div id="tray" className="tray"></div>
-				<BoxButtons />
+				<div className="tabletop"></div>
 			</div>
 		);
 	}
