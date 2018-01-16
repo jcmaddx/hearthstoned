@@ -33,7 +33,9 @@ class BoxButtons extends React.Component {
 		return(
 			<div className="buttons">
 				<div className="shop-button"></div>
-				<div className="quest-button"></div>
+				<div className="quest-button">
+					<img src="/images/quest-button.png" />
+				</div>
 			</div>
 		);
 	}
