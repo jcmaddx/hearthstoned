@@ -68,25 +68,56 @@
 			background: url(/images/hub-base.png) no-repeat center center;
 			background-size: 100% 100%;
 			transform: rotateY(180deg);
+			position: relative;
+			perspective: 100;
 			.btn-hub {
 				display: block;
+				margin-left: -1px;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				h3 {
+					position: absolute;
+					width: 100%;
+					margin: 0;
+					color: #4d3a1d;
+					top: 50%;
+					left: 50%;
+					transform: translateX(-50%) translateY(-50%);
+					font-size: 2.5vh;
+					pointer-events: none;
+				}
 				img {
-					display: block;
 					height: 100%;
 					width: auto;
-					margin: 0 auto;
+					pointer-events: none;
 				}
 				&.hub1 {
-					height: calc(80vh * .06);
+					height: calc((80vh * .51) * .123);
+					top: calc(80vh * .086);
+					margin-left: -4px;
 				}
 				&.hub2 {
-					height: calc(80vh * .06);
+					height: calc((80vh * .51) * .128);
+					top: calc(80vh * .173);
 				}
 				&.hub3 {
-					height: calc(80vh * .06);
+					height: calc((80vh * .51) * .131);
+					top: calc(80vh * .267);
 				}
 				&.hub4 {
-					height: calc(80vh * .06);
+					height: calc((80vh * .51) * .128);
+					top: calc(80vh * .356);
+				}
+				&.disabled {
+					opacity: 0.3;
+					transform: translateX(-50%) scale(0.98);
+					h3 {
+						color: #666;
+					}
+				}
+				&.over {
+					animation: bobble .3s linear backwards;
 				}
 			}
 		}
@@ -169,9 +200,16 @@
 		.quest-button {
 			margin-left: 5px;
 			background-image: url(/images/quest-button.png);
+			transform: rotate(-10deg);
 		}
 	}
 } 
+
+@keyframes bobble {
+	0% {transform: translateX(-50%) rotateX(-12deg) translateZ(2px) scale(0.98);}
+	40% {transform: translateX(-50%) rotateX(6deg) translateZ(2px) scale(0.98);}
+	80% {transform: translateX(-50%) rotateX(0deg) translateZ(0)  scale(1);}
+}
 
 @keyframes trayBounce {
   0% {bottom: calc(80vh * .194); -webkit-animation-timing-function: ease-in;}

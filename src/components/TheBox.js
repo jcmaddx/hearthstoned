@@ -25,6 +25,20 @@ class TheBox extends React.Component {
 		
 	}
 
+	_mouseIn(e) {
+		console.log(e.target)
+		if(!e.target.classList.contains('disabled')){
+			e.target.classList.add('over');
+			createjs.Sound.play("hub-hover");	
+		}
+	};
+
+	_mouseOut(e) {
+		if(e.target.classList.contains('over')){
+			e.target.classList.remove('over');
+		}
+	}
+
 	/**
 		*  Renders the component
 		*
@@ -39,16 +53,20 @@ class TheBox extends React.Component {
 					<div className="lid lid-right"></div>
 					<div id="hub" className="hub">
 						<div className="front">
-							<div className="btn-hub hub1">
+							<div onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub1">
+								<h3>Play</h3>
 								<img src="/images/btn-hub1.png" />
 							</div>
-							<div className="btn-hub hub2">
+							<div onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub2">
+								<h3>Solo Adventures</h3>
 								<img src="/images/btn-hub2.png" />
 							</div>
-							<div className="btn-hub hub3">
+							<div onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub3">
+								<h3>The Arena</h3>
 								<img src="/images/btn-hub3.png" />
 							</div>
-							<div className="btn-hub hub3 disabled">
+							<div onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub4 disabled">
+								<h3>Tavern Brawl</h3>
 								<img src="/images/btn-hub4.png" />
 							</div>
 						</div>

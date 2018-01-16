@@ -9,6 +9,10 @@ body, html,
 	background-color: #391b10;
 }
 
+h1, h2, h3, h4, h5, p {
+	font-family: "Belweb";
+}
+
 #hearthstoned {
 	cursor: url(/images/hand.png) 3 10, auto;
 	&.downed {
