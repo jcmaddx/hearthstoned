@@ -26,7 +26,6 @@ class TheBox extends React.Component {
 	}
 
 	_mouseIn(e) {
-		console.log(e.target)
 		if(!e.target.classList.contains('disabled')){
 			e.target.classList.add('over');
 			createjs.Sound.play("hub-hover");	
@@ -73,7 +72,7 @@ class TheBox extends React.Component {
 						<div className="back"></div>
 					</div>
 					<div id="tray" className="tray"></div>
-					<BoxButtons />
+					<BoxButtons questCallback={this.props.questCallback} />
 				</div>
 				<div className="tabletop"></div>
 			</div>

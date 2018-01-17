@@ -39,7 +39,7 @@ class Box extends React.Component {
 		});
 		return(
 			<div className={boxClasses}>
-				<TheBox />
+				<TheBox questCallback={this.props.questCallback}/>
 			</div>
 		);
 	}

@@ -11,6 +11,7 @@ import {randomInt} from '../utils/helpers';
 import Loading from './Loading';
 import Box from './Box';
 import IntroQuests from './IntroQuests';
+import QuestTracker from './QuestTracker';
 
 /**
 * HSApp component
@@ -76,6 +77,10 @@ class HSApp extends React.Component {
 		createjs.Sound.play("hub-flip");
 	}
 
+	_questCallback() {
+		this.refs.questTracker.refs.questTracker._openModal("questTrackerDialog");
+	};
+
 	/**
 		*  Renders the component
 		*
@@ -89,8 +94,9 @@ class HSApp extends React.Component {
 				{
 					(this.state.stage !== 0) ?
 						<div>
-							<Box stage={this.state.stage}/>
+							<Box stage={this.state.stage} questCallback={this._questCallback.bind(this)}/>
 							<IntroQuests ref="introQuests" closeCallback={this._trayDropFlip} />
+							<QuestTracker ref="questTracker" />
 						</div>
 					: null
 				}

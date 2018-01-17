@@ -16,12 +16,16 @@
 		"/images/ring.png",
 		"/images/store-closed-button.png",
 		"/images/table-top.jpg",	
+		{"id":"small-click", "src": "/sounds/small-click.mp3"},
 		{"id":"better-hand", "src": "/sounds/better-hand.mp3"},		
 		{"id":"existing-quests", "src": "/sounds/existing-quest-popup.mp3"},
 		{"id":"new-quests-close", "src": "/sounds/new-quests-close.mp3"},
 		{"id":"hub-flip", "src": "/sounds/hub-flip.mp3"},
 		{"id":"hub-hover", "src": "/sounds/hub-hover.mp3"},
 		{"id":"tray-out", "src": "/sounds/tray-out.mp3"},
+		{"id":"quest-hover", "src": "/sounds/quest-button-hover.mp3"},
+		{"id":"quest-log-open", "src": "/sounds/quest-log-open.mp3"},
+		{"id":"quest-log-close", "src": "/sounds/quest-log-close.mp3"},
 		{"id":"main-title", "src": "/sounds/main-title.mp3"},
 		{"id":"chatter", "src": "/sounds/background-chatter.mp3"}
 	]

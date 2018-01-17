@@ -23,6 +23,15 @@ class BoxButtons extends React.Component {
 		
 	}
 
+	_mouseIn() {
+		createjs.Sound.play("quest-hover");	
+	};
+
+	_questClick() {
+		createjs.Sound.play("small-click");	
+		this.props.questCallback();
+	};
+
 	/**
 		*  Renders the component
 		*
@@ -33,7 +42,7 @@ class BoxButtons extends React.Component {
 		return(
 			<div className="buttons">
 				<div className="shop-button"></div>
-				<div className="quest-button">
+				<div onClick={this._questClick.bind(this)} onMouseEnter={this._mouseIn} className="quest-button">
 					<img src="/images/quest-button.png" />
 				</div>
 			</div>
