@@ -5,6 +5,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import Modal from '../components/Modal';
+import SkillBox from '../components/SkillBox';
 
 import '../styles/quests.scss';
 
@@ -30,20 +31,22 @@ class QuestTracker extends React.Component {
 	render() {
 		return(
 			<Modal ref="questTracker" refId="questTrackerDialog" anim="bounceIn" openSound="quest-log-open" closeSound="quest-log-close">
-				<div className="quest-greet">
-					<div className="today-banner">
-						<h2>Quest Log</h2>
-					</div>
+				<div className="quest-log">
+					<h2>Quest Log</h2>
 					<div className="hero-skills">
-						<div className="skill-box"></div>
-						<div className="skill-box"></div>
-						<div className="skill-box"></div>
-						<div className="skill-box"></div>
-						<div className="skill-box"></div>
-						<div className="skill-box"></div>
-						<div className="skill-box"></div>
-						<div className="skill-box"></div>
-						<div className="skill-box"></div>
+						<h3>Skill Levels</h3>
+						<SkillBox />
+						<SkillBox />
+						<SkillBox />
+						<SkillBox />
+						<SkillBox />
+						<SkillBox />
+						<SkillBox />
+						<SkillBox />
+						<SkillBox />
+					</div>
+					<div className="total-level">
+						<h3>Total Level: <span>180</span></h3>
 					</div>
 					<div className="quest-boxes">
 						<div className="quest-box"></div>

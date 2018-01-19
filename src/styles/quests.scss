@@ -1,3 +1,4 @@
+@import "./mixins.scss";
 .quest-greet {
 	text-align: center;
 	.today-banner {
@@ -24,5 +25,66 @@
 		width: calc(80vh * .413 * .86);
 		background: url(/images/quest-tile-front.png) no-repeat center center;
 		background-size: 100% 100%;
+	}
+}
+
+.quest-log {
+	height: 90vh;
+	width: calc((806 / 833) * 90vh);
+	background: url(/images/quest-log.png) no-repeat center center;
+	background-size: 100% 100%;
+	h2 {
+		text-align: center;
+		color: white;
+		font-size: 2.8vh;
+		padding-top: 1.4vh;
+		margin-bottom: 5vh;
+		@include stroked;
+	}
+	.hero-skills {
+		width: 86%;
+		margin: 0 auto;
+		height: calc(90vh * .425);
+		h3 {
+			color: #9e573d;
+			text-align: center;
+			display: block;
+			font-size: 2.3vh;
+			padding-top: 1.7vh;
+			margin-bottom: 0.4vh;
+		}
+		.skill-box {
+			display: inline-block;
+			width: 31%;
+			margin: 1.2vh 1%;
+			position: relative;
+			img {
+				width: 100%;
+				height: auto;
+				position: relative;
+				z-index: 1;
+			}
+		}
+	}
+	.total-level {
+		text-align: center;
+		h3 {
+			font-size: 2.3vh;
+			margin: 0.8vh 0 6.7vh;
+			color: #c4b47c;
+			@include stroked;
+			span {
+				color: white;
+			}
+		}
+	}
+	.quest-boxes {
+		width: 89%;
+		margin: 0 auto;
+		.quest-box {
+			height: calc(90vh * .307);
+    	width: calc(90vh * .307 * .86);
+    	margin: 0 1.33%;
+		}
 	}
 }
