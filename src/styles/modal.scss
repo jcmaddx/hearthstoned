@@ -26,7 +26,26 @@
 		z-index: 100;
 		.modal-content {
 			opacity: 1;
-			transform: scale(1) translateX(-50%) translateY(-50%);
+		}
+		&.topDown {
+			.modal-content {
+				transform: scale(1) translateX(-50%) translateY(-50%);
+			}
+		}
+		&.bounceIn {
+			.modal-content {
+				transform-origin: 0 0;
+				animation: bounceIn .3s forwards;
+			}
 		}
 	}
+}
+
+@keyframes bounceIn {
+  0% {transform: scale(0) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-in;}
+  66% {transform: scale(1) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-out;}
+  82% {transform: scale(1.1) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-in;}
+  92% {transform: scale(0.7) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-out;}
+  97% {transform: scale(0.85) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-in;}
+  100% { transform: scale(1) translateX(-50%) translateY(-50%);}
 }

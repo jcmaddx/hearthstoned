@@ -38,6 +38,10 @@ class HSApp extends React.Component {
 		this._loadAssets();
 	}
 
+	componentDidMount() {
+		this._startClock();
+	}
+
 	_loadAssets() {
 		var queue = new createjs.LoadQueue();
 		var randomGreet = "/sounds/greeting"+randomInt(0, 15)+".mp3";
@@ -81,6 +85,31 @@ class HSApp extends React.Component {
 		this.refs.questTracker.refs.questTracker._openModal("questTrackerDialog");
 	};
 
+	_hoverOptions() {
+		createjs.Sound.play("hub-hover");
+	}
+
+	_startClock() {
+	  let today = new Date();
+	  let ampm = "am";
+	  let hour = today.getHours();
+	  let minute = today.getMinutes();
+	  if (hour === 12){
+	  	ampm = 'pm';
+	  } else if (hour > 12) {
+	    hour -= 12;
+	    ampm = 'pm';
+		} else if (hour === 0) {
+		  hour = 12;
+		}
+	  minute = (minute < 10) ? "0" + minute : minute;
+	  document.getElementById('clock').innerHTML =
+	  hour + ":" + minute + " " + ampm;
+	  let timer = setTimeout(() => {
+	  	this._startClock();
+	  }, 1000);
+	}
+
 	/**
 		*  Renders the component
 		*
@@ -100,6 +129,12 @@ class HSApp extends React.Component {
 						</div>
 					: null
 				}
+				<div className="options-bar">
+					<div id="clock"></div>
+					<div onMouseEnter={this._hoverOptions} id="options-button">
+						<img id="options-button" src="/images/options-button.png"></img>
+					</div>
+				</div>
 			</div>
 		);
 	}

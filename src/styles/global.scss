@@ -9,7 +9,7 @@ body, html,
 	background-color: #391b10;
 }
 
-h1, h2, h3, h4, h5, p {
+*{
 	font-family: "Belweb";
 }
 
@@ -26,4 +26,53 @@ h1, h2, h3, h4, h5, p {
 
 ::selection {
     background: transparent;
+}
+
+.options-bar {
+	position: absolute;
+	bottom: 0;
+	z-index: 10;
+	width: 100%;
+	height: 5vh;
+	#clock {
+		color: #919191;
+		font-size: 2.5vh;
+		text-transform: uppercase;
+		padding-left: 30px;
+		line-height: 2;
+	}
+	#options-button {
+		position: absolute;
+		right: 10px;
+		top: 0;
+		height: 90%;
+		img {
+			position: relative;
+			display: block;
+			height: 100%;
+			width: auto;
+			z-index: 1;
+			left: 0;
+		}
+		&:before {
+			display: block;
+			position: absolute;
+			content: "";
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 2;
+			border-radius: 40%;
+			opacity: 0;
+			background: -moz-linear-gradient(left, rgba(255,245,196,0.1) 0%, rgba(255,245,196,1) 25%, rgba(255,245,196,1) 50%, rgba(255,245,196,1) 75%, rgba(255,245,196,0.1) 100%);
+			background: -webkit-linear-gradient(left, rgba(255,245,196,0.1) 0%,rgba(255,245,196,1) 25%,rgba(255,245,196,1) 50%,rgba(255,245,196,1) 75%,rgba(255,245,196,0.1) 100%);
+			background: linear-gradient(to right, rgba(255,245,196,0.1) 0%,rgba(255,245,196,1) 25%,rgba(255,245,196,1) 50%,rgba(255,245,196,1) 75%,rgba(255,245,196,0.1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1afff5c4', endColorstr='#1afff5c4',GradientType=1 );
+		}
+		&:hover {
+			&:before {
+				opacity: 0.2;
+			}
+		}
+	}
 }

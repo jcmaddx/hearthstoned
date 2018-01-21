@@ -56,7 +56,7 @@ class Modal extends React.Component {
 		* @return Comonent
 		*/
 	render() {
-		let animType = (this.props.anim) ? this.props.anim : "inBounce";
+		let animType = (this.props.anim) ? this.props.anim : "slideIn";
 		let modalClasses = classnames({
 			"hs-modal": true,
 			[animType]: true

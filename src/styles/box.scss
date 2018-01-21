@@ -1,3 +1,4 @@
+@import "./mixins.scss";
 .hs-box {
 	position: relative;
 	opacity: 1;
@@ -14,14 +15,13 @@
 		animation: tablein 3s ease-out forwards;
 	}
 	.thebox {
-		height: 80vh;
-		width: calc((911 / 675) * 80vh);
+		height: 75vh;
+		width: calc((911 / 675) * 75vh);
 		position: absolute;
-		top: 30px;
+		top: 3vh;
 		left: 50%;
 		animation: boxin 3s ease-in forwards;
 		z-index: 20;
-		//transform: translateZ(20px) translateX(-60%) translateY(-30px) skew(5deg, -5deg) rotateZ(-5deg) rotateX(20deg);
 	}
 	.lid {
 		width: 50%;
@@ -49,8 +49,8 @@
 		transform: translateX(-50%) translateY(-50%);
 		border-radius: 50%;
 		overflow: hidden;
-		width: calc(80vh * .51);
-		height: calc(80vh * .51);
+		width: calc(75vh * .51);
+		height: calc(75vh * .51);
 		z-index: 15;
 		perspective: 1000;
 		text-align: center;
@@ -76,6 +76,18 @@
 				position: absolute;
 				left: 50%;
 				transform: translateX(-50%);
+				&:before {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					content: "";
+					z-index: 2;
+					background-size: 100% 100%;
+					opacity: 0;
+					transition: opacity .2s;
+				}
 				h3 {
 					position: absolute;
 					width: 100%;
@@ -86,37 +98,55 @@
 					transform: translateX(-50%) translateY(-50%);
 					font-size: 2.5vh;
 					pointer-events: none;
+					z-index: 3;
 				}
 				img {
 					height: 100%;
 					width: auto;
 					pointer-events: none;
+					position: relative;
+					z-index: 1;
 				}
 				&.hub1 {
-					height: calc((80vh * .51) * .122);
-					top: calc(80vh * .086);
+					height: calc((75vh * .51) * .122);
+					top: calc(75vh * .086);
 					margin-left: -4px;
+					&:before {
+						background-image: url(/images/btn-hub1-hover.png);
+					}
 				}
 				&.hub2 {
-					height: calc((80vh * .51) * .128);
-					top: calc(80vh * .173);
+					height: calc((75vh * .51) * .128);
+					top: calc(75vh * .173);
+					&:before {
+						background-image: url(/images/btn-hub2-hover.png);
+					}
 				}
 				&.hub3 {
-					height: calc((80vh * .51) * .131);
-					top: calc(80vh * .267);
+					height: calc((75vh * .51) * .131);
+					top: calc(75vh * .267);
+					&:before {
+						background-image: url(/images/btn-hub3-hover.png);
+					}
 				}
 				&.hub4 {
-					height: calc((80vh * .51) * .128);
-					top: calc(80vh * .356);
+					height: calc((75vh * .51) * .128);
+					top: calc(75vh * .356);
 				}
 				&.disabled {
 					opacity: 0.3;
 					transform: translateX(-50%) scale(0.98);
+					&:before {
+						display: none;
+					}
 					h3 {
 						color: #666;
 					}
 				}
 				&.over {
+					&:before {
+						opacity: 0.8;
+					}
 					animation: bobble .3s linear backwards;
 				}
 			}
@@ -161,17 +191,81 @@
 	.tray {
 		position: absolute;
 		z-index: 5;
-		bottom: calc(80vh * .194);
+		bottom: calc(75vh * .194);
 		//bottom: 0;
 		left: 50%;
-		width: calc((80vh * .194) * 4.1);
-		height: calc(80vh * .194);
+		width: calc((75vh * .194) * 4.1);
+		height: calc(75vh * .194);
 		background: url(/images/box-tray.png) no-repeat top center;
 		background-size: 100% 100%;
 		transform: translateX(-50%);
 		margin-bottom: calc((131 / 538) * 50% * -1);
+
 		&.dropped {
 			animation: trayBounce .5s forwards;
+		}
+		> div {
+			display: inline-block;
+			vertical-align: top;
+			height: 83%;
+			border-radius: 0 0 15px 15px;
+			position: relative;
+			&:after {
+				position: absolute;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				content: "";
+				opacity: 0;
+				background: -moz-linear-gradient(left, rgba(255,245,196,0.1) 0%, rgba(255,245,196,1) 25%, rgba(255,245,196,1) 50%, rgba(255,245,196,1) 75%, rgba(255,245,196,0.1) 100%);
+				background: -webkit-linear-gradient(left, rgba(255,245,196,0.1) 0%,rgba(255,245,196,1) 25%,rgba(255,245,196,1) 50%,rgba(255,245,196,1) 75%,rgba(255,245,196,0.1) 100%);
+				background: linear-gradient(to right, rgba(255,245,196,0.1) 0%,rgba(255,245,196,1) 25%,rgba(255,245,196,1) 50%,rgba(255,245,196,1) 75%,rgba(255,245,196,0.1) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1afff5c4', endColorstr='#1afff5c4',GradientType=1 );
+				width: 100%;
+				height: 98%;
+			}
+			h4 {
+				position: relative;
+				z-index: 2;
+				text-align: center;
+				color: white;
+				@include stroked;
+				font-size: 2.8vh;
+				line-height: 1;
+				margin: 3.5vh 0;
+			}
+			&:hover {
+				&:after {
+					opacity: 0.3;
+				}
+			}
+		}
+		.tray-packs {
+			margin-left: 11%;
+			width: 26%;
+			h4 {
+				margin-top: 2.3vh;
+			}
+			.pack-count {
+				color: white;
+				@include stroked;
+				position: absolute;
+				width: 33%;
+				height: calc(33% * 1.2);
+				text-align: center;
+				font-size: 3vh;
+				line-height: 4.7vh;
+				bottom: -10px;
+				left: 50%;
+				transform: translateX(-50%);
+				background: url(/images/card-count.png);
+				background-size: 100% 100%;
+				z-index: 3;
+			}
+		}
+		.tray-collection {
+			width: 50%;
+			margin-left: 1%;
 		}
 	}
 	&.hidden {
@@ -179,10 +273,10 @@
 	}
 
 	.buttons {
-		width: calc((80vh * .204) * 2 + 10px);
-		height: calc(80vh * .204);
+		width: calc((75vh * .204) * 2 + 10px);
+		height: calc(75vh * .204);
 		position: absolute;
-		bottom: calc(80vh * .195 * -1);
+		bottom: calc(75vh * .195 * -1);
 		transform: translateX(-33%);
 		.shop-button, .quest-button {
 			height: 100%;
@@ -237,13 +331,11 @@
 }
 
 @keyframes trayBounce {
-  0% {bottom: calc(80vh * .194); -webkit-animation-timing-function: ease-in;}
-  33% {bottom: 40px; -webkit-animation-timing-function: ease-out;}
-  50% {bottom: 30px; -webkit-animation-timing-function: ease-in;}
-  66% {bottom: 40px; -webkit-animation-timing-function: ease-out;}
-  82% {bottom: 10px; -webkit-animation-timing-function: ease-in;}
-  92% {bottom: 20px; -webkit-animation-timing-function: ease-out;}
-  97% {bottom: 15px; -webkit-animation-timing-function: ease-in;}
+  0% {bottom: calc(75vh * .194); -webkit-animation-timing-function: ease-in;}
+  66% {bottom: 0; -webkit-animation-timing-function: ease-out;}
+  82% {bottom: 15px; -webkit-animation-timing-function: ease-in;}
+  92% {bottom: 0; -webkit-animation-timing-function: ease-out;}
+  97% {bottom: 5px; -webkit-animation-timing-function: ease-in;}
   100% { bottom: 0;}
 }
 

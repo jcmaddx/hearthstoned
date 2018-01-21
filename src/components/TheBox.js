@@ -5,6 +5,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import BoxButtons from './BoxButtons';
+import Tray from './Tray';
 
 import '../styles/box.scss';
 
@@ -71,7 +72,7 @@ class TheBox extends React.Component {
 						</div>
 						<div className="back"></div>
 					</div>
-					<div id="tray" className="tray"></div>
+					<Tray />
 					<BoxButtons questCallback={this.props.questCallback} />
 				</div>
 				<div className="tabletop"></div>
