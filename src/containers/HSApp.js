@@ -42,7 +42,7 @@ class HSApp extends React.Component {
 		this._startClock();
 	}
 
-	_loadAssets() {
+	_loadAssets = () => {
 		var queue = new createjs.LoadQueue();
 		var randomGreet = "/sounds/greeting"+randomInt(0, 15)+".mp3";
 		createjs.Sound.alternateExtensions = ["mp3"];
@@ -52,7 +52,7 @@ class HSApp extends React.Component {
 		queue.loadManifest("/data/fileManifest.json");
 	};
 
-	_loadingComplete() {
+	_loadingComplete = () => {
 		this.setState({
 			stage: 1
 		});
@@ -60,19 +60,19 @@ class HSApp extends React.Component {
 		this._introQuests();
 	}
 
-	_introQuests() {
+	_introQuests = () => {
 		window.setTimeout(() => {
 			this.refs.introQuests.refs.introModal._openModal("introQuestDialog");
 		}, 4000);
 	}
 
-	_introSounds() {
+	_introSounds = () => {
 		createjs.Sound.play("main-title", {loop: -1});
 	  createjs.Sound.play("chatter", {loop: -1});
 	  createjs.Sound.play("greeting");
 	};
 
-	_trayDropFlip(){
+	_trayDropFlip = () => {
 		let tray = document.getElementById("tray");
 		let hub = document.getElementById("hub");
 		tray.classList.add('dropped');
@@ -81,15 +81,15 @@ class HSApp extends React.Component {
 		createjs.Sound.play("hub-flip");
 	}
 
-	_questCallback() {
+	_questCallback = () => {
 		this.refs.questTracker.refs.questTracker._openModal("questTrackerDialog");
 	};
 
-	_hoverOptions() {
+	_hoverOptions = () => {
 		createjs.Sound.play("hub-hover");
 	}
 
-	_startClock() {
+	_startClock = () => {
 	  let today = new Date();
 	  let ampm = "am";
 	  let hour = today.getHours();

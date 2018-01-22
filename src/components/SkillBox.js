@@ -14,7 +14,6 @@ class SkillBox extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
 	}
 
 	/**
@@ -31,15 +30,5 @@ class SkillBox extends React.Component {
 		);
 	}
 }
-
-/**
-* Props available to pass in and their type
-*
-* @property propTypes
-* @type {Object}
-*/
-SkillBox.propTypes = {
-	
-};
 
 export default SkillBox;

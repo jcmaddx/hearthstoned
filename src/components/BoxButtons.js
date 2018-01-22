@@ -16,18 +16,13 @@ class BoxButtons extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
 	}
 
-	componentWillMount() {
-		
-	}
-
-	_mouseIn() {
+	_mouseIn = () => {
 		createjs.Sound.play("quest-hover");	
 	};
 
-	_questClick() {
+	_questClick = () => {
 		createjs.Sound.play("small-click");	
 		this.props.questCallback();
 	};
@@ -42,7 +37,7 @@ class BoxButtons extends React.Component {
 		return(
 			<div className="buttons">
 				<div className="shop-button"></div>
-				<div onClick={this._questClick.bind(this)} onMouseEnter={this._mouseIn} className="quest-button">
+				<div onClick={this._questClick} onMouseEnter={this._mouseIn} className="quest-button">
 					<img src="/images/quest-button.png" />
 				</div>
 			</div>

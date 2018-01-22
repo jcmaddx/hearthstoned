@@ -1,0 +1,15 @@
+@import "./mixins.scss";
+.tooltip-container {
+	position: relative;
+}
+.tooltip {
+	pointer-events: none;
+	position: absolute;
+	display: none;
+	* {
+		pointer-events: none;
+	}
+	&.show {
+		display: block;
+	}
+}

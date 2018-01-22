@@ -16,14 +16,9 @@ class Modal extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
 	}
 
-	componentWillMount() {
-		
-	}
-
-	_handleBlur(as){
+	_handleBlur = (as) => {
 		let allFulls = document.querySelectorAll('.hs-full');
 		allFulls.forEach((i) => {
 			if(as === 'add'){
@@ -34,13 +29,13 @@ class Modal extends React.Component {
 		})
 	};
 
-	_openModal(id) {
+	_openModal = (id) => {
 		this._handleBlur('add');
 		this.refs[id].classList.add("open");
 		createjs.Sound.play(this.props.openSound);
 	};
 
-	_closeModal(id) {
+	_closeModal = (id) => {
 		this._handleBlur('remove');
 		this.refs[id].classList.remove("open");
 		createjs.Sound.play(this.props.closeSound);

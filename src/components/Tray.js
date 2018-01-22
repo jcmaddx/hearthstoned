@@ -17,7 +17,7 @@ class Tray extends React.Component {
 		this.state = {};
 	}
 
-	_mouseIn(e) {
+	_mouseIn = (e) => {
 		createjs.Sound.play("hub-hover");	
 	};
 

@@ -6,6 +6,7 @@ import classnames from 'classnames';
 
 import BoxButtons from './BoxButtons';
 import Tray from './Tray';
+import ToolTip from './ToolTip';
 
 import '../styles/box.scss';
 
@@ -19,21 +20,16 @@ class TheBox extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
 	}
 
-	componentWillMount() {
-		
-	}
-
-	_mouseIn(e) {
+	_mouseIn = (e) => {
 		if(!e.target.classList.contains('disabled')){
 			e.target.classList.add('over');
 			createjs.Sound.play("hub-hover");	
 		}
 	};
 
-	_mouseOut(e) {
+	_mouseOut = (e) => {
 		if(e.target.classList.contains('over')){
 			e.target.classList.remove('over');
 		}
@@ -53,10 +49,12 @@ class TheBox extends React.Component {
 					<div className="lid lid-right"></div>
 					<div id="hub" className="hub">
 						<div className="front">
-							<div onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub1">
-								<h3>Play</h3>
-								<img src="/images/btn-hub1.png" />
-							</div>
+							<ToolTip tipId="hub1" title="Play" content="Play a game">
+								<div onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub1">
+									<h3>Play</h3>
+									<img src="/images/btn-hub1.png" />
+								</div>
+							</ToolTip>
 							<div onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub2">
 								<h3>Solo Adventures</h3>
 								<img src="/images/btn-hub2.png" />
