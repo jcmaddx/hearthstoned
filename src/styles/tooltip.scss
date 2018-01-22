@@ -1,15 +1,39 @@
 @import "./mixins.scss";
 .tooltip-container {
+	width: 100%;
 	position: relative;
 }
 .tooltip {
 	pointer-events: none;
 	position: absolute;
 	display: none;
+	width: 60%;
+	height: auto;
+	background: url(/images/tooltip.png) no-repeat center center;
+	background-size: 100% 100%;
+	z-index: 30;
+	color: white;
+	text-align: left;
+	padding: 1.5vh 2.5vh;
+	h5 {
+		@include stroked;
+		font-size: 2.8vh;
+		margin: 0;
+	}
+	p {
+		font-size: 1.8vh;
+		font-family: "Open Sans";
+		margin: 1vh 0;
+	}
 	* {
 		pointer-events: none;
+	}
+	&.center-right {
+		right: 0;
+		transform: translateX(80%);
 	}
 	&.show {
 		display: block;
 	}
+
 }

@@ -33,10 +33,16 @@ class ToolTip extends React.Component {
 		* @return Comonent
 		*/
 	render() {
+		let location = (this.props.location) ? this.props.location : "top-center";
+		let tipClass = classnames({
+			"tooltip": true,
+			[location]: true,
+			[this.props.tipId]: true
+		});
 		return(
 			<div onMouseEnter={this._onEnter} onMouseLeave={this._onExit} className="tooltip-container">
 				{this.props.children}
-				<div id={this.props.tipId} className="tooltip">
+				<div id={this.props.tipId} className={tipClass}>
 					<h5>{this.props.title}</h5>
 					<p>{this.props.content}</p>
 				</div>

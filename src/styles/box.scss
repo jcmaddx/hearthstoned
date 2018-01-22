@@ -48,7 +48,6 @@
 		left: 50%;
 		transform: translateX(-50%) translateY(-50%);
 		border-radius: 50%;
-		overflow: hidden;
 		width: calc(75vh * .51);
 		height: calc(75vh * .51);
 		z-index: 15;
@@ -107,32 +106,6 @@
 					position: relative;
 					z-index: 1;
 				}
-				&.hub1 {
-					height: calc((75vh * .51) * .122);
-					top: calc(75vh * .086);
-					margin-left: -4px;
-					&:before {
-						background-image: url(/images/btn-hub1-hover.png);
-					}
-				}
-				&.hub2 {
-					height: calc((75vh * .51) * .128);
-					top: calc(75vh * .173);
-					&:before {
-						background-image: url(/images/btn-hub2-hover.png);
-					}
-				}
-				&.hub3 {
-					height: calc((75vh * .51) * .131);
-					top: calc(75vh * .267);
-					&:before {
-						background-image: url(/images/btn-hub3-hover.png);
-					}
-				}
-				&.hub4 {
-					height: calc((75vh * .51) * .128);
-					top: calc(75vh * .356);
-				}
 				&.disabled {
 					opacity: 0.3;
 					transform: translateX(-50%) scale(0.98);
@@ -149,6 +122,36 @@
 					}
 					animation: bobble .3s linear backwards;
 				}
+			}
+			.hub1 {
+				height: calc((75vh * .51) * .122);
+				top: calc(75vh * .086);
+				margin-left: -4px;
+				&:before {
+					background-image: url(/images/btn-hub1-hover.png);
+				}
+			}
+			.hub2 {
+				height: calc((75vh * .51) * .128);
+				top: calc(75vh * .173);
+				&:before {
+					background-image: url(/images/btn-hub2-hover.png);
+				}
+			}
+			.hub3 {
+				height: calc((75vh * .51) * .131);
+				top: calc(75vh * .267);
+				&:before {
+					background-image: url(/images/btn-hub3-hover.png);
+				}
+			}
+			.hub4 {
+				height: calc((75vh * .51) * .128);
+				top: calc(75vh * .356);
+			}
+			.tooltip {
+				height: auto;
+				margin: -2vh 0 0;
 			}
 		}
 		.back {
