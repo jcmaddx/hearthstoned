@@ -34,7 +34,7 @@ class Box extends React.Component {
 		});
 		return(
 			<div className={boxClasses}>
-				<TheBox questCallback={this.props.questCallback}/>
+				<TheBox warn={this.props.warn} questCallback={this.props.questCallback}/>
 			</div>
 		);
 	}

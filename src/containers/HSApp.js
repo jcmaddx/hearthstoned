@@ -12,6 +12,8 @@ import Loading from './Loading';
 import Box from './Box';
 import IntroQuests from './IntroQuests';
 import QuestTracker from './QuestTracker';
+import Warning from '../components/Warning';
+
 
 /**
 * HSApp component
@@ -110,6 +112,11 @@ class HSApp extends React.Component {
 	  }, 1000);
 	}
 
+	_showWarning = (warnText) => {
+		let warningText = (typeof warnText === 'string') ? warnText : "This action is unavailabe in this demo!";
+		this.refs.warning._openWarning(warningText);
+	}
+
 	/**
 		*  Renders the component
 		*
@@ -123,9 +130,10 @@ class HSApp extends React.Component {
 				{
 					(this.state.stage !== 0) ?
 						<div>
-							<Box stage={this.state.stage} questCallback={this._questCallback.bind(this)}/>
+							<Box stage={this.state.stage} warn={this._showWarning} questCallback={this._questCallback.bind(this)}/>
 							<IntroQuests ref="introQuests" closeCallback={this._trayDropFlip} />
 							<QuestTracker ref="questTracker" />
+							<Warning ref="warning" />
 						</div>
 					: null
 				}

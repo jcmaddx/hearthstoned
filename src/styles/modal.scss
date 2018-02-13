@@ -42,10 +42,8 @@
 }
 
 @keyframes bounceIn {
-  0% {transform: scale(0) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-in;}
-  66% {transform: scale(1) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-out;}
-  82% {transform: scale(1.1) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-in;}
-  92% {transform: scale(0.7) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-out;}
-  97% {transform: scale(0.85) translateX(-50%) translateY(-50%); -webkit-animation-timing-function: ease-in;}
+  0% {transform: scale(0) translateX(-50%) translateY(-50%);}
+  50% {transform: scale(1.1) translateX(-50%) translateY(-50%);}
+  75% {transform: scale(0.8) translateX(-50%) translateY(-50%);}
   100% { transform: scale(1) translateX(-50%) translateY(-50%);}
 }

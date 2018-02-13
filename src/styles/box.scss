@@ -75,6 +75,7 @@
 				position: absolute;
 				left: 50%;
 				transform: translateX(-50%);
+				perspective: 100;
 				&:before {
 					position: absolute;
 					top: 0;
@@ -120,7 +121,9 @@
 					&:before {
 						opacity: 0.8;
 					}
-					animation: bobble .3s linear backwards;
+					img {
+						animation: bobble .3s linear backwards;
+					}	
 				}
 			}
 			.hub1 {
@@ -143,6 +146,9 @@
 				top: calc(75vh * .267);
 				&:before {
 					background-image: url(/images/btn-hub3-hover.png);
+				}
+				h3 {
+					margin-top: -2px;
 				}
 			}
 			.hub4 {
@@ -328,9 +334,9 @@
 } 
 
 @keyframes bobble {
-	0% {transform: translateX(-50%) rotateX(-6deg) translateZ(2px) scale(0.98);}
-	40% {transform: translateX(-50%) rotateX(3deg) translateZ(2px) scale(0.98);}
-	80% {transform: translateX(-50%) rotateX(0deg) translateZ(0)  scale(1);}
+	0% {transform: rotateX(-10deg) translateZ(2px) scale(0.98);}
+	40% {transform: rotateX(5deg) translateZ(2px) scale(0.98);}
+	80% {transform: rotateX(0deg) translateZ(0)  scale(1);}
 }
 
 @keyframes trayBounce {
