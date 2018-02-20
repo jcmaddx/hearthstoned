@@ -202,6 +202,7 @@
 		z-index: 5;
 		bottom: calc(75vh * .194);
 		//bottom: 0;
+		display: none;
 		left: 50%;
 		width: calc((75vh * .194) * 4.1);
 		height: calc(75vh * .194);
@@ -211,6 +212,7 @@
 		margin-bottom: calc((131 / 538) * 50% * -1);
 
 		&.dropped {
+			display: block;
 			animation: trayBounce .5s forwards;
 		}
 		> div {
