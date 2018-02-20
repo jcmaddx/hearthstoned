@@ -21,6 +21,19 @@ class Tray extends React.Component {
 		createjs.Sound.play("hub-hover");	
 	};
 
+	_loadNextStep = (manifest) => {
+		let hub = document.getElementById("hub");
+		hub.classList.remove('active');
+	};
+
+	_moveToPacks = () => {
+		this._loadNextStep('packFileManifest');
+	};
+
+	_moveToCollection = () => {
+		this._loadNextStep('collectionFileManifest');
+	};
+
 	/**
 		*  Renders the component
 		*
@@ -30,11 +43,11 @@ class Tray extends React.Component {
 	render() {
 		return(
 			<div id="tray" className="tray">
-				<div onMouseEnter={this._mouseIn} className="tray-packs">
+				<div onClick={this._moveToPacks} onMouseEnter={this._mouseIn} className="tray-packs">
 					<h4>Open<br/>Packs</h4>
 					<div className="pack-count">11</div>
 				</div>
-				<div onMouseEnter={this._mouseIn} className="tray-collection">
+				<div onClick={this._moveToCollection} onMouseEnter={this._mouseIn} className="tray-collection">
 					<h4>My Collection</h4>
 				</div>
 			</div>

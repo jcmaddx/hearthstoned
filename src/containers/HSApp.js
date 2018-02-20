@@ -13,6 +13,7 @@ import Box from './Box';
 import IntroQuests from './IntroQuests';
 import QuestTracker from './QuestTracker';
 import Warning from '../components/Warning';
+import Options from '../components/Options';
 
 
 /**
@@ -91,6 +92,10 @@ class HSApp extends React.Component {
 		createjs.Sound.play("hub-hover");
 	}
 
+	_openOptions = () => {
+		this.refs.options._openOptions();
+	}
+
 	_startClock = () => {
 	  let today = new Date();
 	  let ampm = "am";
@@ -134,12 +139,13 @@ class HSApp extends React.Component {
 							<IntroQuests ref="introQuests" closeCallback={this._trayDropFlip} />
 							<QuestTracker ref="questTracker" />
 							<Warning ref="warning" />
+							<Options ref="options" />
 						</div>
 					: null
 				}
 				<div className="options-bar">
 					<div id="clock"></div>
-					<div onMouseEnter={this._hoverOptions} id="options-button">
+					<div onClick={this._openOptions} onMouseEnter={this._hoverOptions} id="options-button">
 						<img id="options-button" src="/images/options-button.png"></img>
 					</div>
 				</div>
