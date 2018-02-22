@@ -1,22 +1,62 @@
 @import "./mixins.scss";
 .hs-packs {
-	.opening-inner {
+	.opening-container {
 		background: black;
 		width: 100%;
 		height: 100%;
+		position: relative;
+		&:before, &:after {
+			display: block;
+			content: "";
+			height: 100vh;
+			width: calc(100vh * .19);
+			position: absolute;
+			background: url('/images/bg-hinge.jpg') no-repeat center center;
+			background-size: auto 100%;
+			top: 0;
+		}
+		&:before {
+			left: 0;
+		}
+		&:after {
+			right: 0;
+			transform: rotate(180deg);
+		}
 		h1 {
 			margin: 0;
 			color: white;
+		}
+		.opening-content {
+			height: 100%;
+			width: calc(100vw - ((100vh * .19) * 2));
+			margin-left: calc(100vh * .19);
+			position: relative;
+			.pack-tray {
+				position: absolute;
+				left: 0;
+				height: 100%;
+				width: calc(100vh * .33);
+				background: url('/images/pack-tray.png') no-repeat center center;
+				background-size: auto 100%;
+				z-index: 2;
+			}
+			.altar {
+				position:absolute;
+				right: 0;
+				height: 100%;
+				width: calc(100vh * 1.07);
+				background: url('/images/altar.png') no-repeat center center;
+				background-size: auto 100%;
+				z-index: 1;
+			}
 		}
 	}
 	&.hidden {
 		opacity: 0;
 	}
 	&.open-in {
-		.opening-inner {
-			transform-origin: 50% 50%;
-			animation: openin .5s forward;
-		}
+		transform-origin: 50% 50%;
+		animation: openin .5s forward;
 	}
 }
 

@@ -34,8 +34,11 @@ class PackOpening extends React.Component {
 		});
 		return(
 			<div className={packClasses}>
-				<div className="opening-inner">
-					<h1>The Pack Opening Screen</h1>
+				<div className="opening-container">
+					<div className="opening-content">
+						<div className="pack-tray"></div>
+						<div className="altar"></div>
+					</div>
 				</div>
 			</div>
 		);
