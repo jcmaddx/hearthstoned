@@ -136,6 +136,10 @@ class HSApp extends React.Component {
 		* @return Comonent
 		*/
 	render() {
+		let optionsClasses = classnames({
+			"options-bar": true,
+			"dark": this.state.stage === 2 || this.state.stage === 3
+		});
 		return(
 			<div className="hsapp">
 				<Loading stage={this.state.stage}/>
@@ -156,11 +160,11 @@ class HSApp extends React.Component {
 							<IntroQuests ref="introQuests" closeCallback={this._trayDropFlip} />
 							<QuestTracker ref="questTracker" />
 							<Warning ref="warning" />
-							<Options ref="options" />
+							<Options stage={this.state.stage} ref="options" />
 						</div>
 					: null
 				}
-				<div className="options-bar">
+				<div className={optionsClasses}>
 					<div id="clock"></div>
 					<div onClick={this._openOptions} onMouseEnter={this._hoverOptions} id="options-button">
 						<img id="options-button" src="/images/options-button.png"></img>

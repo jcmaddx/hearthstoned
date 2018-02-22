@@ -25,6 +25,9 @@
 		position: relative;
 		z-index: 20;
 	}
+	&.dark {
+		background: #181208;
+	}
 }
 
 @keyframes obounceIn {
