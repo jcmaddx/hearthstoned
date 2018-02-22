@@ -23,6 +23,11 @@
 		animation: boxin 3s ease-in forwards;
 		z-index: 20;
 	}
+	.right-contain {
+		transition: all .5s linear;
+		transform-origin: 100% 50%;
+		height: 100%;
+	}
 	.lid {
 		width: 50%;
 		height: 100%;
@@ -32,8 +37,10 @@
 		background-repeat: no-repeat;
 		background-position: center center;
 		z-index: 10;
+		perspective: 1000;
 		&.lid-left{
 			left: 0;
+			transform-origin: 0 50%;
 			background-image: url(/images/box-left.png);
 		}
 		&.lid-right {
@@ -281,6 +288,7 @@
 	}
 	&.hidden {
 		opacity: 0;
+		z-index: -1;
 	}
 
 	.buttons {
@@ -330,6 +338,20 @@
 				&:after {
 					opacity: 1;
 				}
+			}
+		}
+	}
+	&.open-in, &.collection-in {
+		transition: all .5s linear;
+		transform: scale(3);
+		opacity: 0;
+		.right-contain {
+			transform: rotateY(-120deg);
+		}
+		.lid {
+			transition: all .5s linear;
+			&.lid-left {
+				transform: rotateY(-120deg);
 			}
 		}
 	}

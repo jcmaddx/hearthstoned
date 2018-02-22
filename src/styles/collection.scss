@@ -1,0 +1,6 @@
+@import "./mixins.scss";
+.hs-collection {
+	&.hidden {
+		opacity: 0;
+	}
+}

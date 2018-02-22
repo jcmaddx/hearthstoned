@@ -46,35 +46,37 @@ class TheBox extends React.Component {
 			<div>
 				<div className="thebox">
 					<div className="lid lid-left"></div>
-					<div className="lid lid-right"></div>
-					<div id="hub" className="hub">
-						<div className="front">
-							<ToolTip tipId="hub1" title="Play" location="center-right" content="Play against an opponent of equal skill.">
-								<div onClick={this.props.warn} onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub1">
-									<h3>Play</h3>
-									<img src="/images/btn-hub1.png" />
-								</div>
-							</ToolTip>
-							<ToolTip tipId="hub2" title="Solo Adventures" location="center-right" content="Embark on adventures or practice against the AI.">
-								<div onClick={this.props.warn} onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub2">
-									<h3>Solo Adventures</h3>
-									<img src="/images/btn-hub2.png" />
-								</div>
-							</ToolTip>
-							<ToolTip tipId="hub3" title="The Arena" location="center-right" content="Forge a deck quickly from random cards.">
-								<div onClick={this.props.warn} onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub3">
-									<h3>The Arena</h3>
-									<img src="/images/btn-hub3.png" />
-								</div>
-							</ToolTip>
-								<div onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub4 disabled">
-									<h3>Tavern Brawl</h3>
-									<img src="/images/btn-hub4.png" />
-								</div>
+					<div className="right-contain">
+						<div className="lid lid-right"></div>
+						<div id="hub" className="hub">
+							<div className="front">
+								<ToolTip tipId="hub1" title="Play" location="center-right" content="Play against an opponent of equal skill.">
+									<div onClick={this.props.warn} onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub1">
+										<h3>Play</h3>
+										<img src="/images/btn-hub1.png" />
+									</div>
+								</ToolTip>
+								<ToolTip tipId="hub2" title="Solo Adventures" location="center-right" content="Embark on adventures or practice against the AI.">
+									<div onClick={this.props.warn} onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub2">
+										<h3>Solo Adventures</h3>
+										<img src="/images/btn-hub2.png" />
+									</div>
+								</ToolTip>
+								<ToolTip tipId="hub3" title="The Arena" location="center-right" content="Forge a deck quickly from random cards.">
+									<div onClick={this.props.warn} onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub3">
+										<h3>The Arena</h3>
+										<img src="/images/btn-hub3.png" />
+									</div>
+								</ToolTip>
+									<div onMouseEnter={this._mouseIn} onMouseLeave={this._mouseOut} className="btn-hub hub4 disabled">
+										<h3>Tavern Brawl</h3>
+										<img src="/images/btn-hub4.png" />
+									</div>
+							</div>
+							<div className="back"></div>
 						</div>
-						<div className="back"></div>
 					</div>
-					<Tray />
+					<Tray stater={this.props.stater}/>
 					<BoxButtons questCallback={this.props.questCallback} />
 				</div>
 				<div className="tabletop"></div>

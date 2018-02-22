@@ -10,6 +10,8 @@ import {randomInt} from '../utils/helpers';
 
 import Loading from './Loading';
 import Box from './Box';
+import PackOpening from './PackOpening';
+import Collection from './Collection';
 import IntroQuests from './IntroQuests';
 import QuestTracker from './QuestTracker';
 import Warning from '../components/Warning';
@@ -27,7 +29,8 @@ class HSApp extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			stage: 0
+			stage: 0,
+			transition: false
 		};
 	}
 
@@ -122,6 +125,10 @@ class HSApp extends React.Component {
 		this.refs.warning._openWarning(warningText);
 	}
 
+	_stater = (obj) => {
+		this.setState(obj)
+	}
+
 	/**
 		*  Renders the component
 		*
@@ -135,7 +142,17 @@ class HSApp extends React.Component {
 				{
 					(this.state.stage !== 0) ?
 						<div>
-							<Box stage={this.state.stage} warn={this._showWarning} questCallback={this._questCallback.bind(this)}/>
+							<Box transition={this.state.transition} stater={this._stater} stage={this.state.stage} warn={this._showWarning} questCallback={this._questCallback.bind(this)}/>
+							{
+								(this.state.stage === 2) ? 
+									<PackOpening transition={this.state.transition} stater={this._stater} stage={this.state.stage} />
+								: null
+							}
+							{
+								(this.state.stage === 3) ? 
+									<Collection transition={this.state.transition} stater={this._stater} stage={this.state.stage} />
+								: null
+							}
 							<IntroQuests ref="introQuests" closeCallback={this._trayDropFlip} />
 							<QuestTracker ref="questTracker" />
 							<Warning ref="warning" />

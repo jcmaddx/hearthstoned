@@ -1,0 +1,26 @@
+@import "./mixins.scss";
+.hs-packs {
+	.opening-inner {
+		background: black;
+		width: 100%;
+		height: 100%;
+		h1 {
+			margin: 0;
+			color: white;
+		}
+	}
+	&.hidden {
+		opacity: 0;
+	}
+	&.open-in {
+		.opening-inner {
+			transform-origin: 50% 50%;
+			animation: openin .5s forward;
+		}
+	}
+}
+
+@keyframes openin {
+  0% {opacity: 0; transform: scale(0.7);}
+  100% {opacity: 1; transform: scale(1);}
+}

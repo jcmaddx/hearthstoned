@@ -21,17 +21,27 @@ class Tray extends React.Component {
 		createjs.Sound.play("hub-hover");	
 	};
 
-	_loadNextStep = (manifest) => {
+	_loadNextStep = (manifest, stage, transition) => {
 		let hub = document.getElementById("hub");
 		hub.classList.remove('active');
+		// load manifest then change state after completion
+		let handleComplete = () => {
+			this.props.stater({'stage': stage, 'transition': transition});
+			setTimeout(() => {
+				this.props.stater({'transition': null});
+			},500);
+		}
+		var queue = new createjs.LoadQueue();
+		queue.on("complete", handleComplete);
+		queue.loadManifest("/data/"+manifest+".json");
 	};
 
 	_moveToPacks = () => {
-		this._loadNextStep('packFileManifest');
+		this._loadNextStep('packFileManifest', 2, "open-in");
 	};
 
 	_moveToCollection = () => {
-		this._loadNextStep('collectionFileManifest');
+		this._loadNextStep('collectionFileManifest', 3, "collection-in");
 	};
 
 	/**

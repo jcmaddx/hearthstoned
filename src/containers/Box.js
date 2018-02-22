@@ -27,14 +27,16 @@ class Box extends React.Component {
 		* @return Comonent
 		*/
 	render() {
+		console.log("box-info", this.props.stage, this.props.transition);
 		let boxClasses = classnames({
 			"hs-full": true,
 			"hs-box": true,
-			"hidden": this.props.stage !== 1
+			"hidden": this.props.stage !== 1 && !this.props.transition,
+			[this.props.transition]: this.props.transition
 		});
 		return(
 			<div className={boxClasses}>
-				<TheBox warn={this.props.warn} questCallback={this.props.questCallback}/>
+				<TheBox warn={this.props.warn} stater={this.props.stater} questCallback={this.props.questCallback}/>
 			</div>
 		);
 	}
