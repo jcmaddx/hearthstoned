@@ -27,7 +27,6 @@ class Box extends React.Component {
 		* @return Comonent
 		*/
 	render() {
-		console.log("box-info", this.props.stage, this.props.transition);
 		let boxClasses = classnames({
 			"hs-full": true,
 			"hs-box": true,
