@@ -19,7 +19,7 @@ class Button extends React.Component {
 	}
 
 	_mouseIn = () => {
-		createjs.Sound.play("hub-hover");	
+		this.props.hover.play();
 	};
 
 	/**

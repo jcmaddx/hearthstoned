@@ -26,7 +26,7 @@ class Warning extends React.Component {
 		window.setTimeout(() => {
 			document.getElementById('warning-text').innerHTML = content;
 			document.getElementById('warning').classList.add("open");
-			createjs.Sound.play("nope");
+			this.props.sounds.nope.play();
 		}, 100);
 		hideWarn = window.setTimeout(() => {
 			this._closeWarning();

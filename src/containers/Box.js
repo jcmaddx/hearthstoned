@@ -35,7 +35,7 @@ class Box extends React.Component {
 		});
 		return(
 			<div className={boxClasses}>
-				<TheBox mainSong={this.props.mainSong} subSong={this.props.subSong} warn={this.props.warn} questCallback={this.props.questCallback}/>
+				<TheBox sounds={this.props.sounds} warn={this.props.warn} questCallback={this.props.questCallback}/>
 			</div>
 		);
 	}

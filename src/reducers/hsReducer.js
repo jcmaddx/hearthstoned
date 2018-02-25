@@ -3,7 +3,7 @@ import objectAssign from 'object-assign';
 import initialState from './initialState';
 
 export default function hsReducer(state = initialState, action) {
-  let newState = objectAssign({}, state);;
+  let newState = objectAssign({}, state);
 
   switch (action.type) {
     case SET_STAGE:
@@ -13,7 +13,7 @@ export default function hsReducer(state = initialState, action) {
     case SET_TRANSITION:
     	newState.transition = action.transition;
     	return newState;
-    
+
     default:
       return state;
   }

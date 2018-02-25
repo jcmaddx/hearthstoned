@@ -9,7 +9,7 @@ import classnames from 'classnames';
 
 import * as actions from '../actions/hsActions';
 
-import {randomInt} from '../utils/helpers';
+import {randomInt, setupSounds} from '../utils/helpers';
 
 import Loading from './Loading';
 import Box from './Box';
@@ -31,8 +31,7 @@ class HSApp extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			mainSong: null,
-			subSong: null
+			sounds: {}
 		}
 	}
 
@@ -47,13 +46,26 @@ class HSApp extends React.Component {
 
 	componentDidMount() {
 		this._startClock();
-		this._loadAssets();
+		this._loadSounds();
+	}
+
+	_loadSounds = () => {
+		let soundsComplete = () => {
+			this.setState({
+				sounds: setupSounds()
+			})
+			this._loadAssets();
+		};
+		var queue = new createjs.LoadQueue();
+		createjs.Sound.alternateExtensions = ["mp3"];
+		queue.installPlugin(createjs.Sound);
+		queue.on("complete", soundsComplete, this);
+		queue.loadManifest("/data/soundManifest.json");
 	}
 
 	_loadAssets = () => {
 		var queue = new createjs.LoadQueue();
 		var randomGreet = "/sounds/greeting"+randomInt(0, 15)+".mp3";
-		createjs.Sound.alternateExtensions = ["mp3"];
 		queue.installPlugin(createjs.Sound);
 		queue.on("complete", this._loadingComplete, this);
 		queue.loadFile({id:"greeting", src:randomGreet});
@@ -73,12 +85,8 @@ class HSApp extends React.Component {
 	}
 
 	_introSounds = () => {
-		this.setState({
-			mainSong: createjs.Sound.createInstance("main-title"),
-			subSong: createjs.Sound.createInstance("better-hand")
-		})
-		this.state.mainSong.play({loop: -1});
-	  createjs.Sound.play("chatter", {loop: -1, volume: 0.5});
+		this.state.sounds.mainTitle.play({loop: -1});
+		this.state.sounds.backgroundChatter.play({loop: -1, volume: 0.5});
 	  createjs.Sound.play("greeting");
 	};
 
@@ -86,9 +94,9 @@ class HSApp extends React.Component {
 		let tray = document.getElementById("tray");
 		let hub = document.getElementById("hub");
 		tray.classList.add('dropped');
-		createjs.Sound.play("tray-out");
+		this.state.sounds.trayOut.play();
 		hub.classList.add('active');
-		createjs.Sound.play("hub-flip");
+		this.state.sounds.hubFlip.play();
 	}
 
 	_questCallback = () => {
@@ -96,7 +104,7 @@ class HSApp extends React.Component {
 	};
 
 	_hoverOptions = () => {
-		createjs.Sound.play("hub-hover");
+		this.state.sounds.hubHover.play();
 	}
 
 	_openOptions = () => {
@@ -146,21 +154,21 @@ class HSApp extends React.Component {
 				{
 					(this.props.stage !== 0) ?
 						<div>
-							<Box mainSong={this.state.mainSong} subSong={this.state.subSong} warn={this._showWarning} questCallback={this._questCallback.bind(this)}/>
+							<Box sounds={this.state.sounds} warn={this._showWarning} questCallback={this._questCallback.bind(this)}/>
 							{
 								(this.props.stage === 2) ? 
-									<PackOpening mainSong={this.state.mainSong} subSong={this.state.subSong} />
+									<PackOpening sounds={this.state.sounds} />
 								: null
 							}
 							{
 								(this.props.stage === 3) ? 
-									<Collection mainSong={this.state.mainSong} subSong={this.state.subSong} />
+									<Collection sounds={this.state.sounds}/>
 								: null
 							}
-							<IntroQuests ref="introQuests" closeCallback={this._trayDropFlip} />
-							<QuestTracker ref="questTracker" />
-							<Warning ref="warning" />
-							<Options ref="options" />
+							<IntroQuests ref="introQuests" sounds={this.state.sounds} closeCallback={this._trayDropFlip} />
+							<QuestTracker ref="questTracker" sounds={this.state.sounds} />
+							<Warning ref="warning" sounds={this.state.sounds} />
+							<Options ref="options" sounds={this.state.sounds} />
 							<div className="tabletop"></div>
 						</div>
 					: null
@@ -190,7 +198,8 @@ function mapStateToProps(state) {
 	let data = state.hsReducer;
   return {
     stage: data.stage,
-    transition: data.transition
+    transition: data.transition,
+    sounds: data.sounds
   };
 }
 

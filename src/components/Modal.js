@@ -32,13 +32,13 @@ class Modal extends React.Component {
 	_openModal = (id) => {
 		this._handleBlur('add');
 		this.refs[id].classList.add("open");
-		createjs.Sound.play(this.props.openSound);
+		this.props.openSound.play();
 	};
 
 	_closeModal = (id) => {
 		this._handleBlur('remove');
 		this.refs[id].classList.remove("open");
-		createjs.Sound.play(this.props.closeSound);
+		this.props.closeSound.play();
 		if(this.props.closeCallback){
 			this.props.closeCallback();
 		}

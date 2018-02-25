@@ -29,7 +29,7 @@ class QuestTracker extends React.Component {
 		*/
 	render() {
 		return(
-			<Modal ref="questTracker" refId="questTrackerDialog" anim="bounceIn" openSound="quest-log-open" closeSound="quest-log-close">
+			<Modal ref="questTracker" refId="questTrackerDialog" anim="bounceIn" openSound={this.props.sounds.questLogOpen} closeSound={this.props.sounds.questLogClose}>
 				<div className="quest-log">
 					<h2>Quest Log</h2>
 					<div className="hero-skills">

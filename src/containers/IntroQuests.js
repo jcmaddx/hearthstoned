@@ -28,7 +28,7 @@ class IntroQuests extends React.Component {
 		*/
 	render() {
 		return(
-			<Modal ref="introModal" refId="introQuestDialog" anim="topDown" openSound="existing-quests" closeSound="new-quests-close" closeCallback={this.props.closeCallback}>
+			<Modal ref="introModal" refId="introQuestDialog" anim="topDown" openSound={this.props.sounds.existingQuestPopup} closeSound={this.props.sounds.newQuestsClose} closeCallback={this.props.closeCallback}>
 				<div className="quest-greet">
 					<div className="banner-glow"></div>
 					<div className="today-banner">

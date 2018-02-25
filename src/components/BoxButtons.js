@@ -19,11 +19,11 @@ class BoxButtons extends React.Component {
 	}
 
 	_mouseIn = () => {
-		createjs.Sound.play("quest-hover");	
+		this.props.sounds.questButtonHover.play();
 	};
 
 	_questClick = () => {
-		createjs.Sound.play("small-click");	
+		this.props.sounds.smallClick.play();
 		this.props.questCallback();
 	};
 

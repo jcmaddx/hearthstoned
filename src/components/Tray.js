@@ -23,20 +23,20 @@ class Tray extends React.Component {
 	}
 
 	_mouseIn = (e) => {
-		createjs.Sound.play("hub-hover");	
+		this.props.sounds.hubHover.play();
 	};
 
 	_loadNextStep = (manifest, stage, transition) => {
-		createjs.Sound.play("tray-click");
+		this.props.sounds.trayClick.play();
 		let hub = document.getElementById("hub");
 		hub.classList.remove('active');
-		createjs.Sound.play("hub-flip");
+		this.props.sounds.hubFlip.play();
 		// load manifest then change state after completion
 		setTimeout(() => {
 			let handleComplete = () => {
-				fadeOut(this.props.mainSong, 3);
-				createjs.Sound.play("enter-box");
-				fadeIn(this.props.subSong, 3);
+				fadeOut(this.props.sounds.mainTitle, 3, true);
+				this.props.sounds.enterBox.play();
+				fadeIn(this.props.sounds.betterHand, 3, true);
 				this.props.actions.setStage(stage);
 				this.props.actions.setTransition(transition);
 				setTimeout(() => {

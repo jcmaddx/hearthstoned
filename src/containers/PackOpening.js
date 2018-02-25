@@ -4,6 +4,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import {connect} from 'react-redux';
+import {fadeIn, fadeOut} from '../utils/helpers';
 
 import '../styles/opening.scss';
 
@@ -36,6 +37,9 @@ class PackOpening extends React.Component {
 			//add glow effects for hover
 			document.getElementById("drop-glow").classList.add('show');
 			document.getElementById("altar-glow").classList.add('show');
+			//fade out bg song and add glow sound
+			fadeOut(this.props.sounds.betterHand, .5, false);
+			fadeIn(this.props.sounds.manaLoop, .5, true);
 		};
 	};
 
@@ -44,12 +48,18 @@ class PackOpening extends React.Component {
 		let sticky = document.getElementById("sticky-pack");
 		if(ontarget && sticky.classList.contains('stuck')) {
 			this._packOpening();
+		} else {
+			// Switch back to song
+			fadeOut(this.props.sounds.manaLoop, .5, false);
+			fadeIn(this.props.sounds.betterHand, .5, false);
 		}
 		sticky.classList.remove('stuck');
 		document.getElementById("hearthstoned").classList.remove('grab');
 		//remove glow effects for hover
 		document.getElementById("drop-glow").classList.remove('show');
 		document.getElementById("altar-glow").classList.remove('show');
+		//pack drop sound
+		this.props.sounds.packDrop.play();
 	}
 
 	_packOpening = () => {

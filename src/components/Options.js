@@ -44,13 +44,13 @@ class Options extends React.Component {
 			this._closeOptions();
 		} else {
 			options.classList.add("open");
-			createjs.Sound.play("small-click");
+			this.props.sounds.smallClick.play();
 		}
 	};
 
 	_closeOptions = () => {
 		document.getElementById('options').classList.remove("open");
-		createjs.Sound.play("small-click");
+		this.props.sounds.smallClick.play();
 	};
 
 	_quit = () => {
@@ -71,8 +71,8 @@ class Options extends React.Component {
 			<div id="options" ref={this.props.refId} className={warnClasses}>
 				<h4 className="title">Game Menu</h4>
 				<div className="options-content">
-					<Button cb={this._closeOptions} text="Back To Game" />
-					<Button cb={this._quit} text="Quit" />
+					<Button hover={this.props.sounds.hubHover} cb={this._closeOptions} text="Back To Game" />
+					<Button hover={this.props.sounds.hubHover} cb={this._quit} text="Quit" />
 				</div>
 			</div>
 		);
