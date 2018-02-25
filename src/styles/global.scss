@@ -16,8 +16,21 @@ body, html,
 
 #hearthstoned {
 	cursor: url(/images/hand.png) 3 10, auto;
+	perspective: 1000;
 	&.downed {
 		cursor: url(/images/downhand.png) 4 8, auto!important;
+		&.grab {
+			cursor: url(/images/grabhand.png) 4 8, auto!important;
+		}
+	}
+	.tabletop {
+		position: absolute;
+		z-index: 0;
+		left: 50%;
+		top: 50%;
+		background: url(/images/table-top.jpg) no-repeat center center;
+		background-size: cover;
+		animation: tablein 3s ease-out forwards;
 	}
 }
 
@@ -81,4 +94,9 @@ body, html,
 		background: #181208;
 		box-shadow: inset 0px 5px 10px #291c08;
 	}
+}
+
+@keyframes tablein {
+	0% {width: 110vw; height: 110vh; transform: scale(1) translateZ(130px) translateX(-50%) translateY(-50%) rotateZ(-5deg)}
+	100% {width: 100vw; height: 100vh; transform: scale(1.2) translateZ(0) translateX(-50%) translateY(-50%) rotateZ(0)}
 }

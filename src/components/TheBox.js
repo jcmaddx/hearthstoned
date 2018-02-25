@@ -76,10 +76,9 @@ class TheBox extends React.Component {
 							<div className="back"></div>
 						</div>
 					</div>
-					<Tray stater={this.props.stater}/>
+					<Tray mainSong={this.props.mainSong} subSong={this.props.subSong}/>
 					<BoxButtons questCallback={this.props.questCallback} />
 				</div>
-				<div className="tabletop"></div>
 			</div>
 		);
 	}

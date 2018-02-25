@@ -3,6 +3,9 @@
 // import the npm modules we need
 import React from 'react';
 import classnames from 'classnames';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../actions/hsActions';
 
 import '../styles/collection.scss';
 
@@ -50,4 +53,21 @@ Collection.propTypes = {
 	
 };
 
-export default Collection;
+function mapStateToProps(state) {
+	let data = state.hsReducer;
+  return {
+    stage: data.stage,
+    transition: data.transition
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Collection);

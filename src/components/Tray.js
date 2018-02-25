@@ -3,6 +3,11 @@
 // import the npm modules we need
 import React from 'react';
 import classnames from 'classnames';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../actions/hsActions';
+
+import {fadeIn, fadeOut} from '../utils/helpers';
 
 /**
 * Tray component
@@ -22,18 +27,27 @@ class Tray extends React.Component {
 	};
 
 	_loadNextStep = (manifest, stage, transition) => {
+		createjs.Sound.play("tray-click");
 		let hub = document.getElementById("hub");
 		hub.classList.remove('active');
+		createjs.Sound.play("hub-flip");
 		// load manifest then change state after completion
-		let handleComplete = () => {
-			this.props.stater({'stage': stage, 'transition': transition});
-			setTimeout(() => {
-				this.props.stater({'transition': null});
-			},500);
-		}
-		var queue = new createjs.LoadQueue();
-		queue.on("complete", handleComplete);
-		queue.loadManifest("/data/"+manifest+".json");
+		setTimeout(() => {
+			let handleComplete = () => {
+				fadeOut(this.props.mainSong, 3);
+				createjs.Sound.play("enter-box");
+				fadeIn(this.props.subSong, 3);
+				this.props.actions.setStage(stage);
+				this.props.actions.setTransition(transition);
+				setTimeout(() => {
+					this.props.actions.setTransition(null);
+				},200);
+			}
+			var queue = new createjs.LoadQueue();
+			queue.on("complete", handleComplete);
+			queue.loadManifest("/data/"+manifest+".json");
+		},300)
+
 	};
 
 	_moveToPacks = () => {
@@ -75,4 +89,21 @@ Tray.propTypes = {
 	
 };
 
-export default Tray;
+function mapStateToProps(state) {
+	let data = state.hsReducer;
+  return {
+    stage: data.stage,
+    transition: data.transition
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Tray);

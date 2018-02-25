@@ -3,7 +3,7 @@
 // import the npm modules we need
 import React from 'react';
 import classnames from 'classnames';
-
+import {connect} from 'react-redux';
 import TheBox from '../components/TheBox';
 
 import '../styles/box.scss';
@@ -35,7 +35,7 @@ class Box extends React.Component {
 		});
 		return(
 			<div className={boxClasses}>
-				<TheBox warn={this.props.warn} stater={this.props.stater} questCallback={this.props.questCallback}/>
+				<TheBox mainSong={this.props.mainSong} subSong={this.props.subSong} warn={this.props.warn} questCallback={this.props.questCallback}/>
 			</div>
 		);
 	}
@@ -51,4 +51,14 @@ Box.propTypes = {
 	
 };
 
-export default Box;
+function mapStateToProps(state) {
+	let data = state.hsReducer;
+  return {
+    stage: data.stage,
+    transition: data.transition
+  };
+}
+
+export default connect(
+  mapStateToProps
+)(Box);

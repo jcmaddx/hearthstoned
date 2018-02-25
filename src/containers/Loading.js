@@ -3,7 +3,7 @@
 // import the npm modules we need
 import React from 'react';
 import classnames from 'classnames';
-
+import {connect} from 'react-redux';
 import '../styles/loading.scss';
 
 /**
@@ -49,4 +49,13 @@ Loading.propTypes = {
 	
 };
 
-export default Loading;
+function mapStateToProps(state) {
+	let data = state.hsReducer;
+  return {
+    stage: data.stage
+  };
+}
+
+export default connect(
+  mapStateToProps
+)(Loading);

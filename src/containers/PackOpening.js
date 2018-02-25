@@ -3,6 +3,7 @@
 // import the npm modules we need
 import React from 'react';
 import classnames from 'classnames';
+import {connect} from 'react-redux';
 
 import '../styles/opening.scss';
 
@@ -26,8 +27,15 @@ class PackOpening extends React.Component {
 
 	_initGrabber = () => {
 		document.getElementById('pack-stack').onmousedown = () => {
+			//add grabbing hand
+			document.getElementById("hearthstoned").classList.add('grab');
+			//show moving pack
 			document.getElementById("sticky-pack").classList.add('stuck');
+			//hide the main pack -- WONT BE NEEDED LATER
 			document.getElementById("main-pack").classList.remove('show');
+			//add glow effects for hover
+			document.getElementById("drop-glow").classList.add('show');
+			document.getElementById("altar-glow").classList.add('show');
 		};
 	};
 
@@ -38,6 +46,10 @@ class PackOpening extends React.Component {
 			this._packOpening();
 		}
 		sticky.classList.remove('stuck');
+		document.getElementById("hearthstoned").classList.remove('grab');
+		//remove glow effects for hover
+		document.getElementById("drop-glow").classList.remove('show');
+		document.getElementById("altar-glow").classList.remove('show');
 	}
 
 	_packOpening = () => {
@@ -94,10 +106,10 @@ class PackOpening extends React.Component {
 							</div>
 						</div>
 						<div className="altar">
-							<div className="altar-glow"></div>
+							<div id="altar-glow" className="altar-glow"></div>
 							<div id="drop-zone" className="drop-zone">
 								<div className="bullseye">
-									<div className="drop-glow"></div>
+									<div id="drop-glow" className="drop-glow"></div>
 									<div id="main-pack" className="drop-pack"></div>
 								</div>
 							</div>
@@ -119,4 +131,14 @@ PackOpening.propTypes = {
 	
 };
 
-export default PackOpening;
+function mapStateToProps(state) {
+	let data = state.hsReducer;
+  return {
+    stage: data.stage,
+    transition: data.transition
+  };
+}
+
+export default connect(
+  mapStateToProps
+)(PackOpening);

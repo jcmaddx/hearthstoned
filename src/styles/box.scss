@@ -5,15 +5,7 @@
 	z-index: 10;
 	overflow: hidden;
 	perspective: 1000;
-	.tabletop {
-		position: absolute;
-		z-index: 10;
-		left: 50%;
-		top: 50%;
-		background: url(/images/table-top.jpg) no-repeat center center;
-		background-size: cover;
-		animation: tablein 3s ease-out forwards;
-	}
+	background: none!important;
 	.thebox {
 		height: 75vh;
 		width: calc((911 / 675) * 75vh);
@@ -342,9 +334,9 @@
 		}
 	}
 	&.open-in, &.collection-in {
-		transition: all .5s linear;
+		transition: all .2s linear;
 		transform: scale(3);
-		opacity: 0;
+		background: none;
 		.right-contain {
 			transform: rotateY(-120deg);
 		}
@@ -356,6 +348,11 @@
 		}
 	}
 } 
+
+@keyframes delayHide {
+	0%, 80% {opacity: 1;}
+	100% {opacity: 0;}
+}
 
 @keyframes bobble {
 	0% {transform: rotateX(-10deg) translateZ(2px) scale(0.98);}
@@ -375,11 +372,6 @@
 @keyframes spinnin {
 	0% { transform: translateY(-50%) translateX(-50%) rotate(0deg) }
 	100% { transform: translateY(-50%) translateX(-50%) rotate(360deg) }
-}
-
-@keyframes tablein {
-	0% {width: 110vw; height: 110vh; transform: scale(1) translateZ(130px) translateX(-50%) translateY(-50%) rotateZ(-5deg)}
-	100% {width: 100vw; height: 100vh; transform: scale(1.2) translateZ(0) translateX(-50%) translateY(-50%) rotateZ(0)}
 }
 
 @keyframes boxin {

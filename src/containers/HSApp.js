@@ -2,9 +2,12 @@
 
 // import the npm modules we need
 import React from 'react';
-import reqwest from 'reqwest';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import classnames from 'classnames';
+
+import * as actions from '../actions/hsActions';
 
 import {randomInt} from '../utils/helpers';
 
@@ -17,7 +20,6 @@ import QuestTracker from './QuestTracker';
 import Warning from '../components/Warning';
 import Options from '../components/Options';
 
-
 /**
 * HSApp component
 *
@@ -29,9 +31,9 @@ class HSApp extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			stage: 0,
-			transition: false
-		};
+			mainSong: null,
+			subSong: null
+		}
 	}
 
 	componentWillMount() {
@@ -41,11 +43,11 @@ class HSApp extends React.Component {
 		window.addEventListener("mouseup", (e) => {
 			document.getElementById('hearthstoned').classList.remove('downed');
 		})
-		this._loadAssets();
 	}
 
 	componentDidMount() {
 		this._startClock();
+		this._loadAssets();
 	}
 
 	_loadAssets = () => {
@@ -59,9 +61,7 @@ class HSApp extends React.Component {
 	};
 
 	_loadingComplete = () => {
-		this.setState({
-			stage: 1
-		});
+		this.props.actions.setStage(1);
 		this._introSounds();
 		this._introQuests();
 	}
@@ -73,8 +73,12 @@ class HSApp extends React.Component {
 	}
 
 	_introSounds = () => {
-		createjs.Sound.play("main-title", {loop: -1});
-	  createjs.Sound.play("chatter", {loop: -1});
+		this.setState({
+			mainSong: createjs.Sound.createInstance("main-title"),
+			subSong: createjs.Sound.createInstance("better-hand")
+		})
+		this.state.mainSong.play({loop: -1});
+	  createjs.Sound.play("chatter", {loop: -1, volume: 0.5});
 	  createjs.Sound.play("greeting");
 	};
 
@@ -125,10 +129,6 @@ class HSApp extends React.Component {
 		this.refs.warning._openWarning(warningText);
 	}
 
-	_stater = (obj) => {
-		this.setState(obj)
-	}
-
 	/**
 		*  Renders the component
 		*
@@ -138,29 +138,30 @@ class HSApp extends React.Component {
 	render() {
 		let optionsClasses = classnames({
 			"options-bar": true,
-			"dark": this.state.stage === 2 || this.state.stage === 3
+			"dark": this.props.stage === 2 || this.props.stage === 3
 		});
 		return(
 			<div className="hsapp">
-				<Loading stage={this.state.stage}/>
+				<Loading />
 				{
-					(this.state.stage !== 0) ?
+					(this.props.stage !== 0) ?
 						<div>
-							<Box transition={this.state.transition} stater={this._stater} stage={this.state.stage} warn={this._showWarning} questCallback={this._questCallback.bind(this)}/>
+							<Box mainSong={this.state.mainSong} subSong={this.state.subSong} warn={this._showWarning} questCallback={this._questCallback.bind(this)}/>
 							{
-								(this.state.stage === 2) ? 
-									<PackOpening transition={this.state.transition} stater={this._stater} stage={this.state.stage} />
+								(this.props.stage === 2) ? 
+									<PackOpening mainSong={this.state.mainSong} subSong={this.state.subSong} />
 								: null
 							}
 							{
-								(this.state.stage === 3) ? 
-									<Collection transition={this.state.transition} stater={this._stater} stage={this.state.stage} />
+								(this.props.stage === 3) ? 
+									<Collection mainSong={this.state.mainSong} subSong={this.state.subSong} />
 								: null
 							}
 							<IntroQuests ref="introQuests" closeCallback={this._trayDropFlip} />
 							<QuestTracker ref="questTracker" />
 							<Warning ref="warning" />
-							<Options stage={this.state.stage} ref="options" />
+							<Options ref="options" />
+							<div className="tabletop"></div>
 						</div>
 					: null
 				}
@@ -185,4 +186,21 @@ HSApp.propTypes = {
 	
 };
 
-export default HSApp;
+function mapStateToProps(state) {
+	let data = state.hsReducer;
+  return {
+    stage: data.stage,
+    transition: data.transition
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HSApp);
