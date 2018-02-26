@@ -18,6 +18,9 @@ class PackOpening extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.state={
+			busy: false
+		}
 	}
 
 	componentDidMount() {
@@ -28,18 +31,20 @@ class PackOpening extends React.Component {
 
 	_initGrabber = () => {
 		document.getElementById('pack-stack').onmousedown = () => {
-			//add grabbing hand
-			document.getElementById("hearthstoned").classList.add('grab');
-			//show moving pack
-			document.getElementById("sticky-pack").classList.add('stuck');
-			//hide the main pack -- WONT BE NEEDED LATER
-			document.getElementById("main-pack").classList.remove('show');
-			//add glow effects for hover
-			document.getElementById("drop-glow").classList.add('show');
-			document.getElementById("altar-glow").classList.add('show');
-			//fade out bg song and add glow sound
-			fadeOut(this.props.sounds.betterHand, .5, false);
-			fadeIn(this.props.sounds.manaLoop, .5, true);
+			if(!this.state.busy){
+				//add grabbing hand
+				document.getElementById("hearthstoned").classList.add('grab');
+				//show moving pack
+				document.getElementById("sticky-pack").classList.add('stuck');
+				//hide the main pack -- WONT BE NEEDED LATER
+				document.getElementById("main-pack").classList.remove('show');
+				//add glow effects for hover
+				document.getElementById("drop-glow").classList.add('show');
+				document.getElementById("altar-glow").classList.add('show');
+				//fade out bg song and add glow sound
+				fadeOut(this.props.sounds.betterHand, .5, false);
+				fadeIn(this.props.sounds.manaLoop, .5, true);
+			}
 		};
 	};
 
@@ -48,23 +53,30 @@ class PackOpening extends React.Component {
 		let sticky = document.getElementById("sticky-pack");
 		if(ontarget && sticky.classList.contains('stuck')) {
 			this._packOpening();
-		} else {
+		} else if (sticky.classList.contains('stuck')) {
 			// Switch back to song
 			fadeOut(this.props.sounds.manaLoop, .5, false);
 			fadeIn(this.props.sounds.betterHand, .5, false);
+			//pack drop sound
+			this.props.sounds.packDrop.play();
 		}
 		sticky.classList.remove('stuck');
 		document.getElementById("hearthstoned").classList.remove('grab');
 		//remove glow effects for hover
 		document.getElementById("drop-glow").classList.remove('show');
 		document.getElementById("altar-glow").classList.remove('show');
-		//pack drop sound
-		this.props.sounds.packDrop.play();
 	}
 
 	_packOpening = () => {
+		this.props.sounds.manaLoop.stop();
+		this.setState({busy: true});
 		let pack = document.getElementById('main-pack');
-		pack.classList.add('show');
+		pack.classList.add('show', 'burst');
+		let debris = document.getElementById('debris');
+		debris.classList.add('show', 'burst');
+		let shockwave = document.getElementById('shockwave');
+		shockwave.classList.add('show', 'burst');
+		this.props.sounds.packOpen.play();
 	}
 
 	_checkTarget = (event) => {
@@ -97,17 +109,22 @@ class PackOpening extends React.Component {
 		* @return Comonent
 		*/
 	render() {
+		console.log(this.props.sounds);
 		let packClasses = classnames({
 			"hs-full": true,
 			"hs-packs": true,
 			"hidden": this.props.stage !== 2 && this.props.transition !== "open-in" && this.props.transition !== "open-out",
 			[this.props.transition]: this.props.transition
 		});
+		let contentClasses = classnames({
+			"opening-content": true,
+			"busy": this.state.busy
+		})
 		return(
 			<div className={packClasses}>
 				<div id="sticky-pack" className="sticky-pack"></div>
 				<div className="opening-container">
-					<div className="opening-content">
+					<div id="opening-content" className={contentClasses}>
 						<div className="pack-tray">
 							<div id="pack-stack" className="packs-available">
 								<div className="pack-counter">
@@ -117,11 +134,32 @@ class PackOpening extends React.Component {
 						</div>
 						<div className="altar">
 							<div id="altar-glow" className="altar-glow"></div>
-							<div id="drop-zone" className="drop-zone">
-								<div className="bullseye">
-									<div id="drop-glow" className="drop-glow"></div>
-									<div id="main-pack" className="drop-pack"></div>
-								</div>
+							<div id="shockwave" className="shockwave"></div>
+						</div>
+						<div id="drop-zone" className="drop-zone">
+							<div className="bullseye">
+								<div id="drop-glow" className="drop-glow"></div>
+								<div id="main-pack" className="drop-pack"></div>
+							</div>
+						</div>
+						<div id="debris" className="debris">
+							<div className="debris-debris">
+								<div className="debris-piece debris1"></div>
+								<div className="debris-piece debris2"></div>
+								<div className="debris-piece debris3"></div>
+								<div className="debris-piece debris4"></div>
+							</div>
+							<div className="debris-paper">
+								<div className="debris-piece paper1"></div>
+								<div className="debris-piece paper2"></div>
+								<div className="debris-piece paper3"></div>
+								<div className="debris-piece paper4"></div>
+							</div>
+							<div className="debris-gems">
+								<div className="debris-piece gem1"></div>
+								<div className="debris-piece gem2"></div>
+								<div className="debris-piece gem3"></div>
+								<div className="debris-piece gem4"></div>
 							</div>
 						</div>
 					</div>

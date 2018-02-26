@@ -1,6 +1,6 @@
 @import "./mixins.scss";
 .hs-packs {
-	z-index: 9;
+	z-index: 3;
 	background: none!important;
 	#sticky-pack {
 		width: calc(30vh * .73);
@@ -12,7 +12,7 @@
 		opacity: 0;
 		&.stuck {
 			opacity: 1;
-			z-index: 10;
+			z-index: 3;
 		}
 	}
 	.opening-container {
@@ -114,7 +114,7 @@
 				right: 0;
 				height: 95vh;
 				width: calc(95vh * 1.07);
-				z-index: 1;
+				z-index: 0;
 				overflow: hidden;
 				background-image: url('/images/pack-disc.jpg');
 				background-size: 100% 100%;
@@ -130,7 +130,7 @@
 				&:before {
 					background-image: url('/images/pack-disc.jpg');
 					z-index: 1;
-					animation: spinnin 7s linear infinite;
+					animation: spinnin 20s linear infinite;
 					top: 50%;
 					left: 50%;
 				}
@@ -153,48 +153,285 @@
 						display: block;
 					}
 				}
-				.drop-zone {
-					height: 55vh;
-					width: 55vh;
+				.shockwave {
+					width: 100%;
+					height: 100%;
+					background: url('/images/shockwave.png') no-repeat 46% 45%;
+					opacity: 0;
+					display: none;
+					background-size: auto 75%;
+					position: absolute;
+			    top: 0;
+			    left: 0;
+			    z-index: 3;
+			    transform: scale(0.9);
+			    &.show {
+			    	display: block;
+			    }
+			    &.burst {
+			    	animation: shockwave 3.8s ease-in-out forwards;
+			    }
+				}
+			}
+			.drop-zone {
+				height: 55vh;
+				width: 55vh;
+				position: absolute;
+				top: 50%;
+				left: 61.5%;
+				transform: translateX(-50%) translateY(-50%);
+				z-index: 10;
+				perspective: 1000;
+				.bullseye {
+					height: 30vh;
+					width: calc(30vh * .73);
 					position: absolute;
 					top: 50%;
 					left: 50%;
-					transform: translateX(-50%) translateY(-50%);
-					z-index: 10;
-					.bullseye {
-						height: 30vh;
-						width: calc(30vh * .73);
+					transform: translateX(-55%) translateY(-50%);
+					.drop-pack {
+						width: 100%;
+						height: 100%;
+						background: url('/images/pack.png') no-repeat center center;
+						background-size: auto 100%;
 						position: absolute;
-						top: 50%;
-						left: 50%;
-						transform: translateX(-55%) translateY(-50%);
-						.drop-pack {
+						z-index: 3;
+						left: 3px;
+						display: none;
+						&:before {
+							content: "";
+							position: absolute;
+							top: 0;
+							left: 0;
+							opacity: 0;
 							width: 100%;
 							height: 100%;
-							background: url('/images/pack.png') no-repeat center center;
+							background: url('/images/pack-glow.png') no-repeat center center;
 							background-size: auto 100%;
-							position: absolute;
-							z-index: 3;
-							left: 3px;
-							display: none;
-							&.show {
-								display: block;
+						}
+						&.show {
+							display: block;
+						}
+						&.burst {
+							animation: packburst 3.89s ease-in forwards;
+							&:before {
+								transition: all 0.6s;
+								opacity: 1;
 							}
 						}
-						.drop-glow {
-							display: none;
-							width: 120%;
-							height: 120%;
-							position: absolute;
-							top: -10%;
-							left: -10%;
-							background: url('/images/pack-drop-glow.png') no-repeat center center;
-							background-size: auto 100%;
-							z-index: 2;
-							animation: pulse 5s infinite;
-							&.show {
-								display: block;
-							}
+					}
+					.drop-glow {
+						display: none;
+						width: 120%;
+						height: 120%;
+						position: absolute;
+						top: -10%;
+						left: -10%;
+						background: url('/images/pack-drop-glow.png') no-repeat center center;
+						background-size: auto 100%;
+						z-index: 2;
+						animation: pulse 5s infinite;
+						&.show {
+							display: block;
+						}
+					}
+				}
+			}
+			.debris {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				z-index: 5;
+				display: none;
+				.debris-piece {
+					display: block;
+					position: absolute;
+					left: 61.5%;
+					top: 50%;
+					transform: translateX(-50%) translateY(-50%);
+					width: 7vh;
+					height: 7vh;
+					&:before {
+						content: "";
+						display: block;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						transform: translateX(-50%) translateY(-50%);
+						width: 100%;
+						height: 100%;
+						background-size: auto 100%;
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+				}
+				.debris-paper {
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					.paper1 {
+						&:before {
+							background-image: url('/images/paper1.png');
+							animation: debrisspin 1.5s linear infinite;
+						}
+						width: 7vh;
+						height: 7vh;
+					}
+					.paper2 {
+						&:before {
+							background-image: url('/images/paper2.png');
+							animation: debrisspin 1.2s linear infinite;
+						}
+						width: 8vh;
+						height: 8vh;
+					}
+					.paper3 {
+						&:before {
+							background-image: url('/images/paper3.png');
+							animation: debrisspin 1.9s linear infinite;
+						}
+						width: 10vh;
+						height: 10vh;
+					}
+					.paper4 {
+						&:before {
+							background-image: url('/images/paper4.png');
+							animation: debrisspin 2s linear infinite;
+						}
+						width: 9vh;
+						height: 9vh;
+					}
+				}
+				.debris-gems {
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 10%;
+					left: 18%;
+					transform-origin: 50% 50%;
+					transform: rotate(230deg);
+					.gem1 {
+						&:before {
+							background-image: url('/images/gem1.png');
+							animation: debrisspin 1.2s linear infinite;
+						}
+						width: 8vh;
+						height: 8vh;
+					}
+					.gem2 {
+						&:before {
+							background-image: url('/images/gem2.png');
+							animation: debrisspin 1.5s linear infinite;
+						}
+						width: 10vh;
+						height: 10vh;
+					}
+					.gem3 {
+						&:before {
+							background-image: url('/images/gem3.png');
+							animation: debrisspin 2s linear infinite;
+						}
+						width: 9vh;
+						height: 9vh;
+					}
+					.gem4 {
+						&:before {
+							background-image: url('/images/gem4.png');
+							animation: debrisspin 1.9s linear infinite;
+						}
+						width: 7vh;
+						height: 7vh;
+					}
+				}
+				.debris-debris {
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: -15%;
+					left: 18%;
+					transform-origin: 50% 50%;
+					transform: rotate(-240deg);
+					.debris1 {
+						&:before {
+							background-image: url('/images/debris1.png');
+							animation: debrisspin 6s linear infinite;
+						}
+						width: 8vh;
+						height: 8vh;
+					}
+					.debris2 {
+						&:before {
+							background-image: url('/images/debris2.png');
+							animation: debrisspin 10s linear infinite;
+						}
+						width: 10vh;
+						height: 10vh;
+					}
+					.debris3 {
+						&:before {
+							background-image: url('/images/debris3.png');
+							animation: debrisspin 8s linear infinite;
+						}
+						width: 9vh;
+						height: 9vh;
+					}
+					.debris4 {
+						&:before {
+							background-image: url('/images/debris4.png');
+							animation: debrisspin 5.5s linear infinite;
+						}
+						width: 7vh;
+						height: 7vh;
+					}
+				}
+				&.show {
+					display: block;
+				}
+				&.burst {
+					.debris-debris {
+						.debris1 {
+							animation: flynw 3.8s linear forwards;
+						}
+						.debris2 {
+							animation: flysw 3.8s linear forwards;
+						}
+						.debris3 {
+							animation: flyne 3.8s linear forwards;
+						}
+						.debris4 {
+							animation: flyse 3.8s linear forwards;
+						}
+					}
+					.debris-paper {
+						.paper1 {
+							animation: flynw 3.8s linear forwards;
+						}
+						.paper2 {
+							animation: flysw 3.8s linear forwards;
+						}
+						.paper3 {
+							animation: flyne 3.8s linear forwards;
+						}
+						.paper4 {
+							animation: flyse 3.8s linear forwards;
+						}
+					}
+					.debris-gems {
+						.gem1 {
+							animation: flyse 3.8s linear forwards;
+						}
+						.gem2 {
+							animation: flynw 3.8s linear forwards;
+						}
+						.gem3 {
+							animation: flyne 3.8s linear forwards;
+						}
+						.gem4 {
+							animation: flysw 3.8s linear forwards;
 						}
 					}
 				}
@@ -206,13 +443,51 @@
 	}
 	&.open-in {
 		transform-origin: 50% 50%;
-		animation: openin .5s forward;
+		animation: openin .5s linear forwards;
 	}
+}
+
+@keyframes packburst {
+	0% {transform: scale(1); display: block;}
+  10%, 24.9% {transform: rotateX(30deg) rotateY(-35deg) scale(2);}
+  25%, 100% {transform: scale(0);}
 }
 
 @keyframes pulse {
 	0%, 100% {opacity: 0.7;}
   50% {opacity: 1;}
+}
+
+@keyframes shockwave {
+	0% {opacity: 0; transform: scale(0.9)}
+	5% {opacity: 0.8; transform: scale(0.95)}
+  25% {opacity: 1;  transform: scale(1)}
+  30%, 100% {opacity: 0;  transform: scale(0)}
+}
+
+@keyframes flynw {
+	0%, 25% {top: 50%; left: 61.5%; tranfrorm: translateX(-50%) translateY(-50%) scale(1);}
+  63%, 100% {top: -150%; left: -110%; tranfrorm: translateX(-100%) translateY(-100%) scale(0.8);}
+}
+
+@keyframes flysw {
+	0%, 25% {top: 50%; left: 61.5%; tranfrorm: translateX(-50%) translateY(-50%) scale(1);}
+  75%, 100% {top: 150%; left: -110%; tranfrorm: translateX(-100%) translateY(-100%) scale(1.1);}
+}
+
+@keyframes flyne {
+	0%, 25% {top: 50%; left: 61.5%; tranfrorm: translateX(-50%) translateY(-50%) scale(1);}
+  80%, 100% {top: -150%; left: 110%; tranfrorm: translateX(-100%) translateY(-100%) scale(1.5);}
+}
+
+@keyframes flyse {
+	0%, 25% {top: 50%; left: 61.5%; tranfrorm: translateX(-50%) translateY(-50%) scale(1);}
+  90%, 100% {top: 150%; left: 110%; tranfrorm: translateX(-100%) translateY(-100%) scale(2.5);}
+}
+
+@keyframes debrisspin {
+	0% {transform: translateX(-50%) translateY(-50%) rotate(0deg);}
+  100% {transform: translateX(-50%) translateY(-50%) rotate(360deg);}
 }
 
 @keyframes openin {

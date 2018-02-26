@@ -334,7 +334,7 @@
 		}
 	}
 	&.open-in, &.collection-in {
-		transition: all .2s linear;
+		transition: all .5s linear;
 		transform: scale(3);
 		background: none;
 		.right-contain {
