@@ -137,9 +137,9 @@ class PackOpening extends React.Component {
 							<div id="shockwave" className="shockwave"></div>
 						</div>
 						<div id="drop-zone" className="drop-zone">
+							<div id="main-pack" className="drop-pack"></div>
 							<div className="bullseye">
 								<div id="drop-glow" className="drop-glow"></div>
-								<div id="main-pack" className="drop-pack"></div>
 							</div>
 						</div>
 						<div id="debris" className="debris">
