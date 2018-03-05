@@ -154,22 +154,21 @@
 					}
 				}
 				.shockwave {
-					width: 100%;
-					height: 100%;
-					background: url('/images/shockwave.png') no-repeat 46% 45%;
+					width: 115%;
+					height: 115%;
+					background: url('/images/glow-ring.png') no-repeat 46% 45%;
 					opacity: 0;
 					display: none;
-					background-size: auto 75%;
+					background-size: auto 93%;
 					position: absolute;
-			    top: 0;
-			    left: 0;
+			    top: -5%;
+			    left: -7.5%;
 			    z-index: 3;
-			    transform: scale(0.9);
 			    &.show {
 			    	display: block;
 			    }
 			    &.burst {
-			    	animation: shockwave 3.8s ease-in-out forwards;
+			    	animation: shockwave 1.2s ease-in-out forwards;
 			    }
 				}
 			}
@@ -195,7 +194,7 @@
 						display: block;
 					}
 					&.burst {
-						animation: packburst 1.3s steps(24) forwards;
+						animation: packburst 0.8s steps(24) forwards;
 					}
 				}
 				.bullseye {
@@ -230,6 +229,62 @@
 				left: 0;
 				z-index: 5;
 				display: none;
+				.coins {
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: -3%;
+					left: 9%;
+					z-index: 1;
+					.coin {
+						width: 30px;
+						height: 30px;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						&:before {
+							content: "";
+							width: 100%;
+							height: 100%;
+							position: absolute;
+							left: 0;
+							top: 0;
+							background: url('/images/coin-sprite.png') no-repeat left top;
+							background-size: auto 2200%;
+							animation: coinflip 1s steps(21) infinite;
+						}
+						&.coin1, &.coin9 {
+							width: 20px;
+							height: 20px;
+						}
+						&.coin2, &.coin7 {
+							width: 23px;
+							height: 23px;
+						}
+						&.coin3, &.coin10 {
+							width: 25px;
+							height: 25px;
+						}
+						&.coin5, &.coin8  {
+							width: 35px;
+							height: 35px;
+						}
+					}
+				}
+				.explosion1, .explosion2 {
+					width: 100%;
+					height: 100%;
+					background: url("/images/blast-open.png") no-repeat center center;
+					background-size: auto 100%;
+					position: absolute;
+					left: 12%;
+					top: 0;
+					transform: scale(0.5);
+					opacity: 0;
+				}
+				.explosion2 {
+					background-image: url("/images/blastgold.png");
+				}
 				.debris-piece {
 					display: block;
 					position: absolute;
@@ -332,6 +387,47 @@
 						height: 7vh;
 					}
 				}
+				.debris-more-gems {
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: -14%;
+					left: 3%;
+					transform-origin: 50% 50%;
+					transform: rotate(410deg);
+					.gem1 {
+						&:before {
+							background-image: url('/images/gem1.png');
+							animation: debrisspin 1.2s linear infinite;
+						}
+						width: 8vh;
+						height: 8vh;
+					}
+					.gem2 {
+						&:before {
+							background-image: url('/images/gem2.png');
+							animation: debrisspin 1.5s linear infinite;
+						}
+						width: 10vh;
+						height: 10vh;
+					}
+					.gem3 {
+						&:before {
+							background-image: url('/images/gem3.png');
+							animation: debrisspin 2s linear infinite;
+						}
+						width: 9vh;
+						height: 9vh;
+					}
+					.gem4 {
+						&:before {
+							background-image: url('/images/gem4.png');
+							animation: debrisspin 1.9s linear infinite;
+						}
+						width: 7vh;
+						height: 7vh;
+					}
+				}
 				.debris-debris {
 					width: 100%;
 					height: 100%;
@@ -377,6 +473,41 @@
 					display: block;
 				}
 				&.burst {
+					.coins {
+						.coin1 {
+							animation: coinfly1 3.8s linear forwards;
+						}
+						.coin2 {
+							animation: coinfly2 3.8s linear forwards;
+						}
+						.coin3 {
+							animation: coinfly3 3.8s linear forwards;
+						}
+						.coin4 {
+							animation: coinfly4 3.8s linear forwards;
+						}
+						.coin5 {
+							animation: coinfly5 3.8s linear forwards;
+						}
+						.coin6 {
+							animation: coinfly6 3.8s linear forwards;
+						}
+						.coin7 {
+							animation: coinfly7 3.8s linear forwards;
+						}
+						.coin8 {
+							animation: coinfly8 3.8s linear forwards;
+						}
+						.coin9 {
+							animation: coinfly9 3.8s linear forwards;
+						}
+						.coin10 {
+							animation: coinfly10 3.8s linear forwards;
+						}
+					}
+					.explosion1, .explosion2 {
+						animation: growfade 3.8s linear forwards;
+					}
 					.debris-debris {
 						.debris1 {
 							animation: flynw 3.8s linear forwards;
@@ -419,6 +550,20 @@
 							animation: flysw 3.8s linear forwards;
 						}
 					}
+					.debris-more-gems {
+						.gem1 {
+							animation: flyne 3.8s linear forwards;
+						}
+						.gem2 {
+							animation: flysw 3.8s linear forwards;
+						}
+						.gem3 {
+							animation: flyse 3.8s linear forwards;
+						}
+						.gem4 {
+							animation: flynw 3.8s linear forwards;
+						}
+					}
 				}
 			}
 		}
@@ -432,9 +577,18 @@
 	}
 }
 
-
+@keyframes growfade {
+	0%, 21% {opacity: 0; transform: scale(0.5)}
+	28% {opacity: 1; transform: scale(1)}
+	40%, 100% {opacity: 0; transform: scale(1.3)}
+}
 
 @keyframes packburst {
+	99.9% { background-position: left bottom; opacity: 1 }
+	100% { background-position: left bottom; opacity: 0 }
+}
+
+@keyframes coinflip {
 	100% { background-position: left bottom; }
 }
 
@@ -444,30 +598,33 @@
 }
 
 @keyframes shockwave {
-	0% {opacity: 0; transform: scale(0.9)}
-	5% {opacity: 0.8; transform: scale(0.95)}
-  25% {opacity: 1;  transform: scale(1)}
-  30%, 100% {opacity: 0;  transform: scale(0)}
+	70% {opacity: 1; background-size: auto 100%;}
+	100% {opacity: 0;}
 }
 
 @keyframes flynw {
-	0%, 25% {top: 50%; left: 61.5%; tranfrorm: translateX(-50%) translateY(-50%) scale(1);}
-  63%, 100% {top: -150%; left: -110%; tranfrorm: translateX(-100%) translateY(-100%) scale(0.8);}
+	0%, 18.9% {top: 50%; left: 61.5%; opcity: 0; transform: scale(1)}
+	19% {top: 50%; left: 61.5%; opacity: 1; transform: scale(1)}
+  63%, 100% {top: -150%; left: -110%; tranfrorm: scale(6);}
 }
 
 @keyframes flysw {
-	0%, 25% {top: 50%; left: 61.5%; tranfrorm: translateX(-50%) translateY(-50%) scale(1);}
-  75%, 100% {top: 150%; left: -110%; tranfrorm: translateX(-100%) translateY(-100%) scale(1.1);}
+	0%, 18.9% {top: 50%; left: 61.5%; opacity: 0; transform: scale(1)}
+	19% {top: 50%; left: 61.5%; opacity: 1; transform: scale(1)}
+  75%, 100% {top: 150%; left: -110%; tranfrorm: scale(9);}
 }
 
 @keyframes flyne {
-	0%, 25% {top: 50%; left: 61.5%; tranfrorm: translateX(-50%) translateY(-50%) scale(1);}
-  80%, 100% {top: -150%; left: 110%; tranfrorm: translateX(-100%) translateY(-100%) scale(1.5);}
+	0%, 18.9% {top: 50%; left: 61.5%; opacity: 0; transform: scale(1)}
+	19% {top: 50%; left: 61.5%; opacity: 1; transform: scale(1)}
+  80%, 100% {top: -150%; left: 110%; tranfrorm: scale(7);}
 }
 
 @keyframes flyse {
-	0%, 25% {top: 50%; left: 61.5%; tranfrorm: translateX(-50%) translateY(-50%) scale(1);}
-  90%, 100% {top: 150%; left: 110%; tranfrorm: translateX(-100%) translateY(-100%) scale(2.5);}
+	0%, 18.9% {top: 50%; left: 61.5%; transform: scale(1); opacity: 0;}
+	19% {top: 50%; left: 61.5%; transform: scale(1); opacity: 1;}
+  65%, 70% {top: 150%; left: 110%; transform: scale(9); opacity: 1;}
+  75%, 100% {top: 150%; left: 110%; transform: scale(9); opacity: 0;}
 }
 
 @keyframes debrisspin {
@@ -478,4 +635,45 @@
 @keyframes openin {
   0% {opacity: 0; transform: scale(0.7);}
   100% {opacity: 1; transform: scale(1);}
+}
+
+@keyframes coinfly1 {
+	0%, 19% {top:50%; left: 50%;}
+	70%, 100% {top: -10%; left: 10%;}
+}
+@keyframes coinfly2 {
+	0%, 19% {top:50%; left: 50%;}
+	50%, 100% {top: 30%; left: -110%;}
+}
+@keyframes coinfly3 {
+	0%, 19% {top:50%; left: 50%;}
+	55%, 100% {top: 50%; left: 110%;}
+}
+@keyframes coinfly4 {
+	0%, 19% {top:50%; left: 50%;}
+	65%, 100% {top: -10%; left: 50%;}
+}
+@keyframes coinfly5 {
+	0%, 19% {top:50%; left: 50%;}
+	60%, 100% {top: 150%; left: -110%;}
+}
+@keyframes coinfly6 {
+	0%, 19% {top:50%; left: 50%;}
+	55%, 100% {top: 80%; left: 110%;}
+}
+@keyframes coinfly7 {
+	0%, 19% {top:50%; left: 50%;}
+	70%, 100% {top: 110%; left: 90%;}
+}
+@keyframes coinfly8 {
+	0%, 19% {top:50%; left: 50%;}
+	50%, 100% {top: -10%; left: 110%;}
+}
+@keyframes coinfly9 {
+	0%, 19% {top:50%; left: 50%;}
+	60%, 100% {top: 30%; left: 120%;}
+}
+@keyframes coinfly10 {
+	0%, 19% {top:50%; left: 50%;}
+	65%, 100% {top: 110%; left: 40%;}
 }

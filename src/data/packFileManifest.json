@@ -1,5 +1,6 @@
 {
 	"manifest": [
+		"/images/pack-sprite.png",
 		"/images/altar.png",
 		"/images/disc-glow.png",
 		"/images/pack-disc.jpg",

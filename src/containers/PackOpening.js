@@ -55,11 +55,10 @@ class PackOpening extends React.Component {
 			this._packOpening();
 		} else if (sticky.classList.contains('stuck')) {
 			// Switch back to song
+			this.props.sounds.packDrop.play();
 			fadeOut(this.props.sounds.manaLoop, .5, false);
 			fadeIn(this.props.sounds.betterHand, .5, false);
-			//pack drop sound
-			this.props.sounds.packDrop.play();
-		}
+		}		
 		sticky.classList.remove('stuck');
 		document.getElementById("hearthstoned").classList.remove('grab');
 		//remove glow effects for hover
@@ -68,15 +67,25 @@ class PackOpening extends React.Component {
 	}
 
 	_packOpening = () => {
+		this.props.sounds.packDrop.play();
 		this.props.sounds.manaLoop.stop();
 		this.setState({busy: true});
 		let pack = document.getElementById('main-pack');
-		pack.classList.add('show', 'burst');
 		let debris = document.getElementById('debris');
-		debris.classList.add('show', 'burst');
 		let shockwave = document.getElementById('shockwave');
-		shockwave.classList.add('show', 'burst');
-		this.props.sounds.packOpen.play();
+		pack.classList.add('show');
+		setTimeout(() => {
+			pack.classList.add('burst');
+			debris.classList.add('show', 'burst');
+			shockwave.classList.add('show', 'burst');
+			this.props.sounds.packOpen.play();
+		},500);
+		setTimeout(() => {
+			this.setState({busy: false});
+			pack.classList.remove('show','burst');
+			debris.classList.remove('show', 'burst');
+			shockwave.classList.remove('show', 'burst');
+		},4500);
 	}
 
 	_checkTarget = (event) => {
@@ -143,6 +152,20 @@ class PackOpening extends React.Component {
 							</div>
 						</div>
 						<div id="debris" className="debris">
+							<div className="explosion1"></div>
+							<div className="explosion2"></div>
+							<div className="coins">
+								<div className="coin coin1"></div>
+								<div className="coin coin2"></div>
+								<div className="coin coin3"></div>
+								<div className="coin coin4"></div>
+								<div className="coin coin5"></div>
+								<div className="coin coin6"></div>
+								<div className="coin coin7"></div>
+								<div className="coin coin8"></div>
+								<div className="coin coin9"></div>
+								<div className="coin coin10"></div>
+							</div>
 							<div className="debris-debris">
 								<div className="debris-piece debris1"></div>
 								<div className="debris-piece debris2"></div>
@@ -156,6 +179,12 @@ class PackOpening extends React.Component {
 								<div className="debris-piece paper4"></div>
 							</div>
 							<div className="debris-gems">
+								<div className="debris-piece gem1"></div>
+								<div className="debris-piece gem2"></div>
+								<div className="debris-piece gem3"></div>
+								<div className="debris-piece gem4"></div>
+							</div>
+							<div className="debris-more-gems">
 								<div className="debris-piece gem1"></div>
 								<div className="debris-piece gem2"></div>
 								<div className="debris-piece gem3"></div>
