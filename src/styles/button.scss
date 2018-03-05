@@ -3,7 +3,7 @@
 	z-index: 30;
 	position: relative;
 	.button-bracket {
-		background: url(/images/btn_bracket.jpg) repeat-x top center;
+		background: url(/images/global/btn_bracket.jpg) repeat-x top center;
 		background-size: auto 100%;
 		height: 7vh;
 		width: calc(100% - (7vh * .94 * 2));
@@ -21,17 +21,17 @@
 			top: 0;
 		}
 		&:before {
-			background-image: url(/images/btn_bracket_left.png);
+			background-image: url(/images/global/btn_bracket_left.png);
 			left: calc(7vh * .94 * -1 + 1px);
 		}
 		&:after {
-			background-image: url(/images/btn_bracket_right.png);
+			background-image: url(/images/global/btn_bracket_right.png);
 			right: calc(7vh * .94 * -1 + 1px);
 		}
 	}
 	.button-inner {
 		text-align: center;
-		background: url(/images/button.jpg) repeat-x top center;
+		background: url(/images/global/button.jpg) repeat-x top center;
 		background-size: auto 100%;
 		height: 5.5vh;
 		line-height: 5.3vh;
@@ -54,11 +54,11 @@
 			top: 0;
 		}
 		&:before {
-			background-image: url(/images/button_left.png);
+			background-image: url(/images/global/button_left.png);
 			left: calc(5.5vh * .389 * -1 + 1px);
 		}
 		&:after {
-			background-image: url(/images/button_right.png);
+			background-image: url(/images/global/button_right.png);
 			right: calc(5.5vh * .389 * -1 + 1px);
 		}
 	}

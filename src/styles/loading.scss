@@ -1,5 +1,5 @@
 .hs-load{
-	background: url(/images/bg-loading.jpg) no-repeat center center;
+	background: url(/images/loading/bg-loading.jpg) no-repeat center center;
 	background-size: cover;
 	position: relative;
 	opacity: 1;
@@ -25,7 +25,7 @@
 		height: 100%;
 		position: absolute;
 		content: "";
-		background: url(/images/loading-glow.png) no-repeat center center;
+		background: url(/images/loading/loading-glow.png) no-repeat center center;
 		background-size: cover; 
 		animation: bg-glow 3s infinite;
 	}

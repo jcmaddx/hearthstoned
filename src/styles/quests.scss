@@ -4,7 +4,7 @@
 	.today-banner {
 		position: relative;
 		display: block;
-		background: url(/images/title-banner.png) no-repeat center center;
+		background: url(/images/home/title-banner.png) no-repeat center center;
 		background-size: 100% auto;
 		height: calc(80vh * .148);
 		width: calc(80vh * .148 * 5);
@@ -16,7 +16,7 @@
 		font-size: 2.5vh;
 	}
 	.banner-glow {
-		mask-image: url(/images/title-mask.png);
+		mask-image: url(/images/home/title-mask.png);
 		mask-repeat: no-repeat;
 		mask-size: auto 100%;
 		mask-position: center center;
@@ -29,7 +29,7 @@
 		transform: translateX(-50%);
 		z-index: 1;
 		animation: slide 20s linear infinite;
-		background: url(/images/blue-glow.png) repeat center center;
+		background: url(/images/global/blue-glow.png) repeat center center;
 		&:before {
 			content: "";
 			position: absolute;
@@ -53,7 +53,7 @@
 		margin: 0 5px;
 		height: calc(80vh * .413);
 		width: calc(80vh * .413 * .86);
-		background: url(/images/quest-tile-front.png) no-repeat center center;
+		background: url(/images/home/quest-tile-front.png) no-repeat center center;
 		background-size: 100% 100%;
 	}
 }
@@ -61,7 +61,7 @@
 .quest-log {
 	height: 90vh;
 	width: calc((806 / 833) * 90vh);
-	background: url(/images/quest-log.png) no-repeat center center;
+	background: url(/images/home/quest-log.png) no-repeat center center;
 	background-size: 100% 100%;
 	h2 {
 		text-align: center;

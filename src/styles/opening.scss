@@ -5,7 +5,7 @@
 	#sticky-pack {
 		width: calc(30vh * .73);
 		height: 30vh;
-		background: url('/images/pack.png') no-repeat center center;
+		background: url('/images/opening/pack.png') no-repeat center center;
 		background-size: auto 100%;
 		position: absolute;
 		z-index: -1;
@@ -19,7 +19,7 @@
 		width: 100%;
 		height: 100%;
 		position: relative;
-		background: url('/images/wood-fill.jpg') repeat top center;
+		background: url('/images/global/wood-fill.jpg') repeat top center;
 		h1 {
 			margin: 0;
 			color: white;
@@ -36,7 +36,7 @@
 				height: 95vh;
 				width: calc(95vh * .19);
 				position: absolute;
-				background: url('/images/bg-hinge.jpg') no-repeat center center;
+				background: url('/images/global/bg-hinge.jpg') no-repeat center center;
 				background-size: auto 100%;
 				top: 0;
 			}
@@ -52,13 +52,13 @@
 				left: 0;
 				height: 95vh;
 				width: calc(95vh * .33);
-				background: url('/images/pack-tray.png') no-repeat center center;
+				background: url('/images/opening/pack-tray.png') no-repeat center center;
 				background-size: auto 100%;
 				z-index: 2;
 				.packs-available {
 					width: calc(30vh * .73);
     			height: 30vh;
-					background: url('/images/pack.png') no-repeat center center;
+					background: url('/images/opening/pack.png') no-repeat center center;
 					background-size: auto 100%;
 					position: absolute;
 					top: 50%;
@@ -76,12 +76,12 @@
 						left: 0;
 					}
 					&:before {
-						background-image: url('/images/pack.png');
+						background-image: url('/images/opening/pack.png');
 						z-index: 1;
 						transform: translateX(3%);
 					}
 					&:after {
-						background-image: url('/images/pack-silhouette.png');
+						background-image: url('/images/opening/pack-silhouette.png');
 						z-index: 0;
 						height: 120%;
 				    width: 120%;
@@ -95,7 +95,7 @@
 						right: 10%;
 						height: 9vh;
 						width: 9vh;
-						background: url('/images/pack-amount.png') no-repeat center center;
+						background: url('/images/opening/pack-amount.png') no-repeat center center;
 						background-size: auto 100%;
 						p {
 							text-align: center;
@@ -116,7 +116,7 @@
 				width: calc(95vh * 1.07);
 				z-index: 0;
 				overflow: hidden;
-				background-image: url('/images/pack-disc.jpg');
+				background-image: url('/images/opening/pack-disc.jpg');
 				background-size: 100% 100%;
 				&:before, &:after {
 					width: 100%;
@@ -128,7 +128,7 @@
 					background-size: auto 100%;
 				}
 				&:before {
-					background-image: url('/images/pack-disc.jpg');
+					background-image: url('/images/opening/pack-disc.jpg');
 					z-index: 1;
 					animation: spinnin 20s linear infinite;
 					top: 50%;
@@ -137,13 +137,13 @@
 				&:after {
 					top: 0;
 					left: 0;
-					background-image: url('/images/altar.png');
+					background-image: url('/images/opening/altar.png');
 					z-index: 2;
 				}
 				.altar-glow {
 					width: 100%;
 					height: 100%;
-					background: url('/images/disc-glow.png') no-repeat center center;
+					background: url('/images/opening/disc-glow.png') no-repeat center center;
 					background-size: auto 100%;
 					position: absolute;
 					z-index: 5;
@@ -156,7 +156,7 @@
 				.shockwave {
 					width: 115%;
 					height: 115%;
-					background: url('/images/glow-ring.png') no-repeat 46% 45%;
+					background: url('/images/opening/glow-ring.png') no-repeat 46% 45%;
 					opacity: 0;
 					display: none;
 					background-size: auto 93%;
@@ -183,7 +183,7 @@
 				.drop-pack {
 					width: 100%;
 					height: 100%;
-					background: url('/images/pack-sprite.png') no-repeat left top;
+					background: url('/images/opening/pack-sprite.png') no-repeat left top;
 					background-size: auto 2500%;
 					position: absolute;
 					z-index: 3;
@@ -211,7 +211,7 @@
 						position: absolute;
 						top: -10%;
 						left: -10%;
-						background: url('/images/pack-drop-glow.png') no-repeat center center;
+						background: url('/images/opening/pack-drop-glow.png') no-repeat center center;
 						background-size: auto 100%;
 						z-index: 2;
 						animation: pulse 5s infinite;
@@ -249,7 +249,7 @@
 							position: absolute;
 							left: 0;
 							top: 0;
-							background: url('/images/coin-sprite.png') no-repeat left top;
+							background: url('/images/opening/coin-sprite.png') no-repeat left top;
 							background-size: auto 2200%;
 							animation: coinflip 1s steps(21) infinite;
 						}
@@ -274,7 +274,7 @@
 				.explosion1, .explosion2 {
 					width: 100%;
 					height: 100%;
-					background: url("/images/blast-open.png") no-repeat center center;
+					background: url("/images/opening/blast-open.png") no-repeat center center;
 					background-size: auto 100%;
 					position: absolute;
 					left: 12%;
@@ -283,7 +283,7 @@
 					opacity: 0;
 				}
 				.explosion2 {
-					background-image: url("/images/blastgold.png");
+					background-image: url("/images/opening/blastgold.png");
 				}
 				.debris-piece {
 					display: block;
@@ -315,7 +315,7 @@
 					left: 0;
 					.paper1 {
 						&:before {
-							background-image: url('/images/paper1.png');
+							background-image: url('/images/opening/paper1.png');
 							animation: debrisspin 1.5s linear infinite;
 						}
 						width: 7vh;
@@ -323,7 +323,7 @@
 					}
 					.paper2 {
 						&:before {
-							background-image: url('/images/paper2.png');
+							background-image: url('/images/opening/paper2.png');
 							animation: debrisspin 1.2s linear infinite;
 						}
 						width: 8vh;
@@ -331,7 +331,7 @@
 					}
 					.paper3 {
 						&:before {
-							background-image: url('/images/paper3.png');
+							background-image: url('/images/opening/paper3.png');
 							animation: debrisspin 1.9s linear infinite;
 						}
 						width: 10vh;
@@ -339,7 +339,7 @@
 					}
 					.paper4 {
 						&:before {
-							background-image: url('/images/paper4.png');
+							background-image: url('/images/opening/paper4.png');
 							animation: debrisspin 2s linear infinite;
 						}
 						width: 9vh;
@@ -356,7 +356,7 @@
 					transform: rotate(230deg);
 					.gem1 {
 						&:before {
-							background-image: url('/images/gem1.png');
+							background-image: url('/images/opening/gem1.png');
 							animation: debrisspin 1.2s linear infinite;
 						}
 						width: 8vh;
@@ -364,7 +364,7 @@
 					}
 					.gem2 {
 						&:before {
-							background-image: url('/images/gem2.png');
+							background-image: url('/images/opening/gem2.png');
 							animation: debrisspin 1.5s linear infinite;
 						}
 						width: 10vh;
@@ -372,7 +372,7 @@
 					}
 					.gem3 {
 						&:before {
-							background-image: url('/images/gem3.png');
+							background-image: url('/images/opening/gem3.png');
 							animation: debrisspin 2s linear infinite;
 						}
 						width: 9vh;
@@ -380,7 +380,7 @@
 					}
 					.gem4 {
 						&:before {
-							background-image: url('/images/gem4.png');
+							background-image: url('/images/opening/gem4.png');
 							animation: debrisspin 1.9s linear infinite;
 						}
 						width: 7vh;
@@ -397,7 +397,7 @@
 					transform: rotate(410deg);
 					.gem1 {
 						&:before {
-							background-image: url('/images/gem1.png');
+							background-image: url('/images/opening/gem1.png');
 							animation: debrisspin 1.2s linear infinite;
 						}
 						width: 8vh;
@@ -405,7 +405,7 @@
 					}
 					.gem2 {
 						&:before {
-							background-image: url('/images/gem2.png');
+							background-image: url('/images/opening/gem2.png');
 							animation: debrisspin 1.5s linear infinite;
 						}
 						width: 10vh;
@@ -413,7 +413,7 @@
 					}
 					.gem3 {
 						&:before {
-							background-image: url('/images/gem3.png');
+							background-image: url('/images/opening/gem3.png');
 							animation: debrisspin 2s linear infinite;
 						}
 						width: 9vh;
@@ -421,7 +421,7 @@
 					}
 					.gem4 {
 						&:before {
-							background-image: url('/images/gem4.png');
+							background-image: url('/images/opening/gem4.png');
 							animation: debrisspin 1.9s linear infinite;
 						}
 						width: 7vh;
@@ -438,7 +438,7 @@
 					transform: rotate(-240deg);
 					.debris1 {
 						&:before {
-							background-image: url('/images/debris1.png');
+							background-image: url('/images/opening/debris1.png');
 							animation: debrisspin 6s linear infinite;
 						}
 						width: 8vh;
@@ -446,7 +446,7 @@
 					}
 					.debris2 {
 						&:before {
-							background-image: url('/images/debris2.png');
+							background-image: url('/images/opening/debris2.png');
 							animation: debrisspin 10s linear infinite;
 						}
 						width: 10vh;
@@ -454,7 +454,7 @@
 					}
 					.debris3 {
 						&:before {
-							background-image: url('/images/debris3.png');
+							background-image: url('/images/opening/debris3.png');
 							animation: debrisspin 8s linear infinite;
 						}
 						width: 9vh;
@@ -462,7 +462,7 @@
 					}
 					.debris4 {
 						&:before {
-							background-image: url('/images/debris4.png');
+							background-image: url('/images/opening/debris4.png');
 							animation: debrisspin 5.5s linear infinite;
 						}
 						width: 7vh;

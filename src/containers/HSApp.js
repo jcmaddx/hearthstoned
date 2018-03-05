@@ -176,7 +176,7 @@ class HSApp extends React.Component {
 				<div className={optionsClasses}>
 					<div id="clock"></div>
 					<div onClick={this._openOptions} onMouseEnter={this._hoverOptions} id="options-button">
-						<img id="options-button" src="/images/options-button.png"></img>
+						<img id="options-button" src="/images/global/options-button.png"></img>
 					</div>
 				</div>
 			</div>

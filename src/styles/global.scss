@@ -15,12 +15,12 @@ body, html,
 }
 
 #hearthstoned {
-	cursor: url(/images/hand.png) 3 10, auto;
+	cursor: url(/images/global/hand.png) 3 10, auto;
 	perspective: 1000;
 	&.downed {
-		cursor: url(/images/downhand.png) 4 8, auto!important;
+		cursor: url(/images/global/downhand.png) 4 8, auto!important;
 		&.grab {
-			cursor: url(/images/grabhand.png) 4 8, auto!important;
+			cursor: url(/images/global/grabhand.png) 4 8, auto!important;
 		}
 	}
 	.tabletop {
@@ -28,7 +28,7 @@ body, html,
 		z-index: 0;
 		left: 50%;
 		top: 50%;
-		background: url(/images/table-top.jpg) no-repeat center center;
+		background: url(/images/home/table-top.jpg) no-repeat center center;
 		background-size: cover;
 		animation: tablein 3s ease-out forwards;
 	}

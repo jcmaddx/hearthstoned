@@ -25,7 +25,7 @@ class SkillBox extends React.Component {
 	render() {
 		return(
 			<div className="skill-box">
-				<img src="/images/quest-log-class.png" />
+				<img src="/images/home/quest-log-class.png" />
 			</div>
 		);
 	}

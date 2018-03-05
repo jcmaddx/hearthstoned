@@ -38,7 +38,7 @@ class BoxButtons extends React.Component {
 			<div className="buttons">
 				<div className="shop-button"></div>
 				<div onClick={this._questClick} onMouseEnter={this._mouseIn} className="quest-button">
-					<img src="/images/quest-button.png" />
+					<img src="/images/home/quest-button.png" />
 				</div>
 			</div>
 		);
