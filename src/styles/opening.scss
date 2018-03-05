@@ -214,7 +214,17 @@
 						background: url('/images/opening/pack-drop-glow.png') no-repeat center center;
 						background-size: auto 100%;
 						z-index: 2;
-						animation: pulse 5s infinite;
+						.swirl-glow {
+							background: url('/images/opening/pack-drop-swirl-glow.png') no-repeat center center;
+							background-size: auto 100%;
+							width: 100%;
+							height: 22vh;
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							animation: pulse 5s infinite;
+							transform: translateX(-52%) translateY(-54%);
+						}
 						&.show {
 							display: block;
 						}
