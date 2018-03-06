@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {fadeIn, fadeOut} from '../utils/helpers';
 
 import Debris from '../components/Debris';
+import Card from '../components/Card';
 
 import '../styles/opening.scss';
 
@@ -154,6 +155,7 @@ class PackOpening extends React.Component {
 								</div>
 							</div>
 						</div>
+						<Card facedown={true} rarity="epic" type="minion" category="warrior" />
 						<Debris />
 					</div>
 				</div>

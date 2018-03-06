@@ -29,7 +29,6 @@ class Card extends React.Component {
 			"card": true,
 			"facedown": (this.props.facedown) ? true : false,
 			[this.props.rarity]: (this.props.rarity) ? true : false,
-			[this.props.legendary]: (this.props.legendary) ? true : false,
 			[this.props.type]: (this.props.type) ? true : false,
 			[this.props.category]: (this.props.category) ? true : false
 		});
@@ -40,9 +39,9 @@ class Card extends React.Component {
 				<div className="cardback"></div>
 				<div className="cardfront">
 					{
-						(this.props.legendary) ? 
-							<div className="legendary"></div>
-						: null;
+						(this.props.rarity === 'legendary') ? 
+							<div className="legendary-dragon"></div>
+						: null
 					}
 					<div className="cardart"></div>
 					<div className="mana"></div>

@@ -1,4 +1,55 @@
 @import "./mixins.scss";
 .card {
-	
+	width: calc(27vh * .73);
+	height: 27vh;
+	position: absolute;
+	z-index: 5;
+	// placeholder
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	.cardback {
+		width: 100%;
+		height: 100%;
+		background: url('/images/opening/card-back.png') no-repeat center center;
+		background-size: auto 100%;
+		position: absolute;
+	}
+	.cardfront {
+		width: 100%;
+		height: 100%;
+		background-repeat: no-repeat;
+		background-positon: center center;
+		background-size: auto 100%;
+		position: absolute;
+		z-index: 5;
+	}
+	.hover-glow {
+		width: 90%;
+    height: 98%;
+    position: absolute;
+    top: 1%;
+    left: 5.5%;
+    background: red;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 8px rgba(255,255,255,0.6);
+	}
+	&.rare {
+		.hover-glow {
+			box-shadow: 0 0 20px 8px rgba(7,88,213,0.6);
+		}
+	}
+	&.epic {
+		.hover-glow{
+			box-shadow: 0 0 20px 8px rgba(158,31,227,0.6);
+		}
+	}
+	&.legendary {
+		.hover-glow {
+			box-shadow: 0 0 20px 8px rgba(221,147,34,0.6);
+		}
+	}
+	&.minion {
+		background-image: url('/images/opening/card-back.png');
+	}
 }
