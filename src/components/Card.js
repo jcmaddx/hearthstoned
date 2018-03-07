@@ -27,7 +27,8 @@ class Card extends React.Component {
 	render() {
 		let cardclasses = classnames({
 			"card": true,
-			"facedown": (this.props.facedown) ? true : false,
+			"facedown": this.props.facedown,
+			"golden": this.props.golden,
 			[this.props.rarity]: (this.props.rarity) ? true : false,
 			[this.props.type]: (this.props.type) ? true : false,
 			[this.props.category]: (this.props.category) ? true : false
@@ -38,18 +39,39 @@ class Card extends React.Component {
 				<div className="hover-glow"></div>
 				<div className="cardback"></div>
 				<div className="cardfront">
+					<div className="face"></div>
 					{
-						(this.props.rarity === 'legendary') ? 
+						(this.props.rarity === 'legendary' && !this.props.golden) ? 
 							<div className="legendary-dragon"></div>
 						: null
 					}
-					<div className="cardart"></div>
-					<div className="mana"></div>
-					<div className="title"></div>
+					{
+						(this.props.rarity === 'legendary' && this.props.golden) ? 
+							<div className="golden-legendary-dragon"></div>
+						: null
+					}
+					<div className="cardart">
+						<img src={"/images/cards/art/"+this.props.art} />
+					</div>
+					<div className="mana">{this.props.mana}</div>
+					<div className="title">{this.props.title}</div>
 					<div className="rarity"></div>
-					<div className="description"></div>
-					<div className="attack"></div>
-					<div className="health"></div>
+					<div className="description">{this.props.description}</div>
+					{
+						(this.props.type === "minion") ? 
+						<div className="attack">{this.props.attack}</div>
+						: null
+					}
+					{
+						(this.props.type === "minion") ? 
+						<div className="health">{this.props.health}</div>
+						: null
+					}
+					{
+						(this.props.tag) ? 
+						<div className="tag">{this.props.tag}</div>
+						: null
+					}
 				</div>
 			</div>
 		);

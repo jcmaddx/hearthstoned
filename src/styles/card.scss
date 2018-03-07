@@ -3,7 +3,7 @@
 	width: calc(27vh * .73);
 	height: 27vh;
 	position: absolute;
-	z-index: 5;
+	z-index: 25;
 	// placeholder
 	top: 50%;
 	left: 50%;
@@ -14,23 +14,82 @@
 		background: url('/images/opening/card-back.png') no-repeat center center;
 		background-size: auto 100%;
 		position: absolute;
+		display: none;
 	}
 	.cardfront {
 		width: 100%;
 		height: 100%;
-		background-repeat: no-repeat;
-		background-positon: center center;
+		.face {
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			background-size: auto 100%;
+			position: absolute;
+			z-index: 5;
+		}
+	}
+	.mana {
+		height: 5vh;
+		width: 5vh;
+		position: absolute; 
+		top: -4%;
+		left: -2%;
+		background: url('/images/cards/mana-gem.png') no-repeat center center;
 		background-size: auto 100%;
+		z-index:6;
+		color: white;
+		@include stroked;
+		display: block;
+		text-align: center;
+		line-height: 4.5vh;
+		font-size: 4.5vh;
+	}
+	.rarity {
+		height: 3vh;
+		width: calc(3vh * .98);
 		position: absolute;
-		z-index: 5;
+		left: 50%;
+		transform: translateX(-50%);
+		background-repeat: no-repeat;
+		background-position: center bottom;
+		background-size: auto 100%;
+		z-index: 6;
+	}
+	.cardart {
+		display: block;
+		margin: 0 auto;
+		position: absolute;
+		z-index: 4;
+		left: 50%;
+    transform: translateX(-50%);
+    top: 5%;
+    height: 12vh;
+    img {
+    	height: 100%;
+    	width: auto;
+    }
+	}
+	.description {
+		position: absolute;
+    bottom: 2vh;
+    height: 5vh;
+    width: calc(7vh * 1.8);
+    left: 2.5vh;
+    padding: 1vh;
+    font-size: 1.3vh;
+    line-height: 1.6vh;
+    font-family: "Open Sans";
+    text-align: center;
+    z-index: 6;
 	}
 	.hover-glow {
+		opacity: 0;
 		width: 90%;
     height: 98%;
     position: absolute;
     top: 1%;
     left: 5.5%;
-    background: red;
     border-radius: 10px;
     box-shadow: 0 0 20px 8px rgba(255,255,255,0.6);
 	}
@@ -50,6 +109,128 @@
 		}
 	}
 	&.minion {
-		background-image: url('/images/opening/card-back.png');
+		.cardfront {
+			.face {
+				height: 107%;
+				top: -7%;
+				background-image: url('/images/cards/minion-generic.png');
+			}
+		}
+		.cardart {
+			height: 15vh;
+			height: 22vh;
+    	top: -4%;
+    	mask-image: url(/images/cards/minion-mask.png);
+			mask-repeat: no-repeat;
+			mask-size: auto 100%;
+			mask-position: center center;
+		}
+		.rarity {
+			top: 52%;
+		}
+		.mana {
+			top: -4%;
+			left: -2%;
+		}
+		.description {
+			bottom: 3.5vh;
+		}
+		.attack {
+			height: 6vh;
+	    width: 6vh;
+	    position: absolute;
+	    bottom: -3%;
+	    left: -6%;
+	    background: url(/images/cards/minion-attack.png) no-repeat left center;
+	    background-size: auto 100%;
+	    color: white;
+			@include stroked;
+			display: block;
+			text-align: center;
+			line-height: 6vh;
+			font-size: 4.5vh;
+			z-index:6;
+		}
+		.health {
+			height: 5.5vh;
+	    width: 5vh;
+	    position: absolute;
+	    bottom: -1%;
+	    right: -5%;
+	    background: url(/images/cards/minion-health.png) no-repeat center center;
+	    background-size: auto 100%;
+	    color: white;
+			@include stroked;
+			display: block;
+			text-align: center;
+			line-height: 6vh;
+			font-size: 4.5vh;
+			z-index:6;
+		}
+		.legendary-dragon {
+			height: 11.5vh;
+	    width: 100%;
+	    position: absolute;
+	    top: -13%;
+	    right: -13%;
+	    background: url(/images/cards/legendary-dragon.png) no-repeat center center;
+	    background-size: auto 100%;
+	    z-index: 7;
+		}
+		.tag {
+			position: absolute;
+			color: white;
+			@include stroked;
+			text-align: center;
+			bottom: .8vh;
+			width: 100%;
+			font-size: 1.5vh;
+			z-index: 6;
+		}
+		@each $class in $class-list {
+	    &.#{$class} {
+	    	.cardfront {
+	    		.face {
+	    			background-image: url('/images/cards/minion-#{$class}.png');
+	    		}
+	    	}
+	    }
+	  }
+	  @each $rarity in $rarity-list {
+	  	&.#{$rarity} {
+	  		.rarity {
+	  			background-image: url('/images/cards/minion-rarity-#{$rarity}.png');
+	  		}
+	  	}
+	  }
+	}
+	&.spell {
+		.cardfront {
+			.face {
+				background-image: url('/images/cards/spell-generic.png');
+			}
+		}
+		.cardart {
+
+		}
+		.rarity {
+			top: 54%;
+		}
+		@each $class in $class-list {
+	    &.#{$class} {
+	    	.cardfront {
+	    		.face {
+	    			background-image: url('/images/cards/spell-#{$class}.png');
+	    		}
+	    	}
+	    }
+	  }
+	  @each $rarity in $rarity-list {
+	  	&.#{$rarity} {
+	  		.rarity {
+	  			background-image: url('/images/cards/spell-rarity-#{$rarity}.png');
+	  		}
+	  	}
+	  }
 	}
 }

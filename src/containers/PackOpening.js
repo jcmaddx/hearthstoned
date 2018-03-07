@@ -155,7 +155,8 @@ class PackOpening extends React.Component {
 								</div>
 							</div>
 						</div>
-						<Card facedown={true} rarity="epic" type="minion" category="warrior" />
+						<Card facedown={true} art="nick.jpg" title="Nick Hamer" mana={8} health={10} attack={10}  rarity="legendary" type="minion" category="warrior" tag="Cohort" description="A guy I used to work with and will work with AGAIN!" />
+						<Card facedown={true} art="thinking.jpg" title="Spell Name" mana={4} rarity="rare" type="spell" category="mage" description="A Spell that can be used to do a thing!" />
 						<Debris />
 					</div>
 				</div>

@@ -1,3 +1,5 @@
+$class-list: warrior rogue mage paladin druid hunter warlock priest shaman;
+$rarity-list: common rare epic legendary;
 @mixin stroked {
 	text-shadow:
    -1px -1px 0 #000,  
