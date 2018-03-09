@@ -3,22 +3,22 @@
 	width: calc(27vh * .73);
 	height: 27vh;
 	position: absolute;
-	z-index: 25;
-	// placeholder
-	top: 50%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
+	.cardback, .cardfront {
+		backface-visibility: hidden;
+		transition: .8s linear;
+	}
 	.cardback {
 		width: 100%;
 		height: 100%;
 		background: url('/images/opening/card-back.png') no-repeat center center;
 		background-size: auto 100%;
 		position: absolute;
-		display: none;
+		transform: rotateY(-180deg);
 	}
 	.cardfront {
 		width: 100%;
 		height: 100%;
+		transform: rotateY(0deg);
 		.face {
 			width: 100%;
 			height: 100%;
@@ -27,6 +27,14 @@
 			background-size: auto 100%;
 			position: absolute;
 			z-index: 5;
+		}
+	}
+	&.facedown {
+		.cardfront {
+			transform: rotateY(180deg);
+		}
+		.cardback {
+			transform: rotateY(0deg);
 		}
 	}
 	.mana {
@@ -44,6 +52,23 @@
 		text-align: center;
 		line-height: 4.5vh;
 		font-size: 4.5vh;
+	}
+	.title {
+		position: absolute;
+		z-index: 15;
+		left: 50%;
+		transform: translateX(-50%);
+		svg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: visible;
+			text {
+				fill: white;
+				@include stroked;
+				font-size: 8vh;
+			}
+		}
 	}
 	.rarity {
 		height: 3vh;
@@ -124,6 +149,13 @@
 			mask-repeat: no-repeat;
 			mask-size: auto 100%;
 			mask-position: center center;
+		}
+		.title {
+			background: url('/images/cards/minion-title.png') no-repeat center center;
+			background-size: auto 100%;
+			height: 4.3vh;
+			width: calc(4.3vh * 4.25);
+			top: 44%;
 		}
 		.rarity {
 			top: 52%;
@@ -210,8 +242,13 @@
 				background-image: url('/images/cards/spell-generic.png');
 			}
 		}
-		.cardart {
-
+		.title {
+			background: url('/images/cards/spell-title.png') no-repeat center center;
+			background-size: auto 100%;
+			height: 5.7vh;
+			width: calc(5.7vh * 3.21);
+			left: 49.5%;
+			top: 44%;
 		}
 		.rarity {
 			top: 54%;

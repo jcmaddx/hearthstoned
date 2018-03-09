@@ -54,7 +54,29 @@ class Card extends React.Component {
 						<img src={"/images/cards/art/"+this.props.art} />
 					</div>
 					<div className="mana">{this.props.mana}</div>
-					<div className="title">{this.props.title}</div>
+					<div className="title">
+						{
+							(this.props.type === "spell") ?
+								<svg width="100%" height="100%" viewBox="0 0 640 199" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xmlSpace="preserve">
+									<path id="spell-path" fill="none" d="M58,123.583c37.917-13.75,146.5-41.25,262-41.25s219.25,24.166,259.25,41.25"/>
+									<text textAnchor="middle">
+										<textPath startOffset="50%" alignmentBaseline="after-edge" xlinkHref="#spell-path">
+								      {this.props.title}
+								    </textPath>
+							    </text>
+								</svg>
+							:
+								<svg width="100%" height="100%" viewBox="0 0 612 144" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xmlSpace="preserve">
+									<path id="minion-path" fill="none" d="M20,124.5c21.5,5.5,34,11.5,83.5,4.5S269,99,318,93s140-11,176.5-5.5s73,18.5,88,28"/>
+									<text textAnchor="middle">
+										<textPath startOffset="50%" alignmentBaseline="after-edge" xlinkHref="#minion-path">
+								      {this.props.title}
+								    </textPath>
+							    </text>
+								</svg>
+						}
+						
+					</div>
 					<div className="rarity"></div>
 					<div className="description">{this.props.description}</div>
 					{

@@ -76,18 +76,26 @@ class PackOpening extends React.Component {
 		let pack = document.getElementById('main-pack');
 		let debris = document.getElementById('debris');
 		let shockwave = document.getElementById('shockwave');
+		let explosions = document.getElementById('explosions');
+		let packCards = document.getElementById('pack-cards');
 		pack.classList.add('show');
 		setTimeout(() => {
 			pack.classList.add('burst');
 			debris.classList.add('show', 'burst');
 			shockwave.classList.add('show', 'burst');
+			explosions.classList.add('show', 'burst');
 			this.props.sounds.packOpen.play();
 		},500);
+		setTimeout(() => {
+			packCards.classList.add('show', 'burst');
+		},1450);
 		setTimeout(() => {
 			this.setState({busy: false});
 			pack.classList.remove('show','burst');
 			debris.classList.remove('show', 'burst');
 			shockwave.classList.remove('show', 'burst');
+			explosions.classList.remove('show', 'burst');
+			packCards.classList.remove('show', 'burst');
 		},4500);
 	}
 
@@ -155,9 +163,18 @@ class PackOpening extends React.Component {
 								</div>
 							</div>
 						</div>
-						<Card facedown={true} art="nick.jpg" title="Nick Hamer" mana={8} health={10} attack={10}  rarity="legendary" type="minion" category="warrior" tag="Cohort" description="A guy I used to work with and will work with AGAIN!" />
-						<Card facedown={true} art="thinking.jpg" title="Spell Name" mana={4} rarity="rare" type="spell" category="mage" description="A Spell that can be used to do a thing!" />
 						<Debris />
+						<div id="pack-cards" className="pack-cards">
+							<Card facedown={true} art="nick.jpg" title="Blizzard" mana={8} health={10} attack={10}  rarity="legendary" type="minion" category="warrior" tag="Cohort" description="A guy I used to work with and will work with AGAIN!" />
+							<Card facedown={true} art="thinking.jpg" title="Spell Name" mana={4} rarity="rare" type="spell" category="mage" description="A Spell that can be used to do a thing!" />
+							<Card facedown={true} art="assistant.jpg" title="Assistant" mana={4} health={2} attack={5} rarity="common" type="minion" category="priest" description="Assisting Nurses" />
+							<Card facedown={true} art="assembly.jpg" title="Assembly" mana={1} health={3} attack={3} rarity="common" type="minion" category="rogue" description="Assembling furniture" />
+							<Card facedown={true} art="georgia.jpg" title="Georgia" mana={4} health={4} attack={2} rarity="epic" type="minion" category="shaman" description="The place of my birth" />
+						</div>
+						<div id="explosions" className="explosions">
+							<div className="explosion1"></div>
+							<div className="explosion2"></div>
+						</div>
 					</div>
 				</div>
 			</div>

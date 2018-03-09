@@ -25,8 +25,6 @@ class Debris extends React.Component {
 	render() {
 		return(
 			<div id="debris" className="debris">
-				<div className="explosion1"></div>
-				<div className="explosion2"></div>
 				<div className="coins">
 					<div className="coin coin1"></div>
 					<div className="coin coin2"></div>
