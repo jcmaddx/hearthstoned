@@ -88,7 +88,7 @@ class PackOpening extends React.Component {
 		},500);
 		setTimeout(() => {
 			packCards.classList.add('show', 'burst');
-		},1450);
+		},1300);
 		setTimeout(() => {
 			this.setState({busy: false});
 			pack.classList.remove('show','burst');
