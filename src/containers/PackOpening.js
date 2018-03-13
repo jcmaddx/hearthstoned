@@ -73,11 +73,15 @@ class PackOpening extends React.Component {
 		this.props.sounds.packDrop.play();
 		this.props.sounds.manaLoop.stop();
 		this.setState({busy: true});
+		let tray = document.getElementById('pack-tray');
+		let altar = document.getElementById('altar');
 		let pack = document.getElementById('main-pack');
 		let debris = document.getElementById('debris');
 		let shockwave = document.getElementById('shockwave');
 		let explosions = document.getElementById('explosions');
 		let packCards = document.getElementById('pack-cards');
+		let mainContainer = document.getElementById('hs-packs');
+		let overlay = document.getElementById('opening-overlay');
 		pack.classList.add('show');
 		setTimeout(() => {
 			pack.classList.add('burst');
@@ -88,6 +92,9 @@ class PackOpening extends React.Component {
 		},500);
 		setTimeout(() => {
 			packCards.classList.add('show', 'burst');
+			overlay.classList.add('show');
+			tray.classList.add('blurred');
+			altar.classList.add('blurred');
 		},1300);
 		setTimeout(() => {
 			this.setState({busy: false});
@@ -95,8 +102,9 @@ class PackOpening extends React.Component {
 			debris.classList.remove('show', 'burst');
 			shockwave.classList.remove('show', 'burst');
 			explosions.classList.remove('show', 'burst');
-			packCards.classList.remove('show', 'burst');
-		},4500);
+			packCards.classList.remove('burst');
+			packCards.classList.add('idle');
+		},2500);
 	}
 
 	_checkTarget = (event) => {
@@ -140,18 +148,18 @@ class PackOpening extends React.Component {
 			"busy": this.state.busy
 		})
 		return(
-			<div className={packClasses}>
+			<div id="hs-packs" className={packClasses}>
 				<div id="sticky-pack" className="sticky-pack"></div>
 				<div className="opening-container">
 					<div id="opening-content" className={contentClasses}>
-						<div className="pack-tray">
+						<div id="pack-tray" className="pack-tray">
 							<div id="pack-stack" className="packs-available">
 								<div className="pack-counter">
 									<p>11</p>
 								</div>
 							</div>
 						</div>
-						<div className="altar">
+						<div id="altar" className="altar">
 							<div id="altar-glow" className="altar-glow"></div>
 							<div id="shockwave" className="shockwave"></div>
 						</div>
@@ -175,6 +183,7 @@ class PackOpening extends React.Component {
 							<div className="explosion1"></div>
 							<div className="explosion2"></div>
 						</div>
+						<div id="opening-overlay"></div>
 					</div>
 				</div>
 			</div>
