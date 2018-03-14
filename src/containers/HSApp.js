@@ -36,6 +36,7 @@ class HSApp extends React.Component {
 	}
 
 	componentWillMount() {
+		this.props.actions.initPacks();
 		window.addEventListener("mousedown", (e) => {
 			document.getElementById('hearthstoned').classList.add('downed');
 		})
@@ -199,7 +200,9 @@ function mapStateToProps(state) {
   return {
     stage: data.stage,
     transition: data.transition,
-    sounds: data.sounds
+    sounds: data.sounds,
+    packs: data.packs,
+    cards: data.cards
   };
 }
 
