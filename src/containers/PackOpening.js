@@ -4,6 +4,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../actions/hsActions';
 import {fadeIn, fadeOut} from '../utils/helpers';
 
 import Debris from '../components/Debris';
@@ -22,7 +24,8 @@ class PackOpening extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state={
-			busy: false
+			busy: false,
+			current: 0
 		}
 	}
 
@@ -33,22 +36,24 @@ class PackOpening extends React.Component {
 	}
 
 	_initGrabber = () => {
-		document.getElementById('pack-stack').onmousedown = () => {
-			if(!this.state.busy){
-				//add grabbing hand
-				document.getElementById("hearthstoned").classList.add('grab');
-				//show moving pack
-				document.getElementById("sticky-pack").classList.add('stuck');
-				//hide the main pack -- WONT BE NEEDED LATER
-				document.getElementById("main-pack").classList.remove('show');
-				//add glow effects for hover
-				document.getElementById("drop-glow").classList.add('show');
-				document.getElementById("altar-glow").classList.add('show');
-				//fade out bg song and add glow sound
-				fadeOut(this.props.sounds.betterHand, .5, false);
-				fadeIn(this.props.sounds.manaLoop, .5, true);
-			}
-		};
+		if(document.getElementById('pack-stack')){
+			document.getElementById('pack-stack').onmousedown = () => {
+				if(!this.state.busy){
+					//add grabbing hand
+					document.getElementById("hearthstoned").classList.add('grab');
+					//show moving pack
+					document.getElementById("sticky-pack").classList.add('stuck');
+					// decrease pack count
+					this.props.actions.changeCount("down");
+					//add glow effects for hover
+					document.getElementById("drop-glow").classList.add('show');
+					document.getElementById("altar-glow").classList.add('show');
+					//fade out bg song and add glow sound
+					fadeOut(this.props.sounds.betterHand, .5, false);
+					fadeIn(this.props.sounds.manaLoop, .5, true);
+				}
+			};
+		}
 	};
 
 	_dropEm = (event) => {
@@ -57,6 +62,8 @@ class PackOpening extends React.Component {
 		if(ontarget && sticky.classList.contains('stuck')) {
 			this._packOpening();
 		} else if (sticky.classList.contains('stuck')) {
+			// Restore pack count
+			this.props.actions.changeCount("up");
 			// Switch back to song
 			this.props.sounds.packDrop.play();
 			fadeOut(this.props.sounds.manaLoop, .5, false);
@@ -80,7 +87,6 @@ class PackOpening extends React.Component {
 		let shockwave = document.getElementById('shockwave');
 		let explosions = document.getElementById('explosions');
 		let packCards = document.getElementById('pack-cards');
-		let mainContainer = document.getElementById('hs-packs');
 		let overlay = document.getElementById('opening-overlay');
 		pack.classList.add('show');
 		setTimeout(() => {
@@ -130,6 +136,28 @@ class PackOpening extends React.Component {
 		}
 	};
 
+	_flipCard = (card) => {
+		card.classList.remove("facedown");
+		let remaining = document.getElementsByClassName("facedown").length;
+		if(remaining === 0){
+			document.getElementById("pack-done").classList.add('show');
+		}
+	};
+
+	_stageReset = () => {
+		let tray = document.getElementById('pack-tray');
+		let altar = document.getElementById('altar');
+		let packCards = document.getElementById('pack-cards');
+		let overlay = document.getElementById('opening-overlay');
+		let done = document.getElementById('pack-done');
+		tray.classList.remove('blurred');
+		altar.classList.remove('blurred');
+		packCards.classList.remove('show', 'idle');
+		overlay.classList.remove('show');
+		done.classList.remove('show');
+		this.setState({current: this.state.current + 1});
+	};
+
 	/**
 		*  Renders the component
 		*
@@ -153,11 +181,19 @@ class PackOpening extends React.Component {
 				<div className="opening-container">
 					<div id="opening-content" className={contentClasses}>
 						<div id="pack-tray" className="pack-tray">
-							<div id="pack-stack" className="packs-available">
-								<div className="pack-counter">
-									<p>11</p>
+							{
+								(this.props.count > 0) ? 
+									<div id="pack-stack" className="packs-available">
+									{
+										(this.props.count > 1) ? 
+										<div className="pack-counter">
+											<p>{this.props.count}</p>
+										</div>
+										: null
+									}
 								</div>
-							</div>
+								: null
+							}
 						</div>
 						<div id="altar" className="altar">
 							<div id="altar-glow" className="altar-glow"></div>
@@ -172,13 +208,31 @@ class PackOpening extends React.Component {
 							</div>
 						</div>
 						<Debris />
-						<div id="pack-cards" className="pack-cards">
-							<Card facedown={true} art="nick.jpg" title="Blizzard" mana={8} health={10} attack={10}  rarity="legendary" type="minion" category="warrior" tag="Cohort" description="A guy I used to work with and will work with AGAIN!" />
-							<Card facedown={true} art="thinking.jpg" title="Spell Name" mana={4} rarity="rare" type="spell" category="mage" description="A Spell that can be used to do a thing!" />
-							<Card facedown={true} art="assistant.jpg" title="Assistant" mana={4} health={2} attack={5} rarity="common" type="minion" category="priest" description="Assisting Nurses" />
-							<Card facedown={true} art="assembly.jpg" title="Assembly" mana={1} health={3} attack={3} rarity="common" type="minion" category="rogue" description="Assembling furniture" />
-							<Card facedown={true} art="georgia.jpg" title="Georgia" mana={4} health={4} attack={2} rarity="epic" type="minion" category="shaman" description="The place of my birth" />
-						</div>
+						{
+							(this.state.current < this.props.packs.length ) ? 
+							<div id="pack-cards" className="pack-cards">
+								{
+									Object.keys(this.props.packs[this.state.current]).map((current, key) => {
+										let currentCard = this.props.packs[this.state.current][current];
+										return <Card key={key}
+											facedown={true} 
+											callback={this._flipCard} 
+											art={current+".jpg"} 
+											title={currentCard.title} 
+											mana={currentCard.mana} 
+											health={currentCard.health} 
+											attack={currentCard.attack} 
+											rarity={currentCard.rarity} 
+											type={currentCard.type} 
+											category={currentCard.category} 
+											tag={currentCard.tag} 
+											description={currentCard.description} />
+									})
+								}
+								<div id="pack-done" onClick={this._stageReset} className="pack-done">Done</div>
+							</div>
+							: null
+						}
 						<div id="explosions" className="explosions">
 							<div className="explosion1"></div>
 							<div className="explosion2"></div>
@@ -205,10 +259,19 @@ function mapStateToProps(state) {
 	let data = state.hsReducer;
   return {
     stage: data.stage,
-    transition: data.transition
+    transition: data.transition,
+    packs: data.packs,
+    count: data.packCount
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
   };
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(PackOpening);

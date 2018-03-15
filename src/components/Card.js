@@ -18,6 +18,11 @@ class Card extends React.Component {
 		super(props);
 	}
 
+	_handleClick = (e) => {
+		let card = e.target.parentNode;
+		this.props.callback(card);
+	}
+
 	/**
 		*  Renders the component
 		*
@@ -34,7 +39,7 @@ class Card extends React.Component {
 			[this.props.category]: (this.props.category) ? true : false
 		});
 		return(
-			<div className={cardclasses}>
+			<div className={cardclasses} onClick={this._handleClick}>
 				<div className="turn-glow"></div>
 				<div className="hover-glow"></div>
 				<div className="cardback"></div>

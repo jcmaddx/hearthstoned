@@ -69,7 +69,11 @@ class Tray extends React.Component {
 			<div id="tray" className="tray">
 				<div onClick={this._moveToPacks} onMouseEnter={this._mouseIn} className="tray-packs">
 					<h4>Open<br/>Packs</h4>
-					<div className="pack-count">11</div>
+					{
+						(this.props.count > 0) ? 
+						<div className="pack-count">{this.props.count}</div>
+						: null
+					}
 				</div>
 				<div onClick={this._moveToCollection} onMouseEnter={this._mouseIn} className="tray-collection">
 					<h4>My Collection</h4>
@@ -93,7 +97,8 @@ function mapStateToProps(state) {
 	let data = state.hsReducer;
   return {
     stage: data.stage,
-    transition: data.transition
+    transition: data.transition,
+    count: data.packCount
   };
 }
 

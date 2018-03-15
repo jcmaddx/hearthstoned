@@ -202,6 +202,7 @@ function mapStateToProps(state) {
     transition: data.transition,
     sounds: data.sounds,
     packs: data.packs,
+    count: data.packCount,
     cards: data.cards
   };
 }

@@ -1,4 +1,4 @@
-import {SET_STAGE, SET_TRANSITION, INIT_PACKS, OWN_CARD} from '../constants/actionTypes';
+import {SET_STAGE, SET_TRANSITION, INIT_PACKS, OWN_CARD, CHANGE_COUNT} from '../constants/actionTypes';
 import objectAssign from 'object-assign';
 import initialState from './initialState';
 
@@ -16,6 +16,16 @@ export default function hsReducer(state = initialState, action) {
 
     case INIT_PACKS:
     	newState.packs = action.packs;
+    	return newState;
+
+    case CHANGE_COUNT:
+    	if(action.direction === "up") {
+    		newState.packCount = newState.packCount + 1;
+    	} else {
+    		if(newState.packCount > 0) {
+	    		newState.packCount = newState.packCount - 1;
+	    	}
+    	}
     	return newState;
 
      case OWN_CARD:

@@ -29,6 +29,15 @@ export function gainCard(card){
 	}
 }
 
+export function changeCount(updown){
+	return function (dispatch) {
+		return dispatch({
+    	type: types.CHANGE_COUNT,
+    	direction: updown
+    });
+	}
+}
+
 export function initPacks() {
 	return function (dispatch) {
 		let packs = [];

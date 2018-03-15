@@ -73,7 +73,7 @@
 	},
 	"blizzard": {
 		"title": "Blizzard",
-		"description": "Blizzard Entertainment. Costs 1 less per Job card in your collection.",
+		"description": "Costs 1 less per Job card in your collection.",
 		"tag": "Job",
 		"rarity": "legendary",
 		"golden": true,
@@ -400,7 +400,7 @@
 		"title": "Nick Hamer",
 		"description": "Former co-worker and future co-worker",
 		"tag": "Cohort",
-		"rarity": "Legendary",
+		"rarity": "legendary",
 		"type": "minion",
 		"category": "warrior",
 		"mana": "8",
@@ -617,11 +617,11 @@
 		"description": "That thing that everyone does.",
 		"tag": "Skill",
 		"rarity": "common",
-		"type": "minion",
+		"type": "spell",
 		"category": "general",
-		"mana": "0",
-		"attack": "1",
-		"health": "1",
+		"mana": "1",
+		"attack": null,
+		"health": null,
 		"owned": false
 	},
 	"wellborn": {
