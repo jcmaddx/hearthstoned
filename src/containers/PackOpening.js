@@ -10,6 +10,7 @@ import {fadeIn, fadeOut} from '../utils/helpers';
 
 import Debris from '../components/Debris';
 import Card from '../components/Card';
+import Button from '../components/Button';
 
 import '../styles/opening.scss';
 
@@ -138,6 +139,11 @@ class PackOpening extends React.Component {
 
 	_flipCard = (card) => {
 		card.classList.remove("facedown");
+		if(card.classList.contains('golden')){
+			setTimeout(() => {
+				card.querySelector('.cardart img').classList.add('animate');
+			}, 400);	
+		}
 		let remaining = document.getElementsByClassName("facedown").length;
 		if(remaining === 0){
 			document.getElementById("pack-done").classList.add('show');
@@ -156,6 +162,13 @@ class PackOpening extends React.Component {
 		overlay.classList.remove('show');
 		done.classList.remove('show');
 		this.setState({current: this.state.current + 1});
+		[].map.call(document.querySelectorAll('.card'), function(el) {
+        el.classList.add('facedown');
+    });
+	};
+
+	_goBack = () => {
+		this.props.actions.setStage(1);
 	};
 
 	/**
@@ -196,8 +209,12 @@ class PackOpening extends React.Component {
 							}
 						</div>
 						<div id="altar" className="altar">
+							<h2>Open Packs</h2>
 							<div id="altar-glow" className="altar-glow"></div>
 							<div id="shockwave" className="shockwave"></div>
+							<div className="back-button">
+								<Button hover={this.props.sounds.hubHover} cb={this._goBack} text="Back" />
+							</div>
 						</div>
 						<div id="drop-zone" className="drop-zone">
 							<div id="main-pack" className="drop-pack"></div>
@@ -222,7 +239,8 @@ class PackOpening extends React.Component {
 											mana={currentCard.mana} 
 											health={currentCard.health} 
 											attack={currentCard.attack} 
-											rarity={currentCard.rarity} 
+											rarity={currentCard.rarity}
+											golden={currentCard.hasOwnProperty("golden")} 
 											type={currentCard.type} 
 											category={currentCard.category} 
 											tag={currentCard.tag} 

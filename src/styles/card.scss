@@ -142,8 +142,8 @@
 			}
 		}
 		.cardart {
-			width: 15vh;
-			height: 22vh;
+			width: 13vh;
+			height: 20vh;
     	top: -8%;
     	mask-image: url(/images/cards/minion-mask.png);
 			mask-repeat: no-repeat;
@@ -235,6 +235,43 @@
 	  		}
 	  	}
 	  }
+	  &.golden {
+			.cardfront {
+				backface-visibility: hidden;
+				.face {
+					background-image: url('/images/cards/minion-golden.png');
+				}
+			}
+			.rarity {
+				height: 3.5vh;
+				background-image: url('/images/cards/golden-minion-rarity-legendary.png');
+			}
+			.legendary-dragon {
+				background-image: url('/images/cards/golden-legendary-dragon.png');
+			}
+			.title {
+				background-image: url('/images/cards/golden-minion-title.png');
+			}
+			.description {
+				color: white;
+			}
+			.tag {
+				display: none;
+			}
+			.cardfront .cardart {
+				width: 12vh;
+		    height: 19vh;
+		    top: -10%;
+		    left: 52.5%;
+		    img {
+		    	height: 100%;
+		    	width: 3000%;
+		    	&.animate {
+		    		animation: goldenanimation 2.5s steps(30) infinite;
+		    	}
+		    }
+			}
+		}
 	}
 	&.spell {
 		.cardfront {
@@ -276,4 +313,8 @@
 	  	}
 	  }
 	}
+}
+
+@keyframes goldenanimation {
+	100% { transform: translatex(-100%); }
 }

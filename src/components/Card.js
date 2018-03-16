@@ -46,13 +46,8 @@ class Card extends React.Component {
 				<div className="cardfront">
 					<div className="face"></div>
 					{
-						(this.props.rarity === 'legendary' && !this.props.golden) ? 
+						(this.props.rarity === 'legendary') ? 
 							<div className="legendary-dragon"></div>
-						: null
-					}
-					{
-						(this.props.rarity === 'legendary' && this.props.golden) ? 
-							<div className="golden-legendary-dragon"></div>
 						: null
 					}
 					<div className="cardart">
