@@ -53,7 +53,7 @@
 				position: fixed;
 				top: 0;
 				left: calc((95vh * 0.2812) * -1);
-				background: rgba(0,0,0,0.5);
+				background: rgba(0,0,0,0.7);
 				z-index: 3;
 				display: none;
 				&.show {
@@ -302,7 +302,7 @@
 		    top: 0;
 		    left: 0;
 		    position: absolute;
-		    z-index: 11;
+		    z-index: 9;
 		    display: none;
 		    .pack-done {
 		    	background: url('/images/opening/floaty-button.png') no-repeat center center;
@@ -310,7 +310,7 @@
 		    	height: 9vh;
 		    	width: calc(9vh * 2.01);
 		    	position: absolute;
-		    	top: 47%;
+		    	top: 46%;
 		    	left: 53.5%;
 		    	display: none;
 		    	color: white;
@@ -323,29 +323,55 @@
 		    	}
 		    }
 		    .card {
-		    	top: 38%;
-			    left: 53%;
+		    	top: 33%;
+    			left: 46.5%;
 			    perspective: 1000;
 			    &:nth-of-type(1){
 			    	z-index: 5;
-			    	transform: translateX(10%) translateY(-10%) scale(1.5) rotateZ(-15deg) skewY(15deg) skewX(3deg);
+			    	transform: translateX(10%) translateY(-10%) scale(0.75) rotateZ(-15deg) skewY(15deg) skewX(3deg);
 			    }
 			    &:nth-of-type(2){
 			    	z-index: 4;
-			    	transform: translateX(8%) translateY(-8%) scale(1.5) rotateZ(-15deg) skewY(15deg) skewX(3deg);
+			    	transform: translateX(8%) translateY(-8%) scale(0.75) rotateZ(-15deg) skewY(15deg) skewX(3deg);
 			    }
 			    &:nth-of-type(3){
 			    	z-index: 3;
-			    	transform: translateX(6%) translateY(-6%) scale(1.5) rotateZ(-15deg) skewY(15deg) skewX(3deg);
+			    	transform: translateX(6%) translateY(-6%) scale(0.75) rotateZ(-15deg) skewY(15deg) skewX(3deg);
 			    }
 			    &:nth-of-type(4){
 			    	z-index: 2;
-			    	transform: translateX(4%) translateY(-4%) scale(1.5) rotateZ(-15deg) skewY(15deg) skewX(3deg);
+			    	transform: translateX(4%) translateY(-4%) scale(0.75) rotateZ(-15deg) skewY(15deg) skewX(3deg);
 			    }
 			    &:nth-of-type(5){
 			    	z-index: 1;
-			    	transform: translateX(2%) translateY(-2%) scale(1.5) rotateZ(-15deg) skewY(15deg) skewX(3deg);
+			    	transform: translateX(2%) translateY(-2%) scale(0.75) rotateZ(-15deg) skewY(15deg) skewX(3deg);
 			    }
+			    &:not(.flipped){
+						&:hover {
+							.hover-glow {
+								opacity: 1;
+							}		
+						}
+					}
+					&.flipped {
+						.hover-glow {
+							box-shadow: none;
+							opacity: 1;
+							&:before {
+								transition: opacity .5s;
+								animation: hoverglowflip 0.8s backwards;
+								animation-timing-function: linear;
+							}
+						}
+						&:hover {
+							.hover-glow {
+								&:before {
+									transition: opacity .5s;
+									opacity: 1;
+								}
+							}
+						}
+					}
 		    }
 		    &.show {
 		    	display: block;
@@ -370,30 +396,48 @@
 		    	}
 		    }
 		    &.idle {
+		    	z-index: 11;
 		    	.card {
+		    		transition: .3s all;
+		    		-webkit-font-smoothing: subpixel-antialiased;
 		    		&:nth-of-type(1){
-				    	top: 15%;
-							transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
+				    	top: 0;
+							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) skewY(0deg) skewX(0deg);
+							&.flipped, &:hover {
+								transform: translateZ(0) translateX(0) translateY(-5%) scale(0.75) rotateZ(0deg) skewY(0deg) skewX(0deg);
+							}
 				    }
 				    &:nth-of-type(2){
-				    	top: 25%;
-							left: 35%;
-							transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
+				    	top: 10%;
+							left: 25%;
+							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
+				    	&.flipped, &:hover {
+								transform: translateZ(0) translateX(-5%) translateY(-5%) scale(0.75) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
+							}
 				    }
 				    &:nth-of-type(3){
-				    	top: 25%;
-							left: 70%;
-							transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
+				    	top: 10%;
+							left: 68%;
+							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
+				    	&.flipped, &:hover {
+								transform: translateZ(0) translateX(5%) translateY(-5%) scale(0.75) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
+							}
 				    }
 				    &:nth-of-type(4){
-				    	top: 60%;
-							left: 42.5%;
-							transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
+				    	top: 52%;
+							left: 34%;
+							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) skewY(0deg) skewX(0deg);
+				    	&.flipped, &:hover {
+								transform: translateZ(0) translateX(0) translateY(0) scale(0.75) rotateZ(0deg) skewY(0deg) skewX(0deg);
+							}
 				    }
 				    &:nth-of-type(5){
-				    	top: 60%;
-							left: 62.5%;
-							transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
+				    	top: 52%;
+							left: 59%;
+							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) skewY(0deg) skewX(0deg);
+				    	&.flipped, &:hover {
+								transform: translateZ(0) translateX(0) translateY(0) scale(0.75) rotateZ(0deg) skewY(0deg) skewX(0deg);
+							}
 				    }
 		    	}
 		    }
@@ -404,7 +448,7 @@
 				height: 100%;
 				top: 0;
 				left: 0;
-				z-index: 6;
+				z-index: 9;
 				display: none;
 				.coins {
 					width: 100%;
@@ -757,227 +801,3 @@
 		animation: openin .5s linear forwards;
 	}
 }
-
-@keyframes growfade {
-	0%, 21% {opacity: 0; transform: scale(0.5)}
-	28% {opacity: 1; transform: scale(1)}
-	40%, 100% {opacity: 0; transform: scale(1.3)}
-}
-
-@keyframes packburst {
-	99.9% { background-position: left bottom; opacity: 1 }
-	100% { background-position: left bottom; opacity: 0 }
-}
-
-@keyframes coinflip {
-	100% { background-position: left bottom; }
-}
-
-@keyframes pulse {
-	0%, 100% {opacity: 0.7;}
-  50% {opacity: 1;}
-}
-
-@keyframes shockwave {
-	70% {opacity: 1; background-size: auto 100%;}
-	100% {opacity: 0;}
-}
-
-@keyframes flynw {
-	0%, 18.9% {top: 50%; left: 61.5%; opcity: 0; transform: scale(1)}
-	19% {top: 50%; left: 61.5%; opacity: 1; transform: scale(1)}
-  53%, 100% {top: -150%; left: -110%; tranfrorm: scale(6);}
-}
-
-@keyframes flysw {
-	0%, 18.9% {top: 50%; left: 61.5%; opacity: 0; transform: scale(1)}
-	19% {top: 50%; left: 61.5%; opacity: 1; transform: scale(1)}
-  55%, 100% {top: 150%; left: -110%; tranfrorm: scale(9);}
-}
-
-@keyframes flyne {
-	0%, 18.9% {top: 50%; left: 61.5%; opacity: 0; transform: scale(1)}
-	19% {top: 50%; left: 61.5%; opacity: 1; transform: scale(1)}
-  60%, 100% {top: -150%; left: 110%; tranfrorm: scale(7);}
-}
-
-@keyframes flyse {
-	0%, 18.9% {top: 50%; left: 61.5%; transform: scale(1); opacity: 0;}
-	19% {top: 50%; left: 61.5%; transform: scale(1); opacity: 1;}
-  45%, 50% {top: 150%; left: 150%; transform: scale(9); opacity: 1;}
-  55%, 100% {top: 150%; left: 150%; transform: scale(9); opacity: 0;}
-}
-
-@keyframes debrisspin {
-	0% {transform: translateX(-50%) translateY(-50%) rotate(0deg);}
-  100% {transform: translateX(-50%) translateY(-50%) rotate(360deg);}
-}
-
-@keyframes openin {
-  0% {opacity: 0; transform: scale(0.7);}
-  100% {opacity: 1; transform: scale(1);}
-}
-
-// coin animations
-@keyframes coinfly1 {
-	0%, 19% {top:50%; left: 50%;}
-	70%, 100% {top: -50%; left: 10%;}
-}
-@keyframes coinfly2 {
-	0%, 19% {top:50%; left: 50%;}
-	50%, 100% {top: 30%; left: -200%;}
-}
-@keyframes coinfly3 {
-	0%, 19% {top:50%; left: 50%;}
-	55%, 100% {top: 50%; left: 200%;}
-}
-@keyframes coinfly4 {
-	0%, 19% {top:50%; left: 50%;}
-	65%, 100% {top: -50%; left: 50%;}
-}
-@keyframes coinfly5 {
-	0%, 19% {top:50%; left: 50%;}
-	60%, 100% {top: 200%; left: -200%;}
-}
-@keyframes coinfly6 {
-	0%, 19% {top:50%; left: 50%;}
-	55%, 100% {top: 80%; left: 200%;}
-}
-@keyframes coinfly7 {
-	0%, 19% {top:50%; left: 50%;}
-	70%, 100% {top: 200%; left: 90%;}
-}
-@keyframes coinfly8 {
-	0%, 19% {top:50%; left: 50%;}
-	50%, 100% {top: -10%; left: 200%;}
-}
-@keyframes coinfly9 {
-	0%, 19% {top:50%; left: 50%;}
-	60%, 100% {top: 30%; left: 200%;}
-}
-@keyframes coinfly10 {
-	0%, 19% {top:50%; left: 50%;}
-	65%, 100% {top: 200%; left: 40%;}
-}
-
-// cards flying from pack
-@keyframes cardfly1 {
-	30% {
-		top: 9%;
-    transform: translateX(0) translateY(0) scale(1.5) rotateZ(6deg);
-	}
-	100% {
-		top: 15%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardfly2 {
-	40% {
-		top: 8%;
-    left: 21%;
-    transform: translateX(0) translateY(0) scale(1.8) rotateZ(-16deg) rotateY(33deg) rotateX(-24deg);
-	}
-	100% {
-		top: 25%;
-		left: 35%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardfly3 {
-	30% {
-		top: 14%;
-    left: 81%;
-    transform: translateX(0) translateY(0) scale(1.5) rotateZ(2deg) skewY(0deg) skewX(13deg) rotateY(37deg);
-	}
-	100% {
-		top: 25%;
-		left: 70%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardfly4 {
-	40% {
-		top: 62%;
-    left: 29%;
-    transform: translateX(0) translateY(0) scale(1.5) rotateZ(-18deg) skewY(5deg) skewX(2deg) rotateY(-47deg);
-	}
-	100% {
-		top: 60%;
-		left: 42.5%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardfly5 {
-	30% {
-		top: 63%;
-    left: 75%;
-    transform: translateX(0) translateY(0) scale(1.6) rotateZ(6deg) skewY(0deg) skewX(-13deg) rotateY(38deg);
-	}
-	100% {
-		top: 60%;
-		left: 62.5%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-
-
-// cards idle
-@keyframes cardidle1 {
-	0%, 100% {
-		top: 15%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 15%;
-		transform: translateX(-1%) translateY(1%) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardidle2 {
-	0%, 100% {
-		top: 25%;
-		left: 35%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 25%;
-		left: 35%;
-		transform: translateX(-1%) translateY(1%) scale(1) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardidle3 {
-	0%, 100% {
-		top: 25%;
-		left: 70%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 25%;
-		left: 70%;
-		transform: translateX(-1%) translateY(1%) scale(1) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardidle4 {
-	0%, 100% {
-		top: 60%;
-		left: 42.5%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 60%;
-		left: 42.5%;
-		transform: translateX(-1%) translateY(1%) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardidle5 {
-	0%, 100% {
-		top: 60%;
-		left: 62.5%;
-		transform: translateX(0) translateY(0) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 60%;
-		left: 62.5%;
-		transform: translateX(-1%) translateY(1%) scale(1) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-

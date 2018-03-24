@@ -68,9 +68,3 @@
 		}
 	}
 }
-
-@keyframes buttonbobble {
-	0% {transform: rotateX(-10deg) translateZ(2px) scale(0.98);}
-	40% {transform: rotateX(5deg) translateZ(2px) scale(0.98);}
-	80% {transform: rotateX(0deg) translateZ(0)  scale(1);}
-}

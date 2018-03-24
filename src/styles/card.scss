@@ -1,7 +1,7 @@
 @import "./mixins.scss";
 .card {
-	width: calc(27vh * .73);
-	height: 27vh;
+	width: calc(50vh * .73);
+	height: 50vh;
 	position: absolute;
 	.cardback, .cardfront {
 		backface-visibility: hidden;
@@ -38,8 +38,8 @@
 		}
 	}
 	.mana {
-		height: 5vh;
-		width: 5vh;
+		height: 9vh;
+		width: 9vh;
 		position: absolute; 
 		top: -4%;
 		left: -2%;
@@ -50,8 +50,8 @@
 		@include stroked;
 		display: block;
 		text-align: center;
-		line-height: 4.5vh;
-		font-size: 4.5vh;
+		line-height: 7.5vh;
+		font-size: 7.5vh;
 	}
 	.title {
 		position: absolute;
@@ -71,8 +71,8 @@
 		}
 	}
 	.rarity {
-		height: 3vh;
-		width: calc(3vh * .98);
+		height: 5vh;
+		width: calc(5vh * .98);
 		position: absolute;
 		left: 50%;
 		transform: translateX(-50%);
@@ -89,7 +89,8 @@
 		left: 50%;
     transform: translateX(-50%);
     top: 5%;
-    height: 12vh;
+    height: 23vh;
+    overflow: hidden;
     img {
     	width: 100%;
     	height: auto;
@@ -98,12 +99,12 @@
 	.description {
 		position: absolute;
     bottom: 2vh;
-    height: 5vh;
-    width: calc(7vh * 1.8);
-    left: 2.5vh;
-    padding: 1vh;
-    font-size: 1.3vh;
-    line-height: 1.6vh;
+    height: 11vh;
+    width: calc(12vh * 2.2);
+    left: 3vh;
+    padding: 2vh;
+    font-size: 1.8vh;
+    line-height: 2.5vh;
     font-family: "Open Sans";
     text-align: center;
     z-index: 6;
@@ -116,21 +117,32 @@
     top: 1%;
     left: 5.5%;
     border-radius: 10px;
-    box-shadow: 0 0 20px 8px rgba(255,255,255,0.6);
+    transition: all .4s;
+    &:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			content: "";
+			width: 100%;
+			height: 100%;
+			box-shadow: 0 -5px 15px 10px white;
+			transform: rotateY(0deg);
+			opacity: 0;
+		}
 	}
 	&.rare {
 		.hover-glow {
-			box-shadow: 0 0 20px 8px rgba(7,88,213,0.6);
+			box-shadow: 0 0 50px 30px rgba(7,88,213,0.3);
 		}
 	}
 	&.epic {
 		.hover-glow{
-			box-shadow: 0 0 20px 8px rgba(158,31,227,0.6);
+			box-shadow: 0 0 50px 30px rgba(158,31,227,0.2);
 		}
 	}
 	&.legendary {
 		.hover-glow {
-			box-shadow: 0 0 20px 8px rgba(221,147,34,0.6);
+			box-shadow: 0 0 50px 30px rgba(221,147,34,0.4);
 		}
 	}
 	&.minion {
@@ -142,8 +154,8 @@
 			}
 		}
 		.cardart {
-			width: 13vh;
-			height: 20vh;
+			width: 24vh;
+    	height: 33vh;
     	top: -8%;
     	mask-image: url(/images/cards/minion-mask.png);
 			mask-repeat: no-repeat;
@@ -153,12 +165,12 @@
 		.title {
 			background: url('/images/cards/minion-title.png') no-repeat center center;
 			background-size: auto 100%;
-			height: 4.3vh;
-			width: calc(4.3vh * 4.25);
-			top: 44%;
+			height: 7.8vh;
+	    width: calc(7.8vh * 4.25);
+	    top: 45%;
 		}
 		.rarity {
-			top: 52%;
+			top: 54%;
 		}
 		.mana {
 			top: -4%;
@@ -168,8 +180,8 @@
 			bottom: 3.5vh;
 		}
 		.attack {
-			height: 6vh;
-	    width: 6vh;
+			height: 10vh;
+	    width: 10.5vh;
 	    position: absolute;
 	    bottom: -3%;
 	    left: -6%;
@@ -179,13 +191,13 @@
 			@include stroked;
 			display: block;
 			text-align: center;
-			line-height: 6vh;
-			font-size: 4.5vh;
-			z-index:6;
+			line-height: 10vh;
+	    font-size: 6.5vh;
+	    z-index: 6;
 		}
 		.health {
-			height: 5.5vh;
-	    width: 5vh;
+			height: 9vh;
+    	width: 7vh;
 	    position: absolute;
 	    bottom: -1%;
 	    right: -5%;
@@ -195,12 +207,12 @@
 			@include stroked;
 			display: block;
 			text-align: center;
-			line-height: 6vh;
-			font-size: 4.5vh;
+			line-height: 10vh;
+			font-size: 6.5vh;
 			z-index:6;
 		}
 		.legendary-dragon {
-			height: 11.5vh;
+			height: 21vh;
 	    width: 100%;
 	    position: absolute;
 	    top: -13%;
@@ -214,10 +226,10 @@
 			color: white;
 			@include stroked;
 			text-align: center;
-			bottom: .8vh;
-			width: 100%;
-			font-size: 1.5vh;
-			z-index: 6;
+	    bottom: 1.8vh;
+	    width: 100%;
+	    font-size: 2.5vh;
+	    z-index: 6;
 		}
 		@each $class in $class-list {
 	    &.#{$class} {
@@ -243,7 +255,7 @@
 				}
 			}
 			.rarity {
-				height: 3.5vh;
+				height: 5vh;
 				background-image: url('/images/cards/golden-minion-rarity-legendary.png');
 			}
 			.legendary-dragon {
@@ -259,8 +271,8 @@
 				display: none;
 			}
 			.cardfront .cardart {
-				width: 12vh;
-		    height: 19vh;
+				width: 22vh;
+    		height: 35vh;
 		    top: -10%;
 		    left: 52.5%;
 		    img {
@@ -288,8 +300,8 @@
 		.title {
 			background: url('/images/cards/spell-title.png') no-repeat center center;
 			background-size: auto 100%;
-			height: 5.7vh;
-			width: calc(5.7vh * 3.21);
+			height: 10.7vh;
+			width: calc(10.7vh * 3.21);
 			left: 49.5%;
 			top: 44%;
 		}
@@ -313,8 +325,4 @@
 	  	}
 	  }
 	}
-}
-
-@keyframes goldenanimation {
-	100% { transform: translatex(-100%); }
 }

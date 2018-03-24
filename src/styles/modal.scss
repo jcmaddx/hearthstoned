@@ -9,7 +9,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: rgba(0,0,0,0.3);
+		background: rgba(0,0,0,0.7);
 		z-index: 10;
 	}
 	.modal-content {
@@ -39,11 +39,4 @@
 			}
 		}
 	}
-}
-
-@keyframes bounceIn {
-  0% {transform: scale(0.7) translateX(-50%) translateY(-50%);}
-  50% {transform: scale(1.1) translateX(-50%) translateY(-50%);}
-  75% {transform: scale(0.9) translateX(-50%) translateY(-50%);}
-  100% { transform: scale(1) translateX(-50%) translateY(-50%);}
 }

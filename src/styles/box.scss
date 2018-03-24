@@ -348,33 +348,3 @@
 		}
 	}
 } 
-
-@keyframes delayHide {
-	0%, 80% {opacity: 1;}
-	100% {opacity: 0;}
-}
-
-@keyframes bobble {
-	0% {transform: rotateX(-10deg) translateZ(2px) scale(0.98);}
-	40% {transform: rotateX(5deg) translateZ(2px) scale(0.98);}
-	80% {transform: rotateX(0deg) translateZ(0)  scale(1);}
-}
-
-@keyframes trayBounce {
-  0% {bottom: calc(75vh * .194); -webkit-animation-timing-function: ease-in;}
-  66% {bottom: 0; -webkit-animation-timing-function: ease-out;}
-  82% {bottom: 15px; -webkit-animation-timing-function: ease-in;}
-  92% {bottom: 0; -webkit-animation-timing-function: ease-out;}
-  97% {bottom: 5px; -webkit-animation-timing-function: ease-in;}
-  100% { bottom: 0;}
-}
-
-@keyframes spinnin {
-	0% { transform: translateY(-50%) translateX(-50%) rotate(0deg) }
-	100% { transform: translateY(-50%) translateX(-50%) rotate(360deg) }
-}
-
-@keyframes boxin {
-	0% {transform: translateZ(20px) translateX(-74%) translateY(-180px) skew(10deg, -10deg) rotateZ(-10deg) rotateX(15deg)}
-	100% {transform: translateZ(0) translateX(-50%) translateY(0px) skew(0deg, 0deg) rotateZ(0deg) rotateX(0deg)}
-}

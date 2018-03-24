@@ -29,10 +29,3 @@
 		background: #181208;
 	}
 }
-
-@keyframes obounceIn {
-  0% {transform: scale(.6) translateX(-50%) translateY(-90%)}
-  50% {transform: scale(1.1) translateX(-50%) translateY(-90%)}
-  75% {transform: scale(0.9) translateX(-50%) translateY(-90%)}
-  100% { transform: scale(1) translateX(-50%) translateY(-90%)}
-}

@@ -18,25 +18,12 @@ class Modal extends React.Component {
 		super(props);
 	}
 
-	_handleBlur = (as) => {
-		let allFulls = document.querySelectorAll('.hs-full');
-		allFulls.forEach((i) => {
-			if(as === 'add'){
-				i.classList.add('blurred');
-			} else {
-				i.classList.remove('blurred');
-			}
-		})
-	};
-
 	_openModal = (id) => {
-		this._handleBlur('add');
 		this.refs[id].classList.add("open");
 		this.props.openSound.play();
 	};
 
 	_closeModal = (id) => {
-		this._handleBlur('remove');
 		this.refs[id].classList.remove("open");
 		this.props.closeSound.play();
 		if(this.props.closeCallback){

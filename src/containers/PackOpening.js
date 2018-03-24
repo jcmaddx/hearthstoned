@@ -100,8 +100,6 @@ class PackOpening extends React.Component {
 		setTimeout(() => {
 			packCards.classList.add('show', 'burst');
 			overlay.classList.add('show');
-			tray.classList.add('blurred');
-			altar.classList.add('blurred');
 		},1300);
 		setTimeout(() => {
 			this.setState({busy: false});
@@ -139,6 +137,7 @@ class PackOpening extends React.Component {
 
 	_flipCard = (card) => {
 		card.classList.remove("facedown");
+		card.classList.add("flipped");
 		if(card.classList.contains('golden')){
 			setTimeout(() => {
 				card.querySelector('.cardart img').classList.add('animate');
@@ -156,8 +155,6 @@ class PackOpening extends React.Component {
 		let packCards = document.getElementById('pack-cards');
 		let overlay = document.getElementById('opening-overlay');
 		let done = document.getElementById('pack-done');
-		tray.classList.remove('blurred');
-		altar.classList.remove('blurred');
 		packCards.classList.remove('show', 'idle');
 		overlay.classList.remove('show');
 		done.classList.remove('show');

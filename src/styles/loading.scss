@@ -33,19 +33,3 @@
 		animation: begone 2s forwards;
 	}
 }
-
-@keyframes begone {
-	0% { z-index: 50; opacity: 1; }
-	100% { z-index: -10; opacity: 0; }
-}
-
-@keyframes logo-fadein {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-@keyframes bg-glow {
-	0%   { opacity: 0; }
-	50%   { opacity: 1; }
-  100% { opacity: 0; }
-}
