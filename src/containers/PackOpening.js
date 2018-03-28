@@ -135,13 +135,23 @@ class PackOpening extends React.Component {
 		}
 	};
 
-	_flipCard = (card) => {
+	_flipCard = (card, rarity, golden) => {
 		card.classList.remove("facedown");
 		card.classList.add("flipped");
 		if(card.classList.contains('golden')){
 			setTimeout(() => {
 				card.querySelector('.cardart img').classList.add('animate');
 			}, 400);	
+		}
+		if(rarity !== "common"){
+			let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
+			let sound = "aura"+upperRarity;
+			if(golden){
+				this.props.sounds["golden"+upperRarity].play();
+			} else {
+				this.props.sounds[rarity].play();
+			}
+			this.props.sounds[sound].stop();
 		}
 		let remaining = document.getElementsByClassName("facedown").length;
 		if(remaining === 0){
@@ -161,8 +171,22 @@ class PackOpening extends React.Component {
 		this.setState({current: this.state.current + 1});
 		[].map.call(document.querySelectorAll('.card'), function(el) {
         el.classList.add('facedown');
+        el.classList.remove("flipped");
     });
 	};
+
+	_onHover = (card, rarity, out) => {
+		if(rarity === "common" || card.parentNode.classList.contains("cardfront")){
+			return false;
+		}
+		let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
+		let sound = "aura"+upperRarity;
+		if(!out){
+			fadeIn(this.props.sounds[sound], .5, true, 0.7);
+		} else {
+			fadeOut(this.props.sounds[sound], .5, true);
+		}
+	}
 
 	_goBack = () => {
 		this.props.actions.setStage(1);
@@ -230,7 +254,8 @@ class PackOpening extends React.Component {
 										let currentCard = this.props.packs[this.state.current][current];
 										return <Card key={key}
 											facedown={true} 
-											callback={this._flipCard} 
+											callback={this._flipCard}
+											onhover={this._onHover}
 											art={current+".jpg"} 
 											title={currentCard.title} 
 											mana={currentCard.mana} 

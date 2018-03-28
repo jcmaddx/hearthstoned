@@ -16,12 +16,13 @@ export function fadeOut(sound, time, stop) {
 	}
 }
 
-export function fadeIn(sound, time, start) {
+export function fadeIn(sound, time, start, volume) {
 	let seconds = time*1000;
+	let toVolume = (volume) ? volume : 1;
 	if(start){
 		sound.setVolume(0).play({loop: -1});
 	}
-	createjs.Tween.get(sound).to({volume:1}, seconds);
+	createjs.Tween.get(sound).to({volume:toVolume}, seconds);
 }
 
 export function setupSounds() {
@@ -39,7 +40,7 @@ export function setupSounds() {
 		exitBox: createjs.Sound.createInstance("exit-box"),
 		flipEpic: createjs.Sound.createInstance("flip-epic"),
 		flipLegendary: createjs.Sound.createInstance("flip-legendary"),
-		flipNormal: createjs.Sound.createInstance("flip-normal"),
+		flipCommon: createjs.Sound.createInstance("flip-common"),
 		flipRare: createjs.Sound.createInstance("flip-rare"),
 		goldenLegendary: createjs.Sound.createInstance("golden-legendary"),
 		hover: createjs.Sound.createInstance("hover"),

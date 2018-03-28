@@ -13,7 +13,7 @@
 		{"id":"exit-box", "src": "/sounds/exit-box.mp3"},
 		{"id":"flip-epic", "src": "/sounds/flip-epic.mp3"},
 		{"id":"flip-legendary", "src": "/sounds/flip-legendary.mp3"},
-		{"id":"flip-normal", "src": "/sounds/flip-normal.mp3"},
+		{"id":"flip-common", "src": "/sounds/flip-normal.mp3"},
 		{"id":"flip-rare", "src": "/sounds/flip-rare.mp3"},
 		{"id":"golden-legendary", "src": "/sounds/golden-legendary.mp3"},
 		{"id":"greeting0", "src": "/sounds/greeting0.mp3"},

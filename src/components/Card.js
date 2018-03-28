@@ -20,7 +20,14 @@ class Card extends React.Component {
 
 	_handleClick = (e) => {
 		let card = e.target.parentNode;
-		this.props.callback(card);
+		this.props.callback(card, this.props.rarity, this.props.golden);
+	}
+
+	_handleMouse = (e) => {
+		let out = (e.type === "mouseleave") ? true : false;
+		if(this.props.hasOwnProperty('onhover')){
+			this.props.onhover(e.target, this.props.rarity, out);
+		}
 	}
 
 	/**
@@ -39,7 +46,7 @@ class Card extends React.Component {
 			[this.props.category]: (this.props.category) ? true : false
 		});
 		return(
-			<div className={cardclasses} onClick={this._handleClick}>
+			<div onMouseEnter={this._handleMouse} onMouseLeave={this._handleMouse} className={cardclasses} onClick={this._handleClick}>
 				<div className="turn-glow"></div>
 				<div className="hover-glow"></div>
 				<div className="cardback"></div>
