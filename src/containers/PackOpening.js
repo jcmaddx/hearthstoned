@@ -136,26 +136,30 @@ class PackOpening extends React.Component {
 	};
 
 	_flipCard = (card, rarity, golden) => {
-		card.classList.remove("facedown");
-		card.classList.add("flipped");
-		if(card.classList.contains('golden')){
-			setTimeout(() => {
-				card.querySelector('.cardart img').classList.add('animate');
-			}, 400);	
-		}
-		if(rarity !== "common"){
+		if(!card.classList.contains('cardfront')){
+			card.classList.remove("facedown");
+			card.classList.add("flipped");
 			let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
-			let sound = "aura"+upperRarity;
-			if(golden){
-				this.props.sounds["golden"+upperRarity].play();
-			} else {
-				this.props.sounds[rarity].play();
+			let auraSound = "aura"+upperRarity;
+			let flipSound = "flip"+upperRarity;
+			if(card.classList.contains('golden')){
+				setTimeout(() => {
+					card.querySelector('.cardart img').classList.add('animate');
+				}, 400);	
 			}
-			this.props.sounds[sound].stop();
-		}
-		let remaining = document.getElementsByClassName("facedown").length;
-		if(remaining === 0){
-			document.getElementById("pack-done").classList.add('show');
+			this.props.sounds[flipSound].play();
+			if(rarity !== "common"){
+				if(golden){
+					this.props.sounds["golden"+upperRarity].play();
+				} else {
+					this.props.sounds[rarity].play();
+				}
+				this.props.sounds[auraSound].stop();
+			}
+			let remaining = document.getElementsByClassName("facedown").length;
+			if(remaining === 0){
+				document.getElementById("pack-done").classList.add('show');
+			}
 		}
 	};
 
