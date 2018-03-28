@@ -356,20 +356,7 @@
 					&.flipped {
 						.hover-glow {
 							box-shadow: none;
-							opacity: 1;
-							&:before {
-								transition: opacity .5s;
-								animation: hoverglowflip 0.8s backwards;
-								animation-timing-function: linear;
-							}
-						}
-						&:hover {
-							.hover-glow {
-								&:before {
-									transition: opacity .5s;
-									opacity: 1;
-								}
-							}
+							opacity: 0;
 						}
 					}
 		    }

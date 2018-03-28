@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/hsActions';
-import {fadeIn, fadeOut} from '../utils/helpers';
+import {fadeIn, fadeOut, asyncPlay} from '../utils/helpers';
 
 import Debris from '../components/Debris';
 import Card from '../components/Card';
@@ -147,14 +147,14 @@ class PackOpening extends React.Component {
 					card.querySelector('.cardart img').classList.add('animate');
 				}, 400);	
 			}
-			this.props.sounds[flipSound].play();
+			asyncPlay(this.props.sounds[flipSound], 0.3);
 			if(rarity !== "common"){
 				if(golden){
-					this.props.sounds["golden"+upperRarity].play();
+					asyncPlay(this.props.sounds["golden"+upperRarity], 1);
 				} else {
-					this.props.sounds[rarity].play();
+					asyncPlay(this.props.sounds[rarity], 1);
 				}
-				this.props.sounds[auraSound].stop();
+				fadeOut(this.props.sounds[auraSound], .1, true);
 			}
 			let remaining = document.getElementsByClassName("facedown").length;
 			if(remaining === 0){
@@ -186,9 +186,9 @@ class PackOpening extends React.Component {
 		let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
 		let sound = "aura"+upperRarity;
 		if(!out){
-			fadeIn(this.props.sounds[sound], .5, true, 0.7);
+			fadeIn(this.props.sounds[sound], .1, true, 0.7);
 		} else {
-			fadeOut(this.props.sounds[sound], .5, true);
+			fadeOut(this.props.sounds[sound], .1, true);
 		}
 	}
 

@@ -6,6 +6,11 @@ export function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+export function asyncPlay(sound, volume) {
+	let props = new createjs.PlayPropsConfig().set({interrupt: createjs.Sound.INTERRUPT_NONE, volume: volume})
+	sound.play(props);
+}
+
 export function fadeOut(sound, time, stop) {
 	let seconds = time*1000;
 	createjs.Tween.get(sound).to({volume:0.0}, seconds);
@@ -20,7 +25,7 @@ export function fadeIn(sound, time, start, volume) {
 	let seconds = time*1000;
 	let toVolume = (volume) ? volume : 1;
 	if(start){
-		sound.setVolume(0).play({loop: -1});
+		sound.setVolume(0).play({interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1});
 	}
 	createjs.Tween.get(sound).to({volume:toVolume}, seconds);
 }
