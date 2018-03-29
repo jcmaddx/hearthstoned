@@ -48,11 +48,11 @@
 				transform: rotate(180deg);
 			}
 			#opening-overlay {
-				width: 100vw;
-				height: 100vh;
+				width: 100%;
+				height: 100%;
 				position: fixed;
 				top: 0;
-				left: calc((95vh * 0.2812) * -1);
+		    left: 0;
 				background: rgba(0,0,0,0.7);
 				z-index: 3;
 				display: none;
@@ -326,6 +326,7 @@
 		    	top: 33%;
     			left: 46.5%;
 			    perspective: 1000;
+			    z-index: 10;
 			    &:nth-of-type(1){
 			    	z-index: 5;
 			    	transform: translateX(10%) translateY(-10%) scale(0.75) rotateZ(-15deg) skewY(15deg) skewX(3deg);
@@ -357,6 +358,12 @@
 						.hover-glow {
 							box-shadow: none;
 							opacity: 0;
+							transform: scale(0);
+						}
+					}
+					&.flipping {
+						.flip-rays {
+							display: block;
 						}
 					}
 		    }
@@ -387,10 +394,11 @@
 		    	.card {
 		    		transition: .3s all;
 		    		-webkit-font-smoothing: subpixel-antialiased;
+		    		z-index: 10;
 		    		&:nth-of-type(1){
 				    	top: 0;
 							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) skewY(0deg) skewX(0deg);
-							&.flipped, &:hover {
+							&.flipping, &.flipped, &:hover {
 								transform: translateZ(0) translateX(0) translateY(-5%) scale(0.75) rotateZ(0deg) skewY(0deg) skewX(0deg);
 							}
 				    }
@@ -398,7 +406,7 @@
 				    	top: 10%;
 							left: 25%;
 							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-				    	&.flipped, &:hover {
+				    	&.flipping, &.flipped, &:hover {
 								transform: translateZ(0) translateX(-5%) translateY(-5%) scale(0.75) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
 							}
 				    }
@@ -406,7 +414,7 @@
 				    	top: 10%;
 							left: 68%;
 							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-				    	&.flipped, &:hover {
+				    	&.flipping, &.flipped, &:hover {
 								transform: translateZ(0) translateX(5%) translateY(-5%) scale(0.75) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
 							}
 				    }
@@ -414,7 +422,7 @@
 				    	top: 52%;
 							left: 34%;
 							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) skewY(0deg) skewX(0deg);
-				    	&.flipped, &:hover {
+				    	&.flipping, &.flipped, &:hover {
 								transform: translateZ(0) translateX(0) translateY(0) scale(0.75) rotateZ(0deg) skewY(0deg) skewX(0deg);
 							}
 				    }
@@ -422,9 +430,12 @@
 				    	top: 52%;
 							left: 59%;
 							transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) skewY(0deg) skewX(0deg);
-				    	&.flipped, &:hover {
+				    	&.flipping, &.flipped, &:hover {
 								transform: translateZ(0) translateX(0) translateY(0) scale(0.75) rotateZ(0deg) skewY(0deg) skewX(0deg);
 							}
+				    }
+				    &.flipping {
+				    	z-index: 9!important;
 				    }
 		    	}
 		    }

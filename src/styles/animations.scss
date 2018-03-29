@@ -288,6 +288,13 @@
 	}
 }
 
+//Card Flip Ray animations
+@keyframes rareRays {
+	0%{ transform: translateY(-50%) translateX(-50%) rotate(0deg) scale(0); opacity: 0; }
+	50% { transform: translateY(-50%) translateX(-50%) rotate(0deg) scale(0.5); opacity: 1; }
+	100% { transform: translateY(-50%) translateX(-50%) rotate(90deg) scale(1); opacity: 0; }
+}
+
 //Modal Animations
 @keyframes bounceIn {
   0% {transform: scale(0.7) translateX(-50%) translateY(-50%);}

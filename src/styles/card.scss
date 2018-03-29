@@ -141,56 +141,75 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		display: none;
+		&:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 500%;
+			height: 500%;
+			background-size: 100% 100%;
+			background-position: center center;
+			background-repeat: repeat;
+			animation: rareRays 1.4s backwards;
+		}
 	}
 	&.rare {
 		.hover-glow {
 			box-shadow: 0 0 50px 30px rgba(7,88,213,0.3);
+			background: rgba(7,88,213,0.3);
 		}
 		.flip-rays {
 			mask-image: url('/images/opening/rare-rays.png');
 			mask-repeat: no-repeat;
 			mask-position: center center;
 			mask-size: auto 100%;
-			background: blue;
 			height: 78vh;
 	    width: calc(78vh * .99);
 	    top: -29%;
 	    left: -68%;
-	    display: none;
+	    &:before {
+	    	background-image: url('/images/opening/smoke-rare.png');
+	    }
 		}
 	}
 	&.epic {
 		.hover-glow{
 			box-shadow: 0 0 50px 30px rgba(158,31,227,0.2);
+			background: rgba(158,31,227,0.2);
 		}
 		.flip-rays {
 			mask-image: url('/images/opening/epic-rays.png');
 			mask-repeat: no-repeat;
 			mask-position: center center;
 			mask-size: auto 100%;
-			background: purple;
 			height: 89vh;
 	    width: calc(89vh * .938);
 	    top: -39%;
 	    left: -70%;
-	    display: none;
+	    &:before {
+	    	background-image: url('/images/opening/smoke-epic.png');
+	    }
 		}
 	}
 	&.legendary {
 		.hover-glow {
 			box-shadow: 0 0 50px 30px rgba(221,147,34,0.4);
+			background: rgba(221,147,34,0.4);
 		}
 		.flip-rays {
 			mask-image: url('/images/opening/legendary-rays.png');
 			mask-repeat: no-repeat;
 			mask-position: center center;
 			mask-size: auto 100%;
-			background: orange;
 			height: 122vh;
 	    width: calc(122vh * .89);
 	    top: -64%;
 	    left: -109%;
-	    display: none;
+	    &:before {
+	    	background-image: url('/images/opening/smoke-legendary.png');
+	    }
 		}
 	}
 	&.minion {

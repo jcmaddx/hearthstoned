@@ -138,29 +138,53 @@ class PackOpening extends React.Component {
 
 	_flipCard = (card, rarity, golden, index) => {
 		if(!card.classList.contains('cardfront')){
-			card.classList.remove("facedown");
-			card.classList.add("flipped");
 			let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
 			let auraSound = "aura"+upperRarity+index;
 			let flipSound = "flip"+upperRarity+index;
-			if(card.classList.contains('golden')){
-				setTimeout(() => {
-					card.querySelector('.cardart img').classList.add('animate');
-				}, 400);	
-			}
-			asyncPlay(this.props.sounds[flipSound], 0.3);
+			// rare cards
 			if(rarity !== "common"){
+				// add flipping effect for non commons
+				card.classList.add("flipping");
+				// rarity voice lines
 				if(golden){
 					asyncPlay(this.props.sounds["golden"+upperRarity], 1);
 				} else {
 					asyncPlay(this.props.sounds[rarity+index], 1);
 				}
+				// end aura loop
 				fadeOut(this.props.sounds[auraSound], .5, true);
+				// delay for special card effects
+				setTimeout(() => {
+					// rare flip effects
+					card.classList.remove("facedown");
+					card.classList.add("flipped");
+					if(golden){
+						setTimeout(() => {
+							card.querySelector('.cardart img').classList.add('animate');
+							card.classList.remove("flipping");
+						}, 400);
+					} else {
+						card.classList.remove("flipping");
+					}
+					// ensure aura is stopped
+					this.props.sounds[auraSound].stop();
+					// set remaining cards
+					let remaining = document.getElementsByClassName("facedown").length;
+					if(remaining === 0){
+						document.getElementById("pack-done").classList.add('show');
+					}
+				}, 1000);
+			} else { // common cards
+				card.classList.remove("facedown");
+				card.classList.add("flipped");
+				// set remaining cards
+				let remaining = document.getElementsByClassName("facedown").length;
+				if(remaining === 0){
+					document.getElementById("pack-done").classList.add('show');
+				}
 			}
-			let remaining = document.getElementsByClassName("facedown").length;
-			if(remaining === 0){
-				document.getElementById("pack-done").classList.add('show');
-			}
+			// play flip sound for all rarities
+			asyncPlay(this.props.sounds[flipSound], 0.3);
 		}
 	};
 
@@ -187,9 +211,9 @@ class PackOpening extends React.Component {
 		let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
 		let sound = "aura"+upperRarity+index;
 		if(!out){
-			fadeIn(this.props.sounds[sound], .5, true, 0.7);
+			fadeIn(this.props.sounds[sound], .5, true, 0.4);
 		} else {
-			fadeOut(this.props.sounds[sound], .5, true);
+			fadeOut(this.props.sounds[sound], .2, true);
 		}
 	}
 
