@@ -135,21 +135,62 @@
     top: 1%;
     left: 5.5%;
     border-radius: 10px;
-    transition: all .4s;
+    transition: all 1s;
+	}
+	.flip-rays {
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 	&.rare {
 		.hover-glow {
 			box-shadow: 0 0 50px 30px rgba(7,88,213,0.3);
+		}
+		.flip-rays {
+			mask-image: url('/images/opening/rare-rays.png');
+			mask-repeat: no-repeat;
+			mask-position: center center;
+			mask-size: auto 100%;
+			background: blue;
+			height: 78vh;
+	    width: calc(78vh * .99);
+	    top: -29%;
+	    left: -68%;
+	    display: none;
 		}
 	}
 	&.epic {
 		.hover-glow{
 			box-shadow: 0 0 50px 30px rgba(158,31,227,0.2);
 		}
+		.flip-rays {
+			mask-image: url('/images/opening/epic-rays.png');
+			mask-repeat: no-repeat;
+			mask-position: center center;
+			mask-size: auto 100%;
+			background: purple;
+			height: 89vh;
+	    width: calc(89vh * .938);
+	    top: -39%;
+	    left: -70%;
+	    display: none;
+		}
 	}
 	&.legendary {
 		.hover-glow {
 			box-shadow: 0 0 50px 30px rgba(221,147,34,0.4);
+		}
+		.flip-rays {
+			mask-image: url('/images/opening/legendary-rays.png');
+			mask-repeat: no-repeat;
+			mask-position: center center;
+			mask-size: auto 100%;
+			background: orange;
+			height: 122vh;
+	    width: calc(122vh * .89);
+	    top: -64%;
+	    left: -109%;
+	    display: none;
 		}
 	}
 	&.minion {

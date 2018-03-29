@@ -20,13 +20,13 @@ class Card extends React.Component {
 
 	_handleClick = (e) => {
 		let card = e.target.parentNode;
-		this.props.callback(card, this.props.rarity, this.props.golden);
+		this.props.callback(card, this.props.rarity, this.props.golden, this.props.listIndex);
 	}
 
 	_handleMouse = (e) => {
 		let out = (e.type === "mouseleave") ? true : false;
 		if(this.props.hasOwnProperty('onhover')){
-			this.props.onhover(e.target, this.props.rarity, out);
+			this.props.onhover(e.target, this.props.rarity, out, this.props.listIndex);
 		}
 	}
 
@@ -49,6 +49,7 @@ class Card extends React.Component {
 			<div onMouseEnter={this._handleMouse} onMouseLeave={this._handleMouse} className={cardclasses} onClick={this._handleClick}>
 				<div className="turn-glow"></div>
 				<div className="hover-glow"></div>
+				<div className="flip-rays"></div>
 				<div className="cardback"></div>
 				<div className="cardfront">
 					<div className="face"></div>

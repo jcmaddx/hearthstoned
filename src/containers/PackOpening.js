@@ -39,6 +39,7 @@ class PackOpening extends React.Component {
 	_initGrabber = () => {
 		if(document.getElementById('pack-stack')){
 			document.getElementById('pack-stack').onmousedown = () => {
+				console.log('mouse down on packstack')
 				if(!this.state.busy){
 					//add grabbing hand
 					document.getElementById("hearthstoned").classList.add('grab');
@@ -135,13 +136,13 @@ class PackOpening extends React.Component {
 		}
 	};
 
-	_flipCard = (card, rarity, golden) => {
+	_flipCard = (card, rarity, golden, index) => {
 		if(!card.classList.contains('cardfront')){
 			card.classList.remove("facedown");
 			card.classList.add("flipped");
 			let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
-			let auraSound = "aura"+upperRarity;
-			let flipSound = "flip"+upperRarity;
+			let auraSound = "aura"+upperRarity+index;
+			let flipSound = "flip"+upperRarity+index;
 			if(card.classList.contains('golden')){
 				setTimeout(() => {
 					card.querySelector('.cardart img').classList.add('animate');
@@ -152,9 +153,9 @@ class PackOpening extends React.Component {
 				if(golden){
 					asyncPlay(this.props.sounds["golden"+upperRarity], 1);
 				} else {
-					asyncPlay(this.props.sounds[rarity], 1);
+					asyncPlay(this.props.sounds[rarity+index], 1);
 				}
-				fadeOut(this.props.sounds[auraSound], .1, true);
+				fadeOut(this.props.sounds[auraSound], .5, true);
 			}
 			let remaining = document.getElementsByClassName("facedown").length;
 			if(remaining === 0){
@@ -179,16 +180,16 @@ class PackOpening extends React.Component {
     });
 	};
 
-	_onHover = (card, rarity, out) => {
+	_onHover = (card, rarity, out, index) => {
 		if(rarity === "common" || card.parentNode.classList.contains("cardfront")){
 			return false;
 		}
 		let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
-		let sound = "aura"+upperRarity;
+		let sound = "aura"+upperRarity+index;
 		if(!out){
-			fadeIn(this.props.sounds[sound], .1, true, 0.7);
+			fadeIn(this.props.sounds[sound], .5, true, 0.7);
 		} else {
-			fadeOut(this.props.sounds[sound], .1, true);
+			fadeOut(this.props.sounds[sound], .5, true);
 		}
 	}
 
@@ -257,6 +258,7 @@ class PackOpening extends React.Component {
 									Object.keys(this.props.packs[this.state.current]).map((current, key) => {
 										let currentCard = this.props.packs[this.state.current][current];
 										return <Card key={key}
+											listIndex={key}
 											facedown={true} 
 											callback={this._flipCard}
 											onhover={this._onHover}
