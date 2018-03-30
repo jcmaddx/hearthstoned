@@ -53,11 +53,6 @@
 	80% {transform: rotateX(0deg) translateZ(0)  scale(1);}
 }
 
-//Golden Animation
-@keyframes goldenanimation {
-	100% { transform: translatex(-100%); }
-}
-
 // Pack Opening Animations
 @keyframes growfade {
 	0%, 21% {opacity: 0; transform: scale(0.5)}

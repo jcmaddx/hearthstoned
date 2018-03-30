@@ -39,7 +39,6 @@ class PackOpening extends React.Component {
 	_initGrabber = () => {
 		if(document.getElementById('pack-stack')){
 			document.getElementById('pack-stack').onmousedown = () => {
-				console.log('mouse down on packstack')
 				if(!this.state.busy){
 					//add grabbing hand
 					document.getElementById("hearthstoned").classList.add('grab');
@@ -66,6 +65,10 @@ class PackOpening extends React.Component {
 		} else if (sticky.classList.contains('stuck')) {
 			// Restore pack count
 			this.props.actions.changeCount("up");
+			// re-add grab handler
+			if(this.props.count === 1){
+				this._initGrabber();
+			} 
 			// Switch back to song
 			this.props.sounds.packDrop.play();
 			fadeOut(this.props.sounds.manaLoop, .5, false);
@@ -156,18 +159,9 @@ class PackOpening extends React.Component {
 				// delay for special card effects
 				setTimeout(() => {
 					// rare flip effects
-					if(golden){
-						card.classList.remove("facedown");
-						card.classList.add("flipped");
-						setTimeout(() => {
-							card.querySelector('.cardart img').classList.add('animate');
-							card.classList.remove("flipping");
-						}, 400);
-					} else {
-						card.classList.remove("facedown");
-						card.classList.add("flipped");
-						card.classList.remove("flipping");
-					}
+					card.classList.remove("facedown");
+					card.classList.add("flipped");
+					card.classList.remove("flipping");
 					// ensure aura is stopped
 					this.props.sounds[auraSound].stop();
 					// set remaining cards
@@ -283,12 +277,14 @@ class PackOpening extends React.Component {
 								{
 									Object.keys(this.props.packs[this.state.current]).map((current, key) => {
 										let currentCard = this.props.packs[this.state.current][current];
+										let extension = (currentCard.hasOwnProperty("golden")) ? ".gif" : ".jpg";
+										let artwork = current + extension;
 										return <Card key={key}
 											listIndex={key}
 											facedown={true} 
 											callback={this._flipCard}
 											onhover={this._onHover}
-											art={current+".jpg"} 
+											art={artwork} 
 											title={currentCard.title} 
 											mana={currentCard.mana} 
 											health={currentCard.health} 

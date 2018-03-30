@@ -339,16 +339,9 @@
 			}
 			.cardfront .cardart {
 				width: 22vh;
-    		height: 35vh;
-		    top: -10%;
-		    left: 52.5%;
-		    img {
-		    	height: 100%;
-		    	width: 3000%;
-		    	&.animate {
-		    		animation: goldenanimation 2.5s steps(30) infinite;
-		    	}
-		    }
+		    height: 34vh;
+		    top: -5%;
+		    left: 52%;
 			}
 		}
 	}
