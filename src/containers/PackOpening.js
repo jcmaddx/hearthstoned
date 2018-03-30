@@ -156,14 +156,16 @@ class PackOpening extends React.Component {
 				// delay for special card effects
 				setTimeout(() => {
 					// rare flip effects
-					card.classList.remove("facedown");
-					card.classList.add("flipped");
 					if(golden){
+						card.classList.remove("facedown");
+						card.classList.add("flipped");
 						setTimeout(() => {
 							card.querySelector('.cardart img').classList.add('animate');
 							card.classList.remove("flipping");
 						}, 400);
 					} else {
+						card.classList.remove("facedown");
+						card.classList.add("flipped");
 						card.classList.remove("flipping");
 					}
 					// ensure aura is stopped
@@ -173,7 +175,7 @@ class PackOpening extends React.Component {
 					if(remaining === 0){
 						document.getElementById("pack-done").classList.add('show');
 					}
-				}, 1000);
+				}, 1300);
 			} else { // common cards
 				card.classList.remove("facedown");
 				card.classList.add("flipped");
