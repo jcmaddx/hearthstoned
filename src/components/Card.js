@@ -52,6 +52,7 @@ class Card extends React.Component {
 				<div className="flip-rays"></div>
 				<div className="cardback"></div>
 				<div className="cardfront">
+					<div className="echo"></div>
 					<div className="face"></div>
 					{
 						(this.props.rarity === 'legendary') ? 

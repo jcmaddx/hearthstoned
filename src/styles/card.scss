@@ -28,6 +28,18 @@
 			position: absolute;
 			z-index: 5;
 		}
+		.echo {
+			position: absolute;
+	    width: 120%;
+	    height: 142%;
+	    top: -22%;
+	    left: -10%;
+	    background: url('/images/opening/spell-echo.png') no-repeat center center;
+	    background-size: auto 100%;
+	    z-index: 5;
+	    display: none;
+	    opacity: 0;
+		}
 	}
 	&.facedown {
 		.cardfront {
@@ -219,6 +231,17 @@
 				top: -7%;
 				background-image: url('/images/cards/minion-generic.png');
 			}
+			.echo {
+				background-image: url('/images/opening/minion-echo.png');
+				left: -8%;
+			}
+		}
+		&.legendary {
+			.cardfront {
+				.echo {
+					background-image: url('/images/opening/legendary-minion-echo.png');
+				}
+			}
 		}
 		.cardart {
 			width: 24vh;
@@ -234,7 +257,7 @@
 			background-size: auto 100%;
 			height: 7.8vh;
 	    width: calc(7.8vh * 4.25);
-	    top: 45%;
+	    top: 43%;
 		}
 		.rarity {
 			top: 54%;
@@ -247,8 +270,8 @@
 			bottom: 3.5vh;
 		}
 		.attack {
-			height: 10vh;
-	    width: 10.5vh;
+			height: 12vh;
+	    width: 12.5vh;
 	    position: absolute;
 	    bottom: -3%;
 	    left: -6%;
@@ -258,13 +281,13 @@
 			@include stroked;
 			display: block;
 			text-align: center;
-			line-height: 10vh;
-	    font-size: 6.5vh;
+			line-height: 13vh;
+	    font-size: 7.5vh;
 	    z-index: 6;
 		}
 		.health {
-			height: 9vh;
-    	width: 7vh;
+			height: 11vh;
+    	width: 11.3vh;
 	    position: absolute;
 	    bottom: -1%;
 	    right: -5%;
@@ -274,8 +297,8 @@
 			@include stroked;
 			display: block;
 			text-align: center;
-			line-height: 10vh;
-			font-size: 6.5vh;
+			line-height: 12vh;
+			font-size: 7.5vh;
 			z-index:6;
 		}
 		.legendary-dragon {
@@ -363,7 +386,7 @@
 			height: 10.7vh;
 			width: calc(10.7vh * 3.21);
 			left: 49.5%;
-			top: 44%;
+			top: 43%;
 		}
 		.rarity {
 			top: 54%;

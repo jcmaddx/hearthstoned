@@ -60,6 +60,10 @@
 				&.show {
 					display: block;
 				}
+				&.fadeaway {
+					opacity: 0;
+					transition: opacity .3s;
+				}
 			}
 			.pack-tray {
 				position: absolute;
@@ -313,14 +317,17 @@
 		    	position: absolute;
 		    	top: 46%;
 		    	left: 53.5%;
-		    	display: none;
+		    	opacity: 0;
+		    	transform: scale(0);
 		    	color: white;
 		    	@include stroked;
 		    	font-size: 3.5vh;
 		    	line-height: 9vh;
 		    	text-align: center;
+		    	transition: all .3s;
 		    	&.show {
-		    		display: block;
+		    		opacity: 1;
+		    		transform: scale(1);
 		    	}
 		    }
 		    .card {
@@ -438,6 +445,23 @@
 				    &.flipping {
 				    	z-index: 9!important;
 				    }
+		    	}
+		    }
+		    &.fadeaway {
+		    	transition: opacity 1.5s;
+		    	opacity: 0;
+		    	.card {
+		    		.cardfront {
+		    			> div:not(.echo) {
+		    				transition: opacity 1s;
+		    				opacity: 0;
+		    			}
+		    			> div.echo {
+		    				transition: opacity 1s;
+		    				display: block;
+		    				opacity: 1;
+		    			}
+		    		}
 		    	}
 		    }
 			}

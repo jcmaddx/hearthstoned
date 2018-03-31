@@ -185,19 +185,24 @@ class PackOpening extends React.Component {
 	};
 
 	_stageReset = () => {
-		let tray = document.getElementById('pack-tray');
-		let altar = document.getElementById('altar');
 		let packCards = document.getElementById('pack-cards');
 		let overlay = document.getElementById('opening-overlay');
 		let done = document.getElementById('pack-done');
-		packCards.classList.remove('show', 'idle');
-		overlay.classList.remove('show');
-		done.classList.remove('show');
-		this.setState({current: this.state.current + 1});
-		[].map.call(document.querySelectorAll('.card'), function(el) {
-        el.classList.add('facedown');
-        el.classList.remove("flipped");
-    });
+		packCards.classList.add('fadeaway');
+		done.classList.add('fadeaway');
+		setTimeout(() => {
+			overlay.classList.add('fadeaway');
+		}, 1200);
+		setTimeout(() => {
+			packCards.classList.remove('show', 'idle', 'fadeaway');
+			overlay.classList.remove('show', 'fadeaway');
+			done.classList.remove('show', 'fadeaway');
+			this.setState({current: this.state.current + 1});
+			[].map.call(document.querySelectorAll('.card'), function(el) {
+	        el.classList.add('facedown');
+	        el.classList.remove("flipped");
+	    });
+		}, 1500);
 	};
 
 	_onHover = (card, rarity, out, index) => {
