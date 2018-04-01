@@ -120,6 +120,26 @@
   100% {opacity: 1; transform: scale(1);}
 }
 
+@keyframes openout {
+  0% {opacity: 1; transform: scale(1);}
+  100% {opacity: 1; transform: scale(0.7);}
+}
+
+@keyframes backtobox {
+	0% {transform: scale(3)}
+	100% {transform: scale(1)}
+}
+
+@keyframes lidleftback {
+	0% {transform: translateX(-20%)}
+	100% {transform: translateX(0%)}
+}
+
+@keyframes lidrightback {
+	0% {transform: translateX(20%)}
+	100% {transform: translateX(0%)}
+}
+
 // coin animations
 @keyframes coinfly1 {
 	0%, 19% {top:50%; left: 50%;}
@@ -219,67 +239,6 @@
 		top: 52%;
 		left: 59%;
 		transform: translateX(0) translateY(0) scale(0.69) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-
-
-// cards idle
-@keyframes cardidle1 {
-	0%, 100% {
-		top: 15%;
-		transform: translateX(0) translateY(0) scale(0.7) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 15%;
-		transform: translateX(-1%) translateY(1%) scale(0.7) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardidle2 {
-	0%, 100% {
-		top: 25%;
-		left: 35%;
-		transform: translateX(0) translateY(0) scale(0.7) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 25%;
-		left: 35%;
-		transform: translateX(-1%) translateY(1%) scale(0.7) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardidle3 {
-	0%, 100% {
-		top: 25%;
-		left: 70%;
-		transform: translateX(0) translateY(0) scale(0.7) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 25%;
-		left: 70%;
-		transform: translateX(-1%) translateY(1%) scale(0.7) rotateZ(0deg) rotateY(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardidle4 {
-	0%, 100% {
-		top: 60%;
-		left: 42.5%;
-		transform: translateX(0) translateY(0) scale(0.7) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 60%;
-		left: 42.5%;
-		transform: translateX(-1%) translateY(1%) scale(0.7) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-}
-@keyframes cardidle5 {
-	0%, 100% {
-		top: 60%;
-		left: 62.5%;
-		transform: translateX(0) translateY(0) scale(0.7) rotateZ(0deg) skewY(0deg) skewX(0deg);
-	}
-	50% {
-		top: 60%;
-		left: 62.5%;
-		transform: translateX(-1%) translateY(1%) scale(0.7) rotateZ(0deg) skewY(0deg) skewX(0deg);
 	}
 }
 

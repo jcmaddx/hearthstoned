@@ -347,4 +347,13 @@
 			}
 		}
 	}
+	&.open-out, &.collection-out {
+		animation: backtobox .2s linear forwards;
+		.right-contain {
+			animation: lidrightback .2s linear forwards;
+		}
+		.lid-left {
+			animation: lidleftback .2s linear forwards;
+		}
+	}
 } 

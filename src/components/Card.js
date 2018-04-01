@@ -20,10 +20,11 @@ class Card extends React.Component {
 
 	_handleClick = (e) => {
 		let card = e.target.parentNode;
-		this.props.callback(card, this.props.rarity, this.props.golden, this.props.listIndex);
+		this.props.callback(this.props.cardKey, card, this.props.rarity, this.props.golden, this.props.listIndex);
 	}
 
 	_handleMouse = (e) => {
+		e.stopPropagation();
 		let out = (e.type === "mouseleave") ? true : false;
 		if(this.props.hasOwnProperty('onhover')){
 			this.props.onhover(e.target, this.props.rarity, out, this.props.listIndex);

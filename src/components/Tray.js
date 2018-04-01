@@ -41,13 +41,13 @@ class Tray extends React.Component {
 				this.props.actions.setTransition(transition);
 				setTimeout(() => {
 					this.props.actions.setTransition(null);
+					hub.classList.add('active');
 				},200);
 			}
 			var queue = new createjs.LoadQueue();
 			queue.on("complete", handleComplete);
 			queue.loadManifest("/data/"+manifest+".json");
 		},300)
-
 	};
 
 	_moveToPacks = () => {

@@ -62,7 +62,7 @@
 				}
 				&.fadeaway {
 					opacity: 0;
-					transition: opacity .3s;
+					transition: opacity 1.5s;
 				}
 			}
 			.pack-tray {
@@ -822,5 +822,8 @@
 	&.open-in {
 		transform-origin: 50% 50%;
 		animation: openin .5s linear forwards;
+	}
+	&.open-out {
+		animation: openout .2s linear forwards;
 	}
 }

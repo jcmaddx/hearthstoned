@@ -139,8 +139,9 @@ class PackOpening extends React.Component {
 		}
 	};
 
-	_flipCard = (card, rarity, golden, index) => {
+	_flipCard = (id, card, rarity, golden, index) => {
 		if(!card.classList.contains('cardfront')){
+			this.props.actions.gainCard(id);
 			let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
 			let auraSound = "aura"+upperRarity+index;
 			let flipSound = "flip"+upperRarity+index;
@@ -185,14 +186,13 @@ class PackOpening extends React.Component {
 	};
 
 	_stageReset = () => {
+		this.props.sounds.cardsDissipate.play({volume: 0.3});
 		let packCards = document.getElementById('pack-cards');
 		let overlay = document.getElementById('opening-overlay');
 		let done = document.getElementById('pack-done');
 		packCards.classList.add('fadeaway');
 		done.classList.add('fadeaway');
-		setTimeout(() => {
-			overlay.classList.add('fadeaway');
-		}, 1200);
+		overlay.classList.add('fadeaway');
 		setTimeout(() => {
 			packCards.classList.remove('show', 'idle', 'fadeaway');
 			overlay.classList.remove('show', 'fadeaway');
@@ -206,7 +206,10 @@ class PackOpening extends React.Component {
 	};
 
 	_onHover = (card, rarity, out, index) => {
-		if(rarity === "common" || card.parentNode.classList.contains("cardfront")){
+		if(!card.classList.contains("cardfront") && !out){
+			this.props.sounds['cardOver'+index].play();
+		}
+		if(rarity === "common" || card.classList.contains("cardfront")){
 			return false;
 		}
 		let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
@@ -218,8 +221,23 @@ class PackOpening extends React.Component {
 		}
 	}
 
+	_floatyMouse = () => {
+		this.props.sounds.floatyOver.stop();
+		this.props.sounds.floatyOver.play();
+	};
+
 	_goBack = () => {
-		this.props.actions.setStage(1);
+		// play sound for going back to hub
+		this.props.sounds.boxClose.play();
+		// no file loading required. Execute animation
+		fadeOut(this.props.sounds.betterHand, 3, true);
+		this.props.sounds.enterBox.play();
+		fadeIn(this.props.sounds.mainTitle, 3, true);
+		this.props.actions.setTransition("open-out");
+		setTimeout(() => {
+			this.props.actions.setTransition(null);
+			this.props.actions.setStage(1);
+		},200);
 	};
 
 	/**
@@ -285,6 +303,7 @@ class PackOpening extends React.Component {
 										let extension = (currentCard.hasOwnProperty("golden")) ? ".gif" : ".jpg";
 										let artwork = current + extension;
 										return <Card key={key}
+											cardKey={current}
 											listIndex={key}
 											facedown={true} 
 											callback={this._flipCard}
@@ -302,7 +321,7 @@ class PackOpening extends React.Component {
 											description={currentCard.description} />
 									})
 								}
-								<div id="pack-done" onClick={this._stageReset} className="pack-done">Done</div>
+								<div id="pack-done" onMouseEnter={this._floatyMouse} onClick={this._stageReset} className="pack-done">Done</div>
 							</div>
 							: null
 						}
@@ -334,7 +353,8 @@ function mapStateToProps(state) {
     stage: data.stage,
     transition: data.transition,
     packs: data.packs,
-    count: data.packCount
+    count: data.packCount,
+    cards: data.cards
   };
 }
 
