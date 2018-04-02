@@ -1,4 +1,4 @@
-import {SET_STAGE, SET_TRANSITION, INIT_PACKS, OWN_CARD, CHANGE_COUNT} from '../constants/actionTypes';
+import {SET_STAGE, SET_TRANSITION, INIT_PACKS, OWN_CARD, CHANGE_COUNT, BOOK_OPENED} from '../constants/actionTypes';
 import objectAssign from 'object-assign';
 import initialState from './initialState';
 
@@ -16,6 +16,10 @@ export default function hsReducer(state = initialState, action) {
 
     case INIT_PACKS:
     	newState.packs = action.packs;
+    	return newState;
+
+    case BOOK_OPENED:
+    	newState.bookOpened = true;
     	return newState;
 
     case CHANGE_COUNT:

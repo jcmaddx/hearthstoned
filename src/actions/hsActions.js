@@ -20,6 +20,14 @@ export function setTransition(trans) {
   };
 }
 
+export function setBookOpened() {
+  return function (dispatch) {
+    return dispatch({
+    	type: types.BOOK_OPENED,
+    });
+  };
+}
+
 export function gainCard(card){
 	return function (dispatch) {
 		return dispatch({

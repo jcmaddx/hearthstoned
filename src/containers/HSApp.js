@@ -19,6 +19,7 @@ import IntroQuests from './IntroQuests';
 import QuestTracker from './QuestTracker';
 import Warning from '../components/Warning';
 import Options from '../components/Options';
+import ToolTip from '../components/ToolTip';
 
 /**
 * HSApp component
@@ -31,7 +32,8 @@ class HSApp extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			sounds: {}
+			sounds: {},
+			warned: false
 		}
 	}
 
@@ -138,6 +140,20 @@ class HSApp extends React.Component {
 		this.refs.warning._openWarning(warningText);
 	}
 
+	_unlockPacks = () => {
+		if(this.state.warned){
+			for(var i = 1; i <= this.props.count; i++){
+				this.props.actions.changeCount("down");
+			}
+			Object.keys(this.props.cards).map((item, key) => {
+				this.props.actions.gainCard(item);
+			})
+		} else {
+			this._showWarning("Once more will open all unopened packs!");
+			this.setState({warned: true})
+		}
+	}
+
 	/**
 		*  Renders the component
 		*
@@ -175,6 +191,13 @@ class HSApp extends React.Component {
 					: null
 				}
 				<div className={optionsClasses}>
+					{
+						(this.props.count > 0)?
+						<div onClick={this._unlockPacks} className="unlocker">
+							<img src="/images/global/locked.png" />
+						</div>
+						:null
+					}
 					<div id="clock"></div>
 					<div onClick={this._openOptions} onMouseEnter={this._hoverOptions} id="options-button">
 						<img id="options-button" src="/images/global/options-button.png"></img>

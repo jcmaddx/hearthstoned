@@ -76,7 +76,7 @@ class TheBox extends React.Component {
 							<div className="back"></div>
 						</div>
 					</div>
-					<Tray sounds={this.props.sounds}/>
+					<Tray warn={this.props.warn} sounds={this.props.sounds}/>
 					<BoxButtons sounds={this.props.sounds} questCallback={this.props.questCallback} />
 				</div>
 			</div>

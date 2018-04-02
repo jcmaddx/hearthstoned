@@ -36,9 +36,23 @@ class Tray extends React.Component {
 			let handleComplete = () => {
 				fadeOut(this.props.sounds.mainTitle, 3, true);
 				this.props.sounds.enterBox.play();
-				fadeIn(this.props.sounds.betterHand, 3, true);
 				this.props.actions.setStage(stage);
 				this.props.actions.setTransition(transition);
+				if(stage === 2) {
+					fadeIn(this.props.sounds.betterHand, 3, true);
+				} else if (stage === 3) {
+					if(this.props.bookOpened){
+						fadeIn(this.props.sounds.collectionManager, 3, true);
+					} else {
+						setTimeout(() => {
+							document.getElementById('book-cover').classList.add('open');
+							this.props.sounds.bookLatch.play();
+							setTimeout(() => {
+								this.props.sounds.bookOpen.play();
+							}, 300)
+						}, 800)
+					}
+				}
 				setTimeout(() => {
 					this.props.actions.setTransition(null);
 					hub.classList.add('active');
@@ -55,7 +69,14 @@ class Tray extends React.Component {
 	};
 
 	_moveToCollection = () => {
-		this._loadNextStep('collectionFileManifest', 3, "collection-in");
+		let ownedCount = Object.keys(this.props.cards).filter((card) => {
+			return (this.props.cards[card].owned === true)? true : false;
+		})
+		if(ownedCount.length > 0) {
+			this._loadNextStep('collectionFileManifest', 3, "collection-in");
+		} else {
+			this.props.warn("Try opening some packs first!");
+		}
 	};
 
 	/**
@@ -98,7 +119,9 @@ function mapStateToProps(state) {
   return {
     stage: data.stage,
     transition: data.transition,
-    count: data.packCount
+    count: data.packCount,
+    cards: data.cards,
+    bookOpened: data.bookOpened
   };
 }
 

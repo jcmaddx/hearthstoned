@@ -25,15 +25,44 @@ class PackOpening extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state={
-			busy: false,
+			busy: true,
 			current: 0
 		}
+	}
+	componentWillMount() {
+		document.onkeyup = this._handleSpace;
 	}
 
 	componentDidMount() {
 		document.body.onmousemove = this._track;
 		document.body.onmouseup = this._dropEm;
 		this._initGrabber();
+		// half second delay before you can open packs
+		setTimeout(() => {
+			this.setState({busy: false})
+		}, 500)
+	}
+
+	componentWillUnmount() {
+		document.body.onmousemove = null;
+		document.body.onmouseup = null;
+		document.onkeyup = null;
+	}
+
+	_handleSpace = (event) => {
+		event = event || window.event;
+    let isSpace = false;
+    if ("code" in event) {
+        isSpace = (event.code === "Space");
+    } else {
+        isSpace = (event.keyCode === 32);
+    }
+    if (isSpace && !this.state.busy && this.props.stage === 2) {
+    	// decrease pack count
+			this.props.actions.changeCount("down");
+			// open pack
+      this._packOpening();
+    }
 	}
 
 	_initGrabber = () => {
@@ -58,8 +87,12 @@ class PackOpening extends React.Component {
 	};
 
 	_dropEm = (event) => {
-		let ontarget = this._checkTarget(event);
 		let sticky = document.getElementById("sticky-pack");
+		// if we are going back and this doesn't exist when mouseup fires
+		if(!sticky){
+			return false;
+		}
+		let ontarget = this._checkTarget(event);
 		if(ontarget && sticky.classList.contains('stuck')) {
 			this._packOpening();
 		} else if (sticky.classList.contains('stuck')) {
@@ -82,9 +115,9 @@ class PackOpening extends React.Component {
 	}
 
 	_packOpening = () => {
+		this.setState({busy: true});
 		this.props.sounds.packDrop.play();
 		this.props.sounds.manaLoop.stop();
-		this.setState({busy: true});
 		let tray = document.getElementById('pack-tray');
 		let altar = document.getElementById('altar');
 		let pack = document.getElementById('main-pack');
@@ -106,7 +139,6 @@ class PackOpening extends React.Component {
 			overlay.classList.add('show');
 		},1300);
 		setTimeout(() => {
-			this.setState({busy: false});
 			pack.classList.remove('show','burst');
 			debris.classList.remove('show', 'burst');
 			shockwave.classList.remove('show', 'burst');
@@ -194,6 +226,7 @@ class PackOpening extends React.Component {
 		done.classList.add('fadeaway');
 		overlay.classList.add('fadeaway');
 		setTimeout(() => {
+			this.setState({busy: false});
 			packCards.classList.remove('show', 'idle', 'fadeaway');
 			overlay.classList.remove('show', 'fadeaway');
 			done.classList.remove('show', 'fadeaway');
@@ -230,11 +263,11 @@ class PackOpening extends React.Component {
 		// play sound for going back to hub
 		this.props.sounds.boxClose.play();
 		// no file loading required. Execute animation
-		fadeOut(this.props.sounds.betterHand, 3, true);
+		this.props.sounds.betterHand.stop();
 		this.props.sounds.enterBox.play();
-		fadeIn(this.props.sounds.mainTitle, 3, true);
 		this.props.actions.setTransition("open-out");
 		setTimeout(() => {
+			this.props.sounds.mainTitle.play({volume: 1, offset: 0});
 			this.props.actions.setTransition(null);
 			this.props.actions.setStage(1);
 		},200);

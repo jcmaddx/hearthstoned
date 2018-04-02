@@ -249,6 +249,13 @@
 	100% { transform: translateY(-50%) translateX(-50%) rotate(90deg) scale(1); opacity: 0; }
 }
 
+//Collection book cover
+@keyframes opencover {
+	0%, 30% { left: -5%; transform: rotateY(0deg); display: block;}
+	99.9% { left: -5%; transform: rotateY(125deg); display: block;}
+	100% { left: -20%; transform: rotateY(125deg); display: none;}
+}
+
 //Modal Animations
 @keyframes bounceIn {
   0% {transform: scale(0.7) translateX(-50%) translateY(-50%);}
