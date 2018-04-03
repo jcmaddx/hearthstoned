@@ -11,6 +11,8 @@ import '../styles/collection.scss';
 
 import Card from '../components/Card';
 
+let categories = ["druid", "hunter", "mage", "paladin", "priest", "rogue", "shaman", "warlock", "warrior", "neutral"]
+
 /**
 * Collection component
 *
@@ -21,14 +23,18 @@ class Collection extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			pages: {}
+		}
 	}
 
 	componentDidMount() {
-		let categories = ["druid", "hunter", "mage", "paladin", "priest", "rogue", "shaman", "warlock", "warrior", "neutral"]
+		let pages = {}, filtered;
 		categories.map((item, key) => {
-			let filtered = this._cardFilterSort(item);
-			let pages = this._buildPages(item, filtered);
-		})
+			filtered = this._cardFilterSort(item);
+			pages[item] = filtered;
+		});
+		this.setState({pages: pages});
 	};
 
 	_cardFilterSort = (category) => {
@@ -51,8 +57,40 @@ class Collection extends React.Component {
 		return filtered;
 	}
 
-	_buildPages = (category, items) => {
-		console.log(category, items);
+	_buildPage = (category, items, pageNum) => {
+		let pageContent = (
+			<div className="page">
+				<h2 className="page-title">{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+				<div className="page-cards">
+					{
+						items.map((item, key) => {
+							let current = this.props.cards[item];
+							let extension = (current.hasOwnProperty("golden")) ? ".gif" : ".jpg";
+							let artwork = item + extension;
+							return <Card key={key}
+								cardKey={item}
+								listIndex={key}
+								facedown={false} 
+								callback={null}
+								onhover={null}
+								art={artwork} 
+								title={current.title} 
+								mana={current.mana} 
+								health={current.health} 
+								attack={current.attack} 
+								rarity={current.rarity}
+								golden={current.hasOwnProperty("golden")} 
+								type={current.type} 
+								category={current.category} 
+								tag={current.tag} 
+								description={current.description} />
+						})
+					}
+				</div>
+				<p>{"Page "+pageNum}</p>
+			</div>
+		);
+		return pageContent
 	}
 
 	/**
@@ -74,12 +112,22 @@ class Collection extends React.Component {
 					<div id="collection-content" className="collection-content">
 						<div className="pages">
 							<div className="class-tabs"></div>
-							<div className="page">
-								<h1 className="page-title">Neutral</h1>
-								<div className="page-cards">
-									
-								</div>
-							</div>
+							{
+								(Object.keys(this.state.pages).length > 0) ? 
+									Object.keys(this.state.pages).map((item, key) => {
+										let currentCategory = this.state.pages[item]
+										let pages = [], i;
+										if(currentCategory.length <= 8){
+											pages.push(this._buildPage(item, currentCategory, key+1));
+										} else {
+											for (i=0; i < currentCategory.length; i+=8) {
+											  pages.push(this._buildPage(item, currentCategory.slice(i,i+8), key+1+(i/8)));
+											}
+										}
+										return pages;
+									})
+								: null
+							}
 							<div className="search-bar">
 							</div>
 						</div>
