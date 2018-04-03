@@ -24,9 +24,10 @@ class Collection extends React.Component {
 	}
 
 	componentDidMount() {
-		let categories = ["druid", "hunter", "mage", "paladin", "priest", "rogue", "shaman", "warlock", "warroir", "neutral"]
+		let categories = ["druid", "hunter", "mage", "paladin", "priest", "rogue", "shaman", "warlock", "warrior", "neutral"]
 		categories.map((item, key) => {
-			let count = this._cardFilterSort(item).length;
+			let filtered = this._cardFilterSort(item);
+			let pages = this._buildPages(item, filtered);
 		})
 	};
 
@@ -48,6 +49,10 @@ class Collection extends React.Component {
 		  return 0;
 		});
 		return filtered;
+	}
+
+	_buildPages = (category, items) => {
+		console.log(category, items);
 	}
 
 	/**
@@ -72,142 +77,7 @@ class Collection extends React.Component {
 							<div className="page">
 								<h1 className="page-title">Neutral</h1>
 								<div className="page-cards">
-									<Card
-											cardKey={"arthas"}
-											listIndex={0}
-											facedown={false} 
-											callback={null}
-											onhover={null}
-											art={"arthas.jpg"} 
-											title={"Arthas"} 
-											mana={9} 
-											health={3} 
-											attack={8} 
-											rarity={"epic"}
-											golden={false} 
-											type={"minion"} 
-											category={"hunter"} 
-											tag={"Pet"} 
-											description={"Fluffy white demon"} />
-									<Card
-											cardKey={"arthas"}
-											listIndex={0}
-											facedown={false} 
-											callback={null}
-											onhover={null}
-											art={"arthas.jpg"} 
-											title={"Arthas"} 
-											mana={9} 
-											health={3} 
-											attack={8} 
-											rarity={"epic"}
-											golden={false} 
-											type={"minion"} 
-											category={"hunter"} 
-											tag={"Pet"} 
-											description={"Fluffy white demon"} />
-									<Card
-											cardKey={"arthas"}
-											listIndex={0}
-											facedown={false} 
-											callback={null}
-											onhover={null}
-											art={"arthas.jpg"} 
-											title={"Arthas"} 
-											mana={9} 
-											health={3} 
-											attack={8} 
-											rarity={"epic"}
-											golden={false} 
-											type={"minion"} 
-											category={"hunter"} 
-											tag={"Pet"} 
-											description={"Fluffy white demon"} />
-									<Card
-											cardKey={"arthas"}
-											listIndex={0}
-											facedown={false} 
-											callback={null}
-											onhover={null}
-											art={"arthas.jpg"} 
-											title={"Arthas"} 
-											mana={9} 
-											health={3} 
-											attack={8} 
-											rarity={"epic"}
-											golden={false} 
-											type={"minion"} 
-											category={"hunter"} 
-											tag={"Pet"} 
-											description={"Fluffy white demon"} />
-									<Card
-											cardKey={"arthas"}
-											listIndex={0}
-											facedown={false} 
-											callback={null}
-											onhover={null}
-											art={"arthas.jpg"} 
-											title={"Arthas"} 
-											mana={9} 
-											health={3} 
-											attack={8} 
-											rarity={"epic"}
-											golden={false} 
-											type={"minion"} 
-											category={"hunter"} 
-											tag={"Pet"} 
-											description={"Fluffy white demon"} />
-									<Card
-											cardKey={"arthas"}
-											listIndex={0}
-											facedown={false} 
-											callback={null}
-											onhover={null}
-											art={"arthas.jpg"} 
-											title={"Arthas"} 
-											mana={9} 
-											health={3} 
-											attack={8} 
-											rarity={"epic"}
-											golden={false} 
-											type={"minion"} 
-											category={"hunter"} 
-											tag={"Pet"} 
-											description={"Fluffy white demon"} />
-									<Card
-											cardKey={"arthas"}
-											listIndex={0}
-											facedown={false} 
-											callback={null}
-											onhover={null}
-											art={"arthas.jpg"} 
-											title={"Arthas"} 
-											mana={9} 
-											health={3} 
-											attack={8} 
-											rarity={"epic"}
-											golden={false} 
-											type={"minion"} 
-											category={"hunter"} 
-											tag={"Pet"} 
-											description={"Fluffy white demon"} />
-									<Card
-											cardKey={"arthas"}
-											listIndex={0}
-											facedown={false} 
-											callback={null}
-											onhover={null}
-											art={"arthas.jpg"} 
-											title={"Arthas"} 
-											mana={9} 
-											health={3} 
-											attack={8} 
-											rarity={"epic"}
-											golden={false} 
-											type={"minion"} 
-											category={"hunter"} 
-											tag={"Pet"} 
-											description={"Fluffy white demon"} />
+									
 								</div>
 							</div>
 							<div className="search-bar">
