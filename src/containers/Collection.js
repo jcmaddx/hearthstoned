@@ -10,9 +10,21 @@ import * as actions from '../actions/hsActions';
 import '../styles/collection.scss';
 
 import Card from '../components/Card';
+import Button from '../components/Button';
 
 let categories = ["druid", "hunter", "mage", "paladin", "priest", "rogue", "shaman", "warlock", "warrior", "neutral"]
-
+let titles = {
+	druid: "Hobbies",
+	hunter: "Pets",
+	mage: "Education",
+	paladin: "Cabinets",
+	priest: "Medical",
+	rogue: "Repo Man",
+	shaman: "Travels",
+	warlock : "Web Dev",
+	warrior : "References",
+	neutral: "General",
+}
 /**
 * Collection component
 *
@@ -32,7 +44,9 @@ class Collection extends React.Component {
 		let pages = {}, filtered;
 		categories.map((item, key) => {
 			filtered = this._cardFilterSort(item);
-			pages[item] = filtered;
+			if(filtered.length > 0){
+				pages[item] = filtered;
+			}
 		});
 		this.setState({pages: pages});
 	};
@@ -57,6 +71,33 @@ class Collection extends React.Component {
 		return filtered;
 	}
 
+	_pageForward = (e) => {
+		e.stopPropagation();
+		let page = e.target.parentNode;
+		page.classList.remove('flipIn');
+		page.classList.add('flipOut');
+	}
+
+	_pageBack = (page) => {
+		document.getElementById("page"+page).classList.remove('flipOut');
+		document.getElementById("page"+page).classList.add('flipIn');
+	}
+
+	_goBack = () => {
+		this.props.actions.setBookOpened();
+		// play sound for going back to hub
+		this.props.sounds.boxClose.play();
+		// no file loading required. Execute animation
+		this.props.sounds.collectionManager.stop();
+		this.props.sounds.enterBox.play();
+		this.props.actions.setTransition("collection-out");
+		setTimeout(() => {
+			this.props.sounds.mainTitle.play({volume: 1, offset: 0});
+			this.props.actions.setTransition(null);
+			this.props.actions.setStage(1);
+		},200);
+	};
+
 	_cardHover = () => {
 
 	};
@@ -67,13 +108,13 @@ class Collection extends React.Component {
 
 	_buildPage = (category, items, pageNum) => {
 		let pageContent = (
-			<div key={Math.random()} className="page">
+			<div key={Math.random()} id={"page"+pageNum} className="page">
 				{
 					(pageNum !== 1)? 
-						<div className="page-nav-back"></div>
+						<div className="page-nav-back" onClick={this._pageBack.bind(this, (pageNum - 1))}></div>
 					:null
 				}
-				<h2 className="page-title">{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+				<h2 className="page-title">{titles[category]}</h2>
 				<div className="page-cards">
 					{
 						items.map((item, key) => {
@@ -103,7 +144,7 @@ class Collection extends React.Component {
 				<p>{"Page "+pageNum}</p>
 				{
 					(pageNum !== document.querySelectorAll('.page').length)? 
-						<div className="page-nav-forward"></div>
+						<div className="page-nav-forward" onClick={this._pageForward}></div>
 					:null
 				}
 			</div>
@@ -135,6 +176,9 @@ class Collection extends React.Component {
 									Object.keys(this.state.pages).map((item, key) => {
 										let currentCategory = this.state.pages[item]
 										let pages = [], i;
+										if(currentCategory.length === 0){
+											return null;
+										}
 										if(currentCategory.length <= 8){
 											pages.push(this._buildPage(item, currentCategory, key+1));
 										} else {
@@ -150,11 +194,18 @@ class Collection extends React.Component {
 							</div>
 						</div>
 						<div className="deck-tray">
-
+							<h3 className="tray-title">My Decks</h3>
+							<div className="back-button">
+								<Button hover={this.props.sounds.hubHover} cb={this._goBack} text="Back" />
+							</div>
 						</div>
-						<div id="book-cover" className="book-cover">
-							<div className="clasp"></div>
-						</div>
+						{
+							(!this.props.bookOpened) ?
+								<div id="book-cover" className="book-cover">
+									<div className="clasp"></div>
+								</div> 
+							:null
+						}
 						<div id="collection-overlay"></div>
 					</div>
 				</div>

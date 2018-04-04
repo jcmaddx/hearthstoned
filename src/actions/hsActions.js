@@ -46,6 +46,14 @@ export function changeCount(updown){
 	}
 }
 
+export function nextPack(){
+	return function (dispatch) {
+		return dispatch({
+    	type: types.NEXT_PACK
+    });
+	}
+}
+
 export function initPacks() {
 	return function (dispatch) {
 		let packs = [];

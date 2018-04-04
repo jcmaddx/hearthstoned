@@ -43,6 +43,7 @@
 	> p {
 		margin: 50px 0;
 		color: white;
+		font-size: 2vh;
 	}
 }
 
@@ -50,11 +51,62 @@
 	width: calc((80vh * .413 * .86 * 3) + 30px);
 	.quest-box {
 		display: inline-block;
+		vertical-align: top;
 		margin: 0 5px;
 		height: calc(80vh * .413);
 		width: calc(80vh * .413 * .86);
 		background: url(/images/home/quest-tile-front.png) no-repeat center center;
 		background-size: 100% 100%;
+		text-align: center;
+		h3 {
+			width: 55%;
+			display: block;
+			font-size: 2.5vh;
+			line-height: 2.5vh;
+			padding: 1vh 0;
+			margin: 2.2vh auto 1vh;
+			border-top: 4px solid rgba(130, 108, 77, 0.8);
+			border-bottom: 4px solid rgba(130, 108, 77, 0.8);
+		}
+		img {
+			height: 40%;
+			width: auto;
+		}
+		p{
+			display: block;
+			margin: 0 auto;
+			width: 55%;
+			&.quest-description {
+				font-size: 2.3vh;
+				color: #2a241a;
+				margin-bottom: .8vh;
+				line-height: 2.3vh;
+			}
+			&.quest-progress {
+				width: 20%;
+				color: white;
+				font-size: 1.7vh;
+				padding: 0.3vh 0;
+				background: rgba(42, 36, 26, 0.4);
+				position: relative;
+				&:before, &:after {
+					position: absolute;
+					top: 0;
+					width: 20px;
+					height: 100%;
+					content: "";
+					background: rgba(42, 36, 26, 0.4);
+				}
+				&:before {
+					left: -20px;
+					border-radius: 50% 0 0 50%;
+				}
+				&:after {
+					right: -20px;
+					border-radius: 0 50% 50% 0;
+				}
+			}
+		}
 	}
 }
 
@@ -115,6 +167,19 @@
 			height: calc(90vh * .307);
     	width: calc(90vh * .307 * .86);
     	margin: 0 1.33%;
+    	img {
+    		height: 35%;
+    	}
+    	h3 {
+    		font-size: 2vh;
+    		line-height: 2vh;
+    	}
+    	p {
+    		&.quest-description {
+    			font-size: 1.8vh;
+    			line-height: 1.8vh;
+    		}
+    	}
 		}
 	}
 }

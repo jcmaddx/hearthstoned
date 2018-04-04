@@ -256,6 +256,20 @@
 	100% { left: -20%; transform: rotateY(125deg); display: none;}
 }
 
+@keyframes pageFlipOut {
+	0% {transform: perspective(5000px) rotateY(0);  left: 1%}
+	50% {transform: perspective(5000px) rotateY(-90deg);  left: 1%}
+	99.9% {transform: perspective(5000px) rotateY(-180deg);  left: -50%}
+	100% {transform: perspective(5000px) rotateY(-180deg); left: -100%}
+}
+
+@keyframes pageFlipIn {
+	0% {transform: perspective(5000px) rotateY(-180deg); left: -100%}
+	0.1% {transform: perspective(5000px) rotateY(-180deg);  left: -50%}
+	50% {transform: perspective(5000px) rotateY(-90deg);  left: 1%}
+	100% {transform: perspective(5000px) rotateY(0);  left: 1%}	
+}
+
 //Modal Animations
 @keyframes bounceIn {
   0% {transform: scale(0.7) translateX(-50%) translateY(-50%);}

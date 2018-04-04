@@ -49,6 +49,7 @@ class Tray extends React.Component {
 							this.props.sounds.bookLatch.play();
 							setTimeout(() => {
 								this.props.sounds.bookOpen.play();
+								fadeIn(this.props.sounds.collectionManager, 3, true);
 							}, 300)
 						}, 800)
 					}

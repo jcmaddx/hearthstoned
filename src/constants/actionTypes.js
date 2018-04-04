@@ -6,3 +6,4 @@ export const INIT_PACKS = 'INIT_PACKS';
 export const OWN_CARD = 'OWN_CARD';
 export const CHANGE_COUNT = 'CHANGE_COUNT';
 export const BOOK_OPENED = 'BOOK_OPENED';
+export const NEXT_PACK = 'NEXT_PACK';

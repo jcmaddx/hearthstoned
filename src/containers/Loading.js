@@ -32,8 +32,15 @@ class Loading extends React.Component {
 		});
 		return(
 			<div className={loadClasses}>
-				<img className="hs-logo" src="/images/loading/main-logo.png" />
-				<img className="blizz-logo" src="/images/loading/blizz-logo.jpg" />
+				<div className="hs-logo">
+					<img src="/images/loading/main-logo.png" />
+					<h3>Beta</h3>
+				</div>
+				<div className="blizz-logo">
+					<p>Interactive Resume For:</p>
+					<img src="/images/loading/blizz-logo.jpg" />
+				</div>
+				
 			</div>
 		);
 	}

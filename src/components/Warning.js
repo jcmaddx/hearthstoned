@@ -48,7 +48,7 @@ class Warning extends React.Component {
 			"hs-warning": true
 		})
 		return(
-			<div id="warning" ref={this.props.refId} className={warnClasses}>
+			<div onClick={this._closeWarning} id="warning" ref={this.props.refId} className={warnClasses}>
 				<div className="warning-content"><h3 id="warning-text"></h3></div>
 			</div>
 		);

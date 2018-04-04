@@ -5,6 +5,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import Modal from '../components/Modal';
+import QuestBoxes from './QuestBoxes';
 
 import '../styles/quests.scss';
 
@@ -34,12 +35,8 @@ class IntroQuests extends React.Component {
 					<div className="today-banner">
 						<h2>Today's Quests</h2>
 					</div>
-					<div className="quest-boxes">
-						<div className="quest-box"></div>
-						<div className="quest-box"></div>
-						<div className="quest-box"></div>
-					</div>
-					<p>Something about the Quests. Something Funny?</p>
+					<QuestBoxes />
+					<p>Quests can only be completed with Blizzard employees.</p>
 				</div>
 			</Modal>
 		);

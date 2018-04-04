@@ -1,3 +1,4 @@
+@import "./mixins.scss";
 .hs-load{
 	background: url(/images/loading/bg-loading.jpg) no-repeat center center;
 	background-size: cover;
@@ -10,7 +11,23 @@
 		left: 50%;
 		transform: translateX(-50%) translateY(-50%);
 		max-width: 80%;
+		width: 100%;
 		animation: logo-fadein 1s backwards;
+		img {
+			width: 100%;
+			height: auto;
+			position: relative;
+			z-index: 1;
+		}
+		h3 {
+			color: white;
+			font-size: 5vh;
+			position: absolute;
+			z-index: 2;
+			right: 0;
+			bottom: 10%;
+			@include stroked;
+		}
 	}
 	.blizz-logo {
 		position: absolute;
@@ -19,6 +36,17 @@
 		width: 10%;
 		height: auto;
 		min-width: 200px;
+		img {
+			width: 100%;
+			height: auto;
+		}
+		p {
+			margin: 0;
+			color: white;
+			font-family: "Open Sans";
+			font-size: 1.3vh;
+    	letter-spacing: 0.04vw;	
+		}
 	}
 	&:before {
 		width: 100%;

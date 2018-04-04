@@ -5,5 +5,6 @@ export default {
   bookOpened: false,
   packs: [],
   packCount: Object.keys(cards).length / 5,
+  currentPack: 0,
   cards: cards
 };

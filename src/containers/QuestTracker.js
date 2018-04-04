@@ -6,6 +6,7 @@ import classnames from 'classnames';
 
 import Modal from '../components/Modal';
 import SkillBox from '../components/SkillBox';
+import QuestBoxes from './QuestBoxes';
 
 import '../styles/quests.scss';
 
@@ -47,11 +48,7 @@ class QuestTracker extends React.Component {
 					<div className="total-level">
 						<h3>Total Level: <span>180</span></h3>
 					</div>
-					<div className="quest-boxes">
-						<div className="quest-box"></div>
-						<div className="quest-box"></div>
-						<div className="quest-box"></div>
-					</div>
+					<QuestBoxes />
 				</div>
 			</Modal>
 		);

@@ -25,8 +25,7 @@ class PackOpening extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state={
-			busy: true,
-			current: 0
+			busy: true
 		}
 	}
 	componentWillMount() {
@@ -230,7 +229,7 @@ class PackOpening extends React.Component {
 			packCards.classList.remove('show', 'idle', 'fadeaway');
 			overlay.classList.remove('show', 'fadeaway');
 			done.classList.remove('show', 'fadeaway');
-			this.setState({current: this.state.current + 1});
+			this.props.actions.nextPack();
 			[].map.call(document.querySelectorAll('.card'), function(el) {
 	        el.classList.add('facedown');
 	        el.classList.remove("flipped");
@@ -328,11 +327,11 @@ class PackOpening extends React.Component {
 						</div>
 						<Debris />
 						{
-							(this.state.current < this.props.packs.length ) ? 
+							(this.props.current < this.props.packs.length ) ? 
 							<div id="pack-cards" className="pack-cards">
 								{
-									Object.keys(this.props.packs[this.state.current]).map((current, key) => {
-										let currentCard = this.props.packs[this.state.current][current];
+									Object.keys(this.props.packs[this.props.current]).map((current, key) => {
+										let currentCard = this.props.packs[this.props.current][current];
 										let extension = (currentCard.hasOwnProperty("golden")) ? ".gif" : ".jpg";
 										let artwork = current + extension;
 										return <Card key={key}
@@ -387,7 +386,8 @@ function mapStateToProps(state) {
     transition: data.transition,
     packs: data.packs,
     count: data.packCount,
-    cards: data.cards
+    cards: data.cards,
+    current: data.currentPack
   };
 }
 
