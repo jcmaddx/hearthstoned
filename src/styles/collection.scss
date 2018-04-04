@@ -80,26 +80,6 @@
 				overflow: hidden;
 				background-image: url('/images/collection/page-bg.jpg');
 				background-size: 100% 100%;
-				&:before, &:after {
-					position: absolute;
-					z-index: 0;
-					width: 5%;
-					height: 100%;
-					content: "";
-					top: 0;
-					background: black;
-					background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-					background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
-					background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
-					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=1 );
-				}
-				&:before {
-					left: 0;
-				}
-				&:after {
-					right: 0;
-					transform: rotate(180deg);
-				}
 				.class-tabs {
 					width: 100%;
 					height: 6.9%;
@@ -107,9 +87,31 @@
 				.page {
 					width: 98.5%;
 					height: 85.4%;
-					margin-left: 1.5%;
+					left: 1%;
+					margin-top: -0.2%;
 					background: url('/images/collection/page.png') no-repeat left top;
 					background-size: auto 100%;
+					position: absolute;
+					.page-nav-back, .page-nav-forward {
+						display: block;
+						height: 100%;
+						position: absolute;
+						top: 0;
+						width: 10%;
+					}
+					.page-nav-back {
+						width: 5%;
+						left: 0%;
+						&:hover {
+							cursor: url(/images/global/leftarrow.png) 13 16, auto;
+						}
+					}
+					.page-nav-forward {
+						right: 0;
+						&:hover {
+							cursor: url(/images/global/rightarrow.png) 22 16, auto;
+						}
+					}
 					.page-title {
 						text-align: center;
 						color: #2a1801;
@@ -126,10 +128,21 @@
 					.card {
 						position: relative;
 						display: inline-block;
+						vertical-align: top;
 						transform: scale(0.5);
     				margin: -9% -11% -8% -4%;
 					}
+					> p {
+						position: absolute;
+						bottom: 0;
+						width: 100%;
+						text-align: center;
+						font-size: 2.5vh;
+				    color: #635645;
+				    margin-bottom: 1vh;
+					}
 				}
+				@include descending-z-index;
 				.search-bar {
 					height: 7.7%;
 					width: 100%;

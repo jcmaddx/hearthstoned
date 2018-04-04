@@ -57,9 +57,22 @@ class Collection extends React.Component {
 		return filtered;
 	}
 
+	_cardHover = () => {
+
+	};
+
+	_cardClick = () => {
+
+	};
+
 	_buildPage = (category, items, pageNum) => {
 		let pageContent = (
-			<div className="page">
+			<div key={Math.random()} className="page">
+				{
+					(pageNum !== 1)? 
+						<div className="page-nav-back"></div>
+					:null
+				}
 				<h2 className="page-title">{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
 				<div className="page-cards">
 					{
@@ -71,8 +84,8 @@ class Collection extends React.Component {
 								cardKey={item}
 								listIndex={key}
 								facedown={false} 
-								callback={null}
-								onhover={null}
+								callback={this._cardClick}
+								onhover={this._cardHover}
 								art={artwork} 
 								title={current.title} 
 								mana={current.mana} 
@@ -88,6 +101,11 @@ class Collection extends React.Component {
 					}
 				</div>
 				<p>{"Page "+pageNum}</p>
+				{
+					(pageNum !== document.querySelectorAll('.page').length)? 
+						<div className="page-nav-forward"></div>
+					:null
+				}
 			</div>
 		);
 		return pageContent

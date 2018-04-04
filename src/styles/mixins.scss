@@ -7,3 +7,15 @@ $rarity-list: common rare epic legendary;
     -1px 1px 0 #000,
      1px 1px 0 #000;
 }
+
+@mixin descending-z-index($count: 30){
+  .page{
+    $target: 0;
+    $index: $count;
+    @while $index > 0 {
+      &:nth-child(#{$target}){ z-index: #{$index}; }
+      $target: $target + 1;
+      $index: $index - 1;
+      }
+    }
+}
