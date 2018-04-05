@@ -208,6 +208,7 @@
     				margin: -9% -11% -8% -4%;
     				backface-visibility: hidden;
     				.new-flag {
+    					display: none;
     					position: absolute;
     					bottom: -18vh;
     					width: 100%;
@@ -230,7 +231,9 @@
 						    width: 105%;
 						    top: -4%;
 						    left: -2.5%;
-						    background: url('/images/collection/spell-new.png') no-repeat center center;
+						    // background: url('/images/collection/spell-new.png') no-repeat center center;
+						    background-repeat: no-repeat;
+						    background-position: center center;
 						    background-size: auto 100%;
 							}
 							&.minion {
@@ -239,7 +242,7 @@
 							    width: 113%;
 							    top: -11%;
 							    left: -6.5%;
-	    						background-image: url('/images/collection/minion-new.png');
+	    						// background-image: url('/images/collection/minion-new.png');
 	    					}
 	    				}
     				}
