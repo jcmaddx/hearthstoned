@@ -179,7 +179,7 @@ class HSApp extends React.Component {
 							}
 							{
 								(this.props.stage === 3) ? 
-									<Collection sounds={this.state.sounds}/>
+									<Collection warn={this._showWarning} sounds={this.state.sounds}/>
 								: null
 							}
 							<IntroQuests ref="introQuests" sounds={this.state.sounds} closeCallback={this._trayDropFlip} />

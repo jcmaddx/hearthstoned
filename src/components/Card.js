@@ -88,7 +88,9 @@ class Card extends React.Component {
 						
 					</div>
 					<div className="rarity"></div>
-					<div className="description">{this.props.description}</div>
+					<div className="description">
+						<p>{this.props.description}</p>
+					</div>
 					{
 						(this.props.type === "minion") ? 
 						<div className="attack">{this.props.attack}</div>
@@ -105,11 +107,7 @@ class Card extends React.Component {
 						: null
 					}
 				</div>
-				{
-					(this.props.hasOwnProperty('isNew') && this.props.isNew === true) ? 
-						<p className="new-flag">New</p>
-					: null
-				}
+				<p className="new-flag">New</p>
 			</div>
 		);
 	}

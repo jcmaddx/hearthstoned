@@ -1,6 +1,5 @@
 {
 	"alabama": {
-		"new": true,
 		"title": "Alabama",
 		"description": "Roll Tide and stuff",
 		"tag": "Travel",
@@ -13,7 +12,6 @@
 		"owned": false
 	},
 	"andrew": {
-		"new": true,
 		"title": "Andrew Niculescu",
 		"description": "My most recent manager",
 		"tag": "Cohort",
@@ -26,7 +24,6 @@
 		"owned": false
 	},
 	"arthas": {
-		"new": true,
 		"title": "Arthas",
 		"description": "Fluffy white demon",
 		"tag": "Pet",
@@ -39,7 +36,6 @@
 		"owned": false
 	},
 	"assembly-line": {
-		"new": true,
 		"title": "Assembly Line",
 		"description": "Cabinet Assembly",
 		"tag": "Skill",
@@ -52,7 +48,6 @@
 		"owned": false
 	},
 	"assembly": {
-		"new": true,
 		"title": "Furniture Assembly",
 		"description": "IKEA here I come.",
 		"tag": "Skill",
@@ -65,7 +60,6 @@
 		"owned": false
 	},
 	"assistant": {
-		"new": true,
 		"title": "Assistant",
 		"description": "Assting nurses",
 		"tag": "Skill",
@@ -78,7 +72,6 @@
 		"owned": false
 	},
 	"blizzard": {
-		"new": true,
 		"title": "Blizzard",
 		"description": "Costs 1 less per Job card in your collection.",
 		"tag": "Job",
@@ -92,7 +85,6 @@
 		"owned": false
 	},
 	"builder": {
-		"new": true,
 		"title": "Cabinet Builder",
 		"description": "Head of the Line",
 		"tag": "Skill",
@@ -105,7 +97,6 @@
 		"owned": false
 	},
 	"california": {
-		"new": true,
 		"title": "California",
 		"description": "My new home",
 		"tag": "Travel",
@@ -118,7 +109,6 @@
 		"owned": false
 	},
 	"certification": {
-		"new": true,
 		"title": "Certification",
 		"description": "Magento Front End Certified",
 		"tag": null,
@@ -131,7 +121,6 @@
 		"owned": false
 	},
 	"cleaning": {
-		"new": true,
 		"title": "Cleaning",
 		"description": "Cleaning reposessed appliances",
 		"tag": "Skill",
@@ -144,7 +133,6 @@
 		"owned": false
 	},
 	"cnc": {
-		"new": true,
 		"title": "CNC Router",
 		"description": "Router operator",
 		"tag": "Skill",
@@ -157,7 +145,6 @@
 		"owned": false
 	},
 	"css3": {
-		"new": true,
 		"title": "CSS",
 		"description": "CSS and other styling stuff",
 		"tag": "Skill",
@@ -170,7 +157,6 @@
 		"owned": false
 	},
 	"delivery": {
-		"new": true,
 		"title": "Delivery",
 		"description": "Delivering furniture",
 		"tag": "Skill",
@@ -183,7 +169,6 @@
 		"owned": false
 	},
 	"devry": {
-		"new": true,
 		"title": "DeVry University",
 		"description": "Probably not worth the cost.",
 		"tag": "School",
@@ -196,7 +181,6 @@
 		"owned": false
 	},
 	"doug": {
-		"new": true,
 		"title": "Doug Chomicz",
 		"description": "Previous Co-Worker",
 		"tag": "Cohort",
@@ -209,7 +193,6 @@
 		"owned": false
 	},
 	"drawing": {
-		"new": true,
 		"title": "Drawing",
 		"description": "I like to draw..poorly",
 		"tag": "Hobby",
@@ -222,7 +205,6 @@
 		"owned": false
 	},
 	"drums": {
-		"new": true,
 		"title": "Percussion",
 		"description": "I like to play the drums..poorly",
 		"tag": "Hobby",
@@ -235,7 +217,6 @@
 		"owned": false
 	},
 	"eating": {
-		"new": true,
 		"title": "Eating",
 		"description": "I am a pro eater. Not literally..",
 		"tag": null,
@@ -248,7 +229,6 @@
 		"owned": false
 	},
 	"ebsco": {
-		"new": true,
 		"title": "EBSCO Industries",
 		"description": "The corporate outdoor company",
 		"tag": "Job",
@@ -261,7 +241,6 @@
 		"owned": false
 	},
 	"feeding": {
-		"new": true,
 		"title": "Feeding",
 		"description": "Feeding the elderly.",
 		"tag": "Skill",
@@ -274,7 +253,6 @@
 		"owned": false
 	},
 	"gaming": {
-		"new": true,
 		"title": "Gaming",
 		"description": "I LOVE GAMING!",
 		"tag": "Hobby",
@@ -287,7 +265,6 @@
 		"owned": false
 	},
 	"georgia": {
-		"new": true,
 		"title": "Georgia",
 		"description": "The place of my birth",
 		"tag": "Travel",
@@ -300,7 +277,6 @@
 		"owned": false
 	},
 	"highschool": {
-		"new": true,
 		"title": "Bibb Graves",
 		"description": "The bulldogs",
 		"tag": "School",
@@ -313,7 +289,6 @@
 		"owned": false
 	},
 	"html5": {
-		"new": true,
 		"title": "HTML",
 		"description": "The markup language",
 		"tag": "Skill",
@@ -326,7 +301,6 @@
 		"owned": false
 	},
 	"japan": {
-		"new": true,
 		"title": "Japan",
 		"description": "The best place on earth.",
 		"tag": "Travel",
@@ -339,7 +313,6 @@
 		"owned": false
 	},
 	"jason": {
-		"new": true,
 		"title": "Jason Chen",
 		"description": "That guy I work with.",
 		"tag": "Cohort",
@@ -352,7 +325,6 @@
 		"owned": false
 	},
 	"javascript": {
-		"new": true,
 		"title": "Javascript",
 		"description": "I won't even React to that",
 		"tag": "Skill",
@@ -365,7 +337,6 @@
 		"owned": false
 	},
 	"koko": {
-		"new": true,
 		"title": "Koko",
 		"description": "Cross eyed siamese",
 		"tag": "Pet",
@@ -378,7 +349,6 @@
 		"owned": false
 	},
 	"lead": {
-		"new": true,
 		"title": "Lead Person",
 		"description": "Leading the assembly line",
 		"tag": "Skill",
@@ -391,7 +361,6 @@
 		"owned": false
 	},
 	"luckie": {
-		"new": true,
 		"title": "Luckie & Co.",
 		"description": "Wordpress everywhere",
 		"tag": "Job",
@@ -404,7 +373,6 @@
 		"owned": false
 	},
 	"magento": {
-		"new": true,
 		"title": "Magento",
 		"description": "I knew this.",
 		"tag": "Skill",
@@ -417,7 +385,6 @@
 		"owned": false
 	},
 	"ncsoft": {
-		"new": true,
 		"title": "NCSoft",
 		"description": "My current employer",
 		"tag": "Job",
@@ -430,7 +397,6 @@
 		"owned": false
 	},
 	"nick": {
-		"new": true,
 		"title": "Nick Hamer",
 		"description": "Former co-worker and future co-worker",
 		"tag": "Cohort",
@@ -443,7 +409,6 @@
 		"owned": false
 	},
 	"nurse-cleaning": {
-		"new": true,
 		"title": "Cleaning",
 		"description": "Cleaning a nursing home.",
 		"tag": "Skill",
@@ -456,7 +421,6 @@
 		"owned": false
 	},
 	"nursing": {
-		"new": true,
 		"title": "CNA",
 		"description": "Certified Nursing Assistant",
 		"tag": "Job",
@@ -469,7 +433,6 @@
 		"owned": false
 	},
 	"pepper": {
-		"new": true,
 		"title": "Pepper",
 		"description": "Blue fatty",
 		"tag": "Pet",
@@ -482,7 +445,6 @@
 		"owned": false
 	},
 	"philippines": {
-		"new": true,
 		"title": "Philippines",
 		"description": "Lots of islands. Home of my wife.",
 		"tag": "Travel",
@@ -495,7 +457,6 @@
 		"owned": false
 	},
 	"photoshop": {
-		"new": true,
 		"title": "Photoshop",
 		"description": "Pixel moving",
 		"tag": "Skill",
@@ -508,7 +469,6 @@
 		"owned": false
 	},
 	"php": {
-		"new": true,
 		"title": "PHP",
 		"description": "Ancient knowledge of the PHP",
 		"tag": "Skill",
@@ -521,7 +481,6 @@
 		"owned": false
 	},
 	"quotes": {
-		"new": true,
 		"title": "Closet Quotes",
 		"description": "Designing and price quoting closet systems",
 		"tag": "Skill",
@@ -534,7 +493,6 @@
 		"owned": false
 	},
 	"react": {
-		"new": true,
 		"title": "React JS",
 		"description": "My favorite framework. For now.",
 		"tag": "Skill",
@@ -547,7 +505,6 @@
 		"owned": false
 	},
 	"repair": {
-		"new": true,
 		"title": "Cabinet Repair",
 		"description": "Fixing paint and wood",
 		"tag": "Skill",
@@ -560,7 +517,6 @@
 		"owned": false
 	},
 	"repossession": {
-		"new": true,
 		"title": "Repossesion",
 		"description": "Taking back delinquent items",
 		"tag": "Skill",
@@ -573,7 +529,6 @@
 		"owned": false
 	},
 	"sculpting": {
-		"new": true,
 		"title": "Sculpting",
 		"description": "I like sculpting..poorly",
 		"tag": "Hobby",
@@ -586,7 +541,6 @@
 		"owned": false
 	},
 	"showplace": {
-		"new": true,
 		"title": "Showplace Rental",
 		"description": "My first job.",
 		"tag": "Job",
@@ -599,7 +553,6 @@
 		"owned": false
 	},
 	"sleeping": {
-		"new": true,
 		"title": "Sleeping",
 		"description": "I am pretty good at sleeping.",
 		"tag": "Skill",
@@ -612,7 +565,6 @@
 		"owned": false
 	},
 	"suscc": {
-		"new": true,
 		"title": "Southern Union",
 		"description": "Community College",
 		"tag": "School",
@@ -625,7 +577,6 @@
 		"owned": false
 	},
 	"talking": {
-		"new": true,
 		"title": "Talking",
 		"description": "I am not great at this..",
 		"tag": null,
@@ -638,7 +589,6 @@
 		"owned": false
 	},
 	"thinking": {
-		"new": true,
 		"title": "Thinking",
 		"description": "Using the ol' noodle",
 		"tag": null,
@@ -651,7 +601,6 @@
 		"owned": false
 	},
 	"truwood": {
-		"new": true,
 		"title": "Truwood Cabinets",
 		"description": "Cabinets and Closets",
 		"tag": "Job",
@@ -664,7 +613,6 @@
 		"owned": false
 	},
 	"walking": {
-		"new": true,
 		"title": "Walking",
 		"description": "That thing that everyone does.",
 		"tag": "Skill",
@@ -677,7 +625,6 @@
 		"owned": false
 	},
 	"wellborn": {
-		"new": true,
 		"title": "Wellborn Cabinets",
 		"description": "A big cabinet place.",
 		"tag": "Job",
@@ -690,7 +637,6 @@
 		"owned": false
 	},
 	"wordpress": {
-		"new": true,
 		"title": "Wordpress",
 		"description": "Lots of cms work",
 		"tag": "Skill",
@@ -703,7 +649,6 @@
 		"owned": false
 	},
 	"zeekee": {
-		"new": true,
 		"title": "Zeekee Interactive",
 		"description": "First Web developer position",
 		"tag": "Job",

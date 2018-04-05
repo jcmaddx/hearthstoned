@@ -70,6 +70,35 @@
 				background: url('/images/collection/deck-tray.png') no-repeat right top;
 				background-size: auto 100%;
 				z-index: 2;
+				.tray-title {
+					width: 70%;
+					margin: 6% 0 10% 9%;
+					text-align: center;
+					font-size: 2.3vh;
+					color: #503c1f;
+				}
+				.new-deck {
+					display: block;
+					margin: 0 0 0 9.5%;
+    			width: calc(9.5vh * 2.3);
+    			height: 9.5vh;
+					background: url('/images/collection/new-deck.png') no-repeat center center;
+					background-size: auto 100%;
+					text-align: center;
+					line-height: 9.5vh;;
+					font-size: 3vh;
+					color: #393430;
+				}
+				.deck-count {
+					position: absolute;
+			    bottom: 2%;
+			    left: 10%;
+			    width: 30%;
+    			font-size: 2.5vh;
+			    text-align: center;
+			    color: white;
+			    @include stroked;
+				}
 				.back-button {
 					position: absolute;
 			    bottom: 0.5%;
@@ -178,6 +207,63 @@
 						transform: scale(0.5);
     				margin: -9% -11% -8% -4%;
     				backface-visibility: hidden;
+    				.new-flag {
+    					position: absolute;
+    					bottom: -18vh;
+    					width: 100%;
+    					text-align: center;
+					    font-size: 5vh;
+					    text-transform: uppercase;
+					    margin: 0;
+					    color: white;
+					    @include stroked;
+					    background: url('/images/collection/new-glow.png') no-repeat center center;
+					    background-size: auto 100%;
+					    padding: 8vh 0;
+    				}
+    				&.rare, &.epic, &.common, &.legendary {
+    					.hover-glow {
+    						opacity: 1;
+    						transition: opacity .3s;
+	    					box-shadow: none;
+	    					height: 105%;
+						    width: 105%;
+						    top: -4%;
+						    left: -2.5%;
+						    background: url('/images/collection/spell-new.png') no-repeat center center;
+						    background-size: auto 100%;
+							}
+							&.minion {
+	    					.hover-glow {
+	    						height: 113%;
+							    width: 113%;
+							    top: -11%;
+							    left: -6.5%;
+	    						background-image: url('/images/collection/minion-new.png');
+	    					}
+	    				}
+    				}
+    				&.old {
+    					.new-flag {
+    						display: none;
+    					}
+    					&.rare, &.epic, &.common, &.legendary {
+	    					.hover-glow {
+		    					opacity: 0;
+							    background-image: url('/images/collection/spell-hover.png');
+		    				}
+		    				&.minion {
+		    					.hover-glow {
+		    						background-image: url('/images/collection/minion-hover.png');
+		    					}
+		    				}
+	    				}
+	    				&:hover {
+	    					.hover-glow {
+	    						opacity: 0.8;
+	    					}
+	    				}
+    				}
 					}
 					> p {
 						position: absolute;
@@ -218,14 +304,101 @@
 		    left: -50vw;
 		    padding: 0 50vw;
 				background: rgba(0,0,0,0.7);
-				z-index: 3;
-				display: none;
-				&.show {
-					display: block;
+				z-index: -10;
+				* {
+					pointer-events: none;
 				}
-				&.fadeaway {
-					opacity: 0;
-					transition: opacity 1.5s;
+				.card {
+					transform: scale(0.5) translateX(-50%) translateY(-50%);
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					.new-flag {
+						display: none;
+					}
+				}
+				&.show {
+					z-index: 4;
+					&.from-0 {
+						.card {
+							animation: cardZoom0 .3s linear forwards;
+						}
+					}
+					&.from-1 {
+						.card {
+							animation: cardZoom1 .3s linear forwards;
+						}
+					}
+					&.from-2 {
+						.card {
+							animation: cardZoom2 .3s linear forwards;
+						}
+					}
+					&.from-3 {
+						.card {
+							animation: cardZoom3 .3s linear forwards;
+						}
+					}
+					&.from-4 {
+						.card {
+							animation: cardZoom4 .3s linear forwards;
+						}
+					}
+					&.from-5 {
+						.card {
+							animation: cardZoom5 .3s linear forwards;
+						}
+					}
+					&.from-6 {
+						.card {
+							animation: cardZoom6 .3s linear forwards;
+						}
+					}
+					&.from-7 {
+						.card {
+							animation: cardZoom7 .3s linear forwards;
+						}
+					}
+					&.to-0 {
+						.card {
+							animation: cardShrink0 .3s linear forwards;
+						}
+					}
+					&.to-1 {
+						.card {
+							animation: cardShrink1 .3s linear forwards;
+						}
+					}
+					&.to-2 {
+						.card {
+							animation: cardShrink2 .3s linear forwards;
+						}
+					}
+					&.to-3 {
+						.card {
+							animation: cardShrink3 .3s linear forwards;
+						}
+					}
+					&.to-4 {
+						.card {
+							animation: cardShrink4 .3s linear forwards;
+						}
+					}
+					&.to-5 {
+						.card {
+							animation: cardShrink5 .3s linear forwards;
+						}
+					}
+					&.to-6 {
+						.card {
+							animation: cardShrink6 .3s linear forwards;
+						}
+					}
+					&.to-7 {
+						.card {
+							animation: cardShrink7 .3s linear forwards;
+						}
+					}
 				}
 			}
 		}

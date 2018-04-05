@@ -36,7 +36,8 @@ class Collection extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			pages: {}
+			pages: {},
+			currentCard: null
 		}
 	}
 
@@ -83,11 +84,13 @@ class Collection extends React.Component {
 		let page = e.target.parentNode;
 		page.classList.remove('flipIn');
 		page.classList.add('flipOut');
+		this.props.sounds.pageForward.play({offset: 0});
 	}
 
 	_pageBack = (page) => {
 		document.getElementById("page"+page).classList.remove('flipOut');
 		document.getElementById("page"+page).classList.add('flipIn');
+		this.props.sounds.pageBack.play({offset: 0});
 	}
 
 	_goBack = () => {
@@ -105,13 +108,42 @@ class Collection extends React.Component {
 		},200);
 	};
 
+	_newDeckMouse = () => {
+		this.props.sounds.hubHover.play();
+	};
+
 	_cardHover = (id, card, rarity, out, index) => {
-		this.props.actions.oldCard(id);
+		let parent = card.parentNode;
+		if(!parent.classList.contains('old')){
+			parent.classList.add('old');
+		}
+		if(!out){
+			this.props.sounds.collectionCardOver.play({offset: 0});
+		}
 	};
 
 	_cardClick = (id, card, rarity, golden, index) => {
-
+		let dupeCard = card.cloneNode(true);
+		let overlay = document.getElementById('collection-overlay');
+		overlay.appendChild(dupeCard);
+		overlay.classList.add("show", "from-"+index);
+		this.props.sounds.pickupCard.play();
 	};
+
+	_overlayClose = (e) => {
+		let overlay = e.target;
+		let fromClass = overlay.classList[1];
+		let toClass = fromClass.replace("from", "to");
+		overlay.classList.remove(fromClass);
+		overlay.classList.add(toClass);
+		this.props.sounds.dropCard.play();
+		setTimeout(() => {
+			overlay.classList.remove('show', toClass);
+			while (overlay.lastChild) {
+			  overlay.removeChild(overlay.lastChild);
+			}
+		}, 300)
+	}
 
 	_buildPage = (category, items, pageNum) => {
 		let pageContent = (
@@ -129,7 +161,6 @@ class Collection extends React.Component {
 							let extension = (current.hasOwnProperty("golden")) ? ".gif" : ".jpg";
 							let artwork = item + extension;
 							return <Card key={key}
-								isNew={current.new}
 								cardKey={item}
 								listIndex={key}
 								facedown={false} 
@@ -173,6 +204,30 @@ class Collection extends React.Component {
 			"hidden": this.props.stage !== 3 && this.props.transition !== "collection-in" && this.props.transition !== "collection-out",
 			[this.props.transition]: this.props.transition
 		});
+		let popupCard = null;
+		if(this.state.currentCard !== null){
+			let current = this.props.cards[this.state.currentCard];
+			let extension = (current.hasOwnProperty("golden")) ? ".gif" : ".jpg";
+			let artwork = this.state.currentCard + extension;
+			popupCard = <Card
+				cardKey={this.state.currentCard}
+				listIndex={0}
+				facedown={false} 
+				callback={() => {return false}}
+				onhover={() => {return false}}
+				art={artwork} 
+				title={current.title} 
+				mana={current.mana} 
+				health={current.health} 
+				attack={current.attack} 
+				rarity={current.rarity}
+				golden={current.hasOwnProperty("golden")} 
+				type={current.type} 
+				category={current.category} 
+				tag={current.tag} 
+				description={current.description} />
+		}
+
 		return(
 			<div className={collectionClasses}>
 				<div id="collection-container" className="collection-container">
@@ -203,6 +258,8 @@ class Collection extends React.Component {
 						</div>
 						<div className="deck-tray">
 							<h3 className="tray-title">My Decks</h3>
+							<div onClick={this.props.warn} onMouseEnter={this._newDeckMouse} className="new-deck">New Deck</div>
+							<div className="deck-count">0/18</div>
 							<div className="back-button">
 								<Button hover={this.props.sounds.hubHover} cb={this._goBack} text="Back" />
 							</div>
@@ -214,7 +271,7 @@ class Collection extends React.Component {
 								</div> 
 							:null
 						}
-						<div id="collection-overlay"></div>
+						<div id="collection-overlay" onClick={this._overlayClose}></div>
 					</div>
 				</div>
 			</div>

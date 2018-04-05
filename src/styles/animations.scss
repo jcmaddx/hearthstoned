@@ -270,6 +270,74 @@
 	100% {transform: perspective(5000px) rotateY(0);  left: 1%}	
 }
 
+// card zoom animations
+@keyframes cardZoom0 {
+	0% {transform: scale(0.5) translateX(-379%) translateY(-158%);}
+	100% {transform: scale(1) translateX(-50%) translateY(-50%)}
+}
+@keyframes cardZoom1 {
+	0% {transform: scale(0.5) translateX(-261%) translateY(-158%);}
+	100% {transform: scale(1) translateX(-50%) translateY(-50%)}
+}
+@keyframes cardZoom2 {
+	0% {transform: scale(0.5) translateX(-143%) translateY(-158%);}
+	100% {transform: scale(1) translateX(-50%) translateY(-50%)}
+}
+@keyframes cardZoom3 {
+	0% {transform: scale(0.5) translateX(-24%) translateY(-158%);}
+	100% {transform: scale(1) translateX(-50%) translateY(-50%)}
+}
+@keyframes cardZoom4 {
+	0% {transform: scale(0.5) translateX(-379%) translateY(-26%);}
+	100% {transform: scale(1) translateX(-50%) translateY(-50%)}
+}
+@keyframes cardZoom5 {
+	0% {transform: scale(0.5) translateX(-261%) translateY(-26%);}
+	100% {transform: scale(1) translateX(-50%) translateY(-50%)}
+}
+@keyframes cardZoom6 {
+	0% {transform: scale(0.5) translateX(-143%) translateY(-26%);}
+	100% {transform: scale(1) translateX(-50%) translateY(-50%)}
+}
+@keyframes cardZoom7 {
+	0% {transform: scale(0.5) translateX(-24%) translateY(-26%);}
+	100% {transform: scale(1) translateX(-50%) translateY(-50%)}
+}
+
+// card shrink animations
+@keyframes cardShrink0 {
+	0% {transform: scale(1) translateX(-50%) translateY(-50%)}
+	100% {transform: scale(0.5) translateX(-379%) translateY(-158%);}
+}
+@keyframes cardShrink1 {
+	0% {transform: scale(1) translateX(-50%) translateY(-50%)}
+	100% {transform: scale(0.5) translateX(-261%) translateY(-158%);}
+}
+@keyframes cardShrink2 {
+	0% {transform: scale(1) translateX(-50%) translateY(-50%)}
+	100% {transform: scale(0.5) translateX(-143%) translateY(-158%);}
+}
+@keyframes cardShrink3 {
+	0% {transform: scale(1) translateX(-50%) translateY(-50%)}
+	100% {transform: scale(0.5) translateX(-24%) translateY(-158%);}
+}
+@keyframes cardShrink4 {
+	0% {transform: scale(1) translateX(-50%) translateY(-50%)}
+	100% {transform: scale(0.5) translateX(-379%) translateY(-26%);}
+}
+@keyframes cardShrink5 {
+	0% {transform: scale(1) translateX(-50%) translateY(-50%)}
+	100% {transform: scale(0.5) translateX(-261%) translateY(-26%);}
+}
+@keyframes cardShrink6 {
+	0% {transform: scale(1) translateX(-50%) translateY(-50%)}
+	100% {transform: scale(0.5) translateX(-143%) translateY(-26%);}
+}
+@keyframes cardShrink7 {
+	0% {transform: scale(1) translateX(-50%) translateY(-50%)}
+	100% {transform: scale(0.5) translateX(-24%) translateY(-26%);}
+}
+
 //Modal Animations
 @keyframes bounceIn {
   0% {transform: scale(0.7) translateX(-50%) translateY(-50%);}

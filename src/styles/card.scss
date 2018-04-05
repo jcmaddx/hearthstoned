@@ -132,15 +132,23 @@
 	.description {
 		position: absolute;
     bottom: 2vh;
-    height: 11vh;
+    height: 13vh;
     width: calc(12vh * 2.2);
     left: 3vh;
     padding: 2vh;
-    font-size: 1.8vh;
-    line-height: 2.5vh;
-    font-family: "Open Sans";
-    text-align: center;
     z-index: 6;
+    p {
+    	font-family: "Open Sans";
+    	text-align: center;
+    	font-size: 1.8vh;
+    	line-height: 2.5vh;
+    	margin: 0;
+    	position: absolute;
+    	width: 100%;
+    	top: 50%;
+    	left: 0;
+    	transform: translateY(-50%);
+    }
 	}
 	.hover-glow {
 		opacity: 0;
@@ -263,14 +271,15 @@
 	    top: 43%;
 		}
 		.rarity {
-			top: 54%;
+			top: 53.5%;
 		}
 		.mana {
 			top: -4%;
 			left: -2%;
 		}
 		.description {
-			bottom: 3.5vh;
+			height: 10vh;
+			bottom: 4.5vh;
 		}
 		.attack {
 			height: 12vh;

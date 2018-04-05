@@ -34,6 +34,7 @@ class Tray extends React.Component {
 		// load manifest then change state after completion
 		setTimeout(() => {
 			let handleComplete = () => {
+				console.log(manifest, " complete!");
 				fadeOut(this.props.sounds.mainTitle, 3, true);
 				this.props.sounds.enterBox.play();
 				this.props.actions.setStage(stage);
