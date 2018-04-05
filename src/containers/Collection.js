@@ -49,6 +49,13 @@ class Collection extends React.Component {
 			}
 		});
 		this.setState({pages: pages});
+		if(this.props.bookOpened){
+			document.getElementById('page-container').classList.remove('unopened');
+		} else {
+			setTimeout(() => {
+				document.getElementById('page-container').classList.remove('unopened');
+			}, 1000);
+		}
 	};
 
 	_cardFilterSort = (category) => {
@@ -170,7 +177,7 @@ class Collection extends React.Component {
 			<div className={collectionClasses}>
 				<div id="collection-container" className="collection-container">
 					<div id="collection-content" className="collection-content">
-						<div className="pages">
+						<div id="page-container" className="pages unopened">
 							<div className="class-tabs"></div>
 							{
 								(Object.keys(this.state.pages).length > 0) ? 

@@ -195,6 +195,11 @@
 						animation: pageFlipIn .5s linear forwards;
 					}
 				}
+				&.unopened {
+					.page {
+						opacity: 0;
+					}
+				}
 				@include descending-z-index;
 				.search-bar {
 					height: 7.7%;
