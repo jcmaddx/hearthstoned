@@ -224,7 +224,7 @@
     				}
     				&.rare, &.epic, &.common, &.legendary {
     					.hover-glow {
-    						opacity: 1;
+    						opacity: 0;
     						transition: opacity .3s;
 	    					box-shadow: none;
 	    					height: 105%;
