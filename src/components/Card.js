@@ -27,7 +27,7 @@ class Card extends React.Component {
 		e.stopPropagation();
 		let out = (e.type === "mouseleave") ? true : false;
 		if(this.props.hasOwnProperty('onhover')){
-			this.props.onhover(e.target, this.props.rarity, out, this.props.listIndex);
+			this.props.onhover(this.props.cardKey, e.target, this.props.rarity, out, this.props.listIndex);
 		}
 	}
 
@@ -105,6 +105,11 @@ class Card extends React.Component {
 						: null
 					}
 				</div>
+				{
+					(this.props.hasOwnProperty('isNew') && this.props.isNew === true) ? 
+						<p className="new-flag">New</p>
+					: null
+				}
 			</div>
 		);
 	}

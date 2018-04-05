@@ -98,11 +98,11 @@ class Collection extends React.Component {
 		},200);
 	};
 
-	_cardHover = () => {
-
+	_cardHover = (id, card, rarity, out, index) => {
+		this.props.actions.oldCard(id);
 	};
 
-	_cardClick = () => {
+	_cardClick = (id, card, rarity, golden, index) => {
 
 	};
 
@@ -122,6 +122,7 @@ class Collection extends React.Component {
 							let extension = (current.hasOwnProperty("golden")) ? ".gif" : ".jpg";
 							let artwork = item + extension;
 							return <Card key={key}
+								isNew={current.new}
 								cardKey={item}
 								listIndex={key}
 								facedown={false} 

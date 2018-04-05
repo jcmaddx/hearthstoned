@@ -237,7 +237,7 @@ class PackOpening extends React.Component {
 		}, 1500);
 	};
 
-	_onHover = (card, rarity, out, index) => {
+	_onHover = (id, card, rarity, out, index) => {
 		if(!card.classList.contains("cardfront") && !out){
 			this.props.sounds['cardOver'+index].play();
 		}

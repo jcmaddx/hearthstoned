@@ -37,6 +37,15 @@ export function gainCard(card){
 	}
 }
 
+export function oldCard(card){
+	return function (dispatch) {
+		return dispatch({
+    	type: types.OLD_CARD,
+      old: card
+    });
+	}
+}
+
 export function changeCount(updown){
 	return function (dispatch) {
 		return dispatch({
