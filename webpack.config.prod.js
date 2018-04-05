@@ -16,13 +16,13 @@ export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json']
   },
-  devtool: 'source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
+  //devtool: 'source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
   entry: path.resolve(__dirname, 'src/index'),
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    publicPath: '/resume/blizzard/hearthstone/',
+    filename: '[name].js'
   },
   plugins: [
     // Hash the files using MD5 so that their names change when the content changes.
@@ -32,7 +32,7 @@ export default {
     new webpack.DefinePlugin(GLOBALS),
 
     // Generate an external css file with a hash in the filename
-    new ExtractTextPlugin('[name].[contenthash].css'),
+    new ExtractTextPlugin('[name].css'),
 
     // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
@@ -66,7 +66,7 @@ export default {
         sassLoader: {
           includePaths: [path.resolve(__dirname, 'src', 'scss')]
         },
-        context: './',
+        context: './resume/blizzard/hearthstone/',
         postcss: () => [autoprefixer],
       }
     })

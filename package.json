@@ -16,15 +16,19 @@
     "lint:watch": "npm run lint -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run clean-dist && npm run lint",
+    "prebuild": "npm run clean-dist",
     "build": "babel-node tools/build.js && npm run open:dist",
+    "build-deploy-qa": "babel-node tools/build.js && npm run deploy-qa",
+    "build-deploy-live": "babel-node tools/build.js && npm run deploy-live",
+    "deploy-live": "bash tools/deploy-live.sh",
+    "deploy-qa": "bash tools/deploy-qa.sh",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
-    "test": "npm run mocha:unit & npm run test:open",
+    "test": "BABEL_ENV=test npm run mocha:unit & npm run test:open",
     "test:int": "npm run mocha:integration & npm run test:int:open",
     "test:open": "browser-sync start --server --port 3002 --ss ./test/runner -f ./test/runner/* --index ./test/runner/runner.html",
     "test:int:open": "browser-sync start --server --port 3012 --ss ./test/integration/runner -f ./test/integration/runner/* --index ./test/integration/runner/runner.html",
-    "mocha:unit": "mocha --watch --compilers js:babel-core/register --reporter mochawesome --reporter-options reportDir=test/runner,reportFilename=runner,quiet=true,reportPageTitle='MyProject: Unit Test',reportTitle='MyProject: Unit Test' --require test/setup.js $(find . -name '*.test.js' -not -path './test/integration/*' -not -path './node_modules/*')",
-    "mocha:integration": "mocha --watch --compilers js:babel-core/register --reporter mochawesome --reporter-options reportDir=test/integration/runner,reportFilename=runner,quiet=true,reportPageTitle='MyProject: Integration Test',reportTitle='MyProject: Integration Test' --require test/setup.js test/integration/**/*.test.js"
+    "mocha:unit": "mocha --watch --require babel-core/register --reporter mochawesome --reporter-options reportDir=test/runner,reportFilename=runner,quiet=true,reportPageTitle='MyProject: Unit Test',reportTitle='MyProject: Unit Test' --require test/setup.js $(find . -name '*.test.js' -not -path './test/integration/*' -not -path './node_modules/*')",
+    "mocha:integration": "mocha --watch --require babel-core/register --reporter mochawesome --reporter-options reportDir=test/integration/runner,reportFilename=runner,quiet=true,reportPageTitle='MyProject: Integration Test',reportTitle='MyProject: Integration Test' --require test/setup.js test/integration/**/*.test.js"
   },
   "author": "J.C.",
   "license": "MIT",
@@ -105,10 +109,10 @@
     "type": "git",
     "url": ""
   },
-  "babel": {
+    "babel": {
     "presets": [
       "react",
-      "stage-0"
+      "stage-1"
     ],
     "env": {
       "development": {
