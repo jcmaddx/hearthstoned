@@ -192,7 +192,7 @@ class HSApp extends React.Component {
 				}
 				<div className={optionsClasses}>
 					{
-						(this.props.count > 0)?
+						(this.props.count > 0 && false)?
 						<div onClick={this._unlockPacks} className="unlocker">
 							<img src="/images/global/locked.png" />
 						</div>

@@ -28,6 +28,17 @@
 			bottom: 10%;
 			@include stroked;
 		}
+		p {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 20%;
+			font-size: 1.5vh;
+			color: white;
+			@include stroked;
+			text-align: center;
+			z-index: 3;
+		}
 	}
 	.blizz-logo {
 		position: absolute;

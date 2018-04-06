@@ -35,12 +35,12 @@ class Loading extends React.Component {
 				<div className="hs-logo">
 					<img src="/images/loading/main-logo.png" />
 					<h3>Beta</h3>
+					<p className="loading-text">Loading..</p>
 				</div>
 				<div className="blizz-logo">
 					<p>Interactive Resume For:</p>
 					<img src="/images/loading/blizz-logo.jpg" />
 				</div>
-				
 			</div>
 		);
 	}
