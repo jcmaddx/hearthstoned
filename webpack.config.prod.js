@@ -66,7 +66,7 @@ export default {
         sassLoader: {
           includePaths: [path.resolve(__dirname, 'src', 'scss')]
         },
-        context: './resume/blizzard/hearthstone/',
+        context: './',
         postcss: () => [autoprefixer],
       }
     })
