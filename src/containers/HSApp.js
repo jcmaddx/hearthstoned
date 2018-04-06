@@ -63,6 +63,13 @@ class HSApp extends React.Component {
 		createjs.Sound.alternateExtensions = ["mp3"];
 		queue.installPlugin(createjs.Sound);
 		queue.on("complete", soundsComplete, this);
+		queue.on("progress", (e) => {
+			let bar = document.getElementById('loading-bar');
+			let percent = document.getElementById('loading-percent');
+			let update = Math.round((e.progress * 100) / 2) + "%";
+			bar.style.width = update;
+			percent.textContent = update;
+		});
 		queue.loadManifest("/data/soundManifest.json");
 	}
 
@@ -71,6 +78,14 @@ class HSApp extends React.Component {
 		var randomGreet = "/sounds/greeting"+randomInt(0, 15)+".mp3";
 		queue.installPlugin(createjs.Sound);
 		queue.on("complete", this._loadingComplete, this);
+		queue.on("progress", (e) => {
+			let bar = document.getElementById('loading-bar');
+			let percent = document.getElementById('loading-percent');
+			let update = Math.round(e.progress * 100) + "%";
+			bar.style.width = update;
+			percent.textContent = update;
+
+		});
 		queue.loadFile({id:"greeting", src:randomGreet});
 		queue.loadManifest("/data/fileManifest.json");
 	};

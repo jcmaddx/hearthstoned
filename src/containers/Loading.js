@@ -35,11 +35,17 @@ class Loading extends React.Component {
 				<div className="hs-logo">
 					<img src="/images/loading/main-logo.png" />
 					<h3>Beta</h3>
-					<p className="loading-text">Loading..</p>
 				</div>
 				<div className="blizz-logo">
 					<p>Interactive Resume For:</p>
 					<img src="/images/loading/blizz-logo.jpg" />
+				</div>
+				<div className="loading-frame">
+					<img src="/images/loading/loading-frame.png" />
+					<div className="loading-container">
+						<p id="loading-percent">0%</p>
+						<div id="loading-bar"></div>
+					</div>
 				</div>
 			</div>
 		);
