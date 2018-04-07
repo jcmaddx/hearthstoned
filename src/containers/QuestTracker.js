@@ -46,7 +46,7 @@ class QuestTracker extends React.Component {
 						<SkillBox title="php" level="14" image="/images/home/skill-php.jpg"/>
 					</div>
 					<div className="total-level">
-						<h3>Total Level: <span>180</span></h3>
+						<h3>Total Level: <span>359</span></h3>
 					</div>
 					<QuestBoxes />
 				</div>

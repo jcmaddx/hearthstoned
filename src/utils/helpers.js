@@ -63,7 +63,6 @@ export function setupSounds() {
 		dropCard: createjs.Sound.createInstance("drop-card"),
 		collectionCardOver: createjs.Sound.createInstance("collection-card-over"),
 		deckDrop: createjs.Sound.createInstance("deck-drop"),
-		dragGlitter: createjs.Sound.createInstance("drag-glitter"),
 		enterBox: createjs.Sound.createInstance("enter-box"),
 		epic0: createjs.Sound.createInstance("epic"),
 		epic1: createjs.Sound.createInstance("epic"),

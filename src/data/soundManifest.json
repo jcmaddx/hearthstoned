@@ -13,7 +13,6 @@
 		{"id":"drop-card", "src": "/sounds/drop-card.mp3"},
 		{"id":"collection-card-over", "src": "/sounds/collection-card-over.mp3"},
 		{"id":"deck-drop", "src": "/sounds/deck-drop.mp3"},
-		{"id":"drag-glitter", "src": "/sounds/drag-glitter.mp3"},
 		{"id":"enter-box", "src": "/sounds/enter-box.mp3"},
 		{"id":"epic", "src": "/sounds/epic.mp3"},
 		{"id":"existing-quest-popup", "src": "/sounds/existing-quest-popup.mp3"},
