@@ -42,3 +42,6 @@ test/integration/runner
 
 # Mac files
 .DS_Store
+
+# Package Lock
+package-lock.json
