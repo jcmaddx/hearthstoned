@@ -171,7 +171,7 @@ class PackOpening extends React.Component {
 	};
 
 	_flipCard = (id, card, rarity, golden, index) => {
-		if(!card.classList.contains('cardfront')){
+		if(card.classList.contains('facedown')){
 			this.props.actions.gainCard(id);
 			let upperRarity = rarity.charAt(0).toUpperCase() + rarity.slice(1);
 			let auraSound = "aura"+upperRarity+index;

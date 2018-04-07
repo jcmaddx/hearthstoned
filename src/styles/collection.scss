@@ -309,6 +309,7 @@
 		    padding: 0 50vw;
 				background: rgba(0,0,0,0.7);
 				z-index: -10;
+				opacity: 0;
 				* {
 					pointer-events: none;
 				}
@@ -323,6 +324,7 @@
 				}
 				&.show {
 					z-index: 4;
+					opacity: 1;
 					&.from-0 {
 						.card {
 							animation: cardZoom0 .3s linear forwards;

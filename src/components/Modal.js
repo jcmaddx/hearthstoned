@@ -44,8 +44,8 @@ class Modal extends React.Component {
 			[animType]: true
 		})
 		return(
-			<div id={this.props.refId} ref={this.props.refId} className={modalClasses}>
-				<div className="modal-overlay" onClick={this._closeModal.bind(this, this.props.refId)}></div>
+			<div onClick={this._closeModal.bind(this, this.props.refId)} id={this.props.refId} ref={this.props.refId} className={modalClasses}>
+				<div className="modal-overlay"></div>
 				<div className="modal-content">
 					{this.props.children}
 				</div>
