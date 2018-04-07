@@ -54,7 +54,7 @@ class Options extends React.Component {
 	};
 
 	_quit = () => {
-		window.location = "http://johncmaddox.com";
+		window.location = "/resume/blizzard";
 	};
 
 	/**

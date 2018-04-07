@@ -56,7 +56,7 @@ class PackOpening extends React.Component {
     } else {
         isSpace = (event.keyCode === 32);
     }
-    if (isSpace && !this.state.busy && this.props.stage === 2) {
+    if (isSpace && !this.state.busy && this.props.count > 0 && this.props.stage === 2) {
     	// decrease pack count
 			this.props.actions.changeCount("down");
 			// open pack
