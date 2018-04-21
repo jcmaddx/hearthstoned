@@ -151,10 +151,6 @@
 				background-image: url('/images/collection/page-bg.jpg');
 				background-size: 100% 100%;
 				overflow: visible;
-				.class-tabs {
-					width: 100%;
-					height: 6.9%;
-				}
 				.page {
 					width: 98.5%;
 					height: 85.4%;
@@ -278,11 +274,9 @@
 				    color: #635645;
 				    margin-bottom: 1vh;
 					}
+					animation: pageFlipIn .5s linear forwards;
 					&.flipOut {
 						animation: pageFlipOut .5s linear forwards;
-					}
-					&.flipIn {
-						animation: pageFlipIn .5s linear forwards;
 					}
 				}
 				&.unopened {

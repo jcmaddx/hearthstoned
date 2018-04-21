@@ -11,6 +11,7 @@ import '../styles/collection.scss';
 
 import Card from '../components/Card';
 import Button from '../components/Button';
+import ClassNav from '../components/ClassNav';
 
 let categories = ["druid", "hunter", "mage", "paladin", "priest", "rogue", "shaman", "warlock", "warrior", "neutral"]
 let titles = {
@@ -82,15 +83,20 @@ class Collection extends React.Component {
 	_pageForward = (e) => {
 		e.stopPropagation();
 		let page = e.target.parentNode;
-		page.classList.remove('flipIn');
+		let nextNum = parseInt(page.dataset.num) + 1;
+		let nextPage = document.getElementById("page"+nextNum);
+		let category = nextPage.dataset.category;
 		page.classList.add('flipOut');
 		this.props.sounds.pageForward.play({offset: 0});
+		this._updateNav(category);
 	}
 
 	_pageBack = (page) => {
+		let prevPage = document.getElementById("page"+(page));
+		let category = prevPage.dataset.category;
 		document.getElementById("page"+page).classList.remove('flipOut');
-		document.getElementById("page"+page).classList.add('flipIn');
 		this.props.sounds.pageBack.play({offset: 0});
+		this._updateNav(category);
 	}
 
 	_goBack = () => {
@@ -107,6 +113,14 @@ class Collection extends React.Component {
 			this.props.actions.setStage(1);
 		},200);
 	};
+
+	_updateNav = (category) => {
+		let tabs = document.querySelectorAll('.class-tab');
+		[].forEach.call(tabs, function(el) {
+		    el.classList.remove("active");
+		});
+		document.getElementById('tab-'+category).classList.add('active');
+	}
 
 	_newDeckMouse = () => {
 		this.props.sounds.hubHover.play();
@@ -147,7 +161,7 @@ class Collection extends React.Component {
 
 	_buildPage = (category, items, pageNum) => {
 		let pageContent = (
-			<div key={Math.random()} id={"page"+pageNum} className="page">
+			<div key={Math.random()} data-num={pageNum} data-category={category} id={"page"+pageNum} className={"page flipIn " + category + "-page" }>
 				{
 					(pageNum !== 1)? 
 						<div className="page-nav-back" onClick={this._pageBack.bind(this, (pageNum - 1))}></div>
@@ -233,7 +247,7 @@ class Collection extends React.Component {
 				<div id="collection-container" className="collection-container">
 					<div id="collection-content" className="collection-content">
 						<div id="page-container" className="pages unopened">
-							<div className="class-tabs"></div>
+							<ClassNav sounds={this.props.sounds}/>
 							{
 								(Object.keys(this.state.pages).length > 0) ? 
 									Object.keys(this.state.pages).map((item, key) => {
