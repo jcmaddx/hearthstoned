@@ -47,7 +47,6 @@ class HSApp extends React.Component {
 		window.addEventListener("mouseup", (e) => {
 			document.getElementById('hearthstoned').classList.remove('downed');
 		})
-		console.log(navigator);
 		if ('serviceWorker' in navigator) {
 		  const registration = runtime.register();
 		}

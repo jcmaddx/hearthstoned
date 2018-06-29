@@ -72,7 +72,8 @@ export default {
       }
     }),
     new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'sw.js'),
+      entry: path.join(__dirname, 'src/sw.js'),
+      publicPath: "/resume/blizzard/hearthstone/",
       excludes: ['**/.*', '**/*.map', '*.html'],
     }),
   ],
