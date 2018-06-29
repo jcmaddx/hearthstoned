@@ -7,7 +7,7 @@
 	  <!-- Force HTTPS for Heroku -->
 	  <script>
 	  	if(window.location.protocol === 'http:' && window.location.hostname !== "localhost") {
-				window.location = "https:" + window.location.host + window.location.path;
+				window.location = "https:" + window.location.host + window.location.pathname;
 			}
 	  </script>
 	  <!-- Global site tag (gtag.js) - Google Analytics -->
