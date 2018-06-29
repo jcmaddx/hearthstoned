@@ -4,6 +4,7 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ServiceWorkerWebpackPlugin from 'serviceworker-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
 
@@ -69,7 +70,11 @@ export default {
         context: './',
         postcss: () => [autoprefixer],
       }
-    })
+    }),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, 'sw.js'),
+      excludes: ['**/.*', '**/*.map', '*.html'],
+    }),
   ],
   module: {
     rules: [
