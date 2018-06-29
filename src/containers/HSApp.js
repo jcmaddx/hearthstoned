@@ -11,6 +11,8 @@ import * as actions from '../actions/hsActions';
 
 import {randomInt, setupSounds} from '../utils/helpers';
 
+import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+
 import Loading from './Loading';
 import Box from './Box';
 import PackOpening from './PackOpening';
@@ -45,6 +47,10 @@ class HSApp extends React.Component {
 		window.addEventListener("mouseup", (e) => {
 			document.getElementById('hearthstoned').classList.remove('downed');
 		})
+		console.log(navigator);
+		if ('serviceWorker' in navigator) {
+		  const registration = runtime.register();
+		}
 	}
 
 	componentDidMount() {
